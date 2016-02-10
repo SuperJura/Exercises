@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Klubovi>
+    <Klub>
+        <Ime Skraceno="I1">Ime1</Ime>
+        <Grad ID="1">Grad1</Grad>
+        <Proracun>3.0</Proracun>
+        <Predsjednik>PRED</Predsjednik>
+    </Klub>
+    <Klub>
+        <Ime Skraceno="I2">Ime2</Ime>
+        <Grad ID="2">Grad2</Grad>
+        <Proracun>2.0</Proracun>
+        <Predsjednik>PREDDD</Predsjednik>
+    </Klub>
+</Klubovi>

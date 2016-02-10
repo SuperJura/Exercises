@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Klubovi>
+    <Klub>
+        <Ime>hh</Ime>
+        <Grad>hh</Grad>
+        <Proracun>3.0</Proracun>
+        <Predsjednik>hh</Predsjednik>
+    </Klub>
+    <Klub>
+        <Ime>ff</Ime>
+        <Grad>ff</Grad>
+        <Proracun>2.0</Proracun>
+        <Predsjednik>ff</Predsjednik>
+    </Klub>
+</Klubovi>

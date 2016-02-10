@@ -8,41 +8,6 @@
 *.war
 *.ear
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -61,3 +26,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/JavaExercises/DOMParser/nbproject/private/
+/JavaExercises/DOMParser/build/
+/JavaExercises/SAXParser/nbproject/private/
+/JavaExercises/SAXParserDemo/nbproject/private/
+/JavaExercises/SAXParserDemo/build/
