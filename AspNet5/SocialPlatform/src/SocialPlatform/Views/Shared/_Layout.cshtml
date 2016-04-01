@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Social Platform</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <div class="topDiv">
+        <h1 class="modal-header text-center">Welcome to Social Platform</h1>
+    </div>
+    <div>
+        @Html.Partial("LoginPartial")
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 border">
+                @RenderSection("LeftSide", false)
+            </div>
+            <div class="col-md-6 border">
+                @RenderBody()
+            </div>
+            <div class="col-md-3 border">
+                @RenderSection("RightSide", false)
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom">
+        <span class="navbar-text">Social platform 2016</span>
+    </div>
+</div>
+</body>
+</html>
