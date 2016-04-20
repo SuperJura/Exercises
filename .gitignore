@@ -320,3 +320,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/JavaExercises/JavaWebShop/WebShop/build/
