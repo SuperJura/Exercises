@@ -1,4 +1,8 @@
-﻿create table Kategorija
+﻿create database JavaWebShop
+go
+use JavaWebShop
+go
+create table Kategorija
 (
 	KategorijaID int constraint pk_Kategorija primary key identity,
 	Naziv nvarchar(50) not null

@@ -26,12 +26,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-/JavaExercises/DOMParser/nbproject/private/
-/JavaExercises/DOMParser/build/
-/JavaExercises/SAXParser/nbproject/private/
+/JavaExercises/DOMParserDemo/nbproject/private/
+/JavaExercises/DOMParserDemo/build/
 /JavaExercises/SAXParserDemo/nbproject/private/
 /JavaExercises/SAXParserDemo/build/
-
+/JavaExercises/JavaWebShop/WebShop/build/
+/JavaExercises/JavaWebShop/WebShop/nbproject/private/
 #--------------------------------------------------------------------
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -320,4 +320,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-/JavaExercises/JavaWebShop/WebShop/build/

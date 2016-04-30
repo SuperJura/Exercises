@@ -42,13 +42,17 @@ public class CodeItemDatabase implements ItemDatabase{
     }
     
     
-    
     @Override
     public List<Kategorija> getAllKategorije() {
         return allKategorije;
         
     }
 
+    @Override
+    public Kategorija getKategorija(int idKategorija) {
+        return allKategorije.stream().filter(x -> x.getKategorijaId() == idKategorija).findFirst().get();
+    }
+    
     @Override
     public List<Proizvod> getAllProizvod(int idKategorija) {
         Proizvod[] proizvodi = allProizvodi.stream().filter(x -> x.getIdKategorija() == idKategorija).toArray(Proizvod[]::new);
@@ -64,6 +68,10 @@ public class CodeItemDatabase implements ItemDatabase{
         output.add(allProizvodi.get(8));
         
         return output;
-    }
+    }    
     
+    @Override
+    public Proizvod getProizvod(int idProizvod) {
+        return allProizvodi.stream().filter(x -> x.getProizvodId() == idProizvod).findFirst().get();
+    }
 }

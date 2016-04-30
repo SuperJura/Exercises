@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>TestServlet</servlet-name>
-        <servlet-class>Servlets.TestServlet</servlet-class>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>Servlets.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KategorijeServlet</servlet-name>
+        <servlet-class>Servlets.KategorijeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProizvodiServlet</servlet-name>
+        <servlet-class>Servlets.ProizvodiServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TestServlet</servlet-name>
-        <url-pattern>/Test</url-pattern>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KategorijeServlet</servlet-name>
+        <url-pattern>/Kategorije</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProizvodiServlet</servlet-name>
+        <url-pattern>/Proizvodi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +30,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>Test</welcome-file>
+        <welcome-file>Kategorije</welcome-file>
     </welcome-file-list>
 </web-app>

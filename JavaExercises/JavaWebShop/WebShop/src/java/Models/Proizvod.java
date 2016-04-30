@@ -5,6 +5,8 @@
  */
 package Models;
 
+import DAL.Repository;
+
 /**
  *
  * @author Jurica
@@ -12,6 +14,7 @@ package Models;
 public class Proizvod {
     private int proizvodId;
     private int idKategorija;
+    private String kategorija; //nije u bazi, vec se postavlja kasnije
     private String naziv;
     private float cijena;
     private String slika;
@@ -24,6 +27,7 @@ public class Proizvod {
         this.cijena = cijena;
         this.slika = slika;
         this.opis = opis;
+        this.kategorija = Repository.getItemsDatabaseInstance().getKategorija(idKategorija).getNaziv();
     }
 
     public Proizvod() {
@@ -111,5 +115,19 @@ public class Proizvod {
      */
     public void setOpis(String opis) {
         this.opis = opis;
+    }
+
+    /**
+     * @return the kategorija
+     */
+    public String getKategorija() {
+        return kategorija;
+    }
+
+    /**
+     * @param kategorija the kategorija to set
+     */
+    public void setKategorija(String kategorija) {
+        this.kategorija = kategorija;
     }
 }

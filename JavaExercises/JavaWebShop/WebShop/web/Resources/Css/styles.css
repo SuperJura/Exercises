@@ -1,6 +1,24 @@
-.header{
-    height: 50px;
-    width: 100%;
-    background-color: yellow;
-    border: 1px solid black;
+body {
+    padding-top: 55px;
+}
+
+.txtBlue{
+    color: blue;
+}
+
+.background-dark{
+    background-color: rgba(00,10,59, 0.1) !important; 
+}
+
+.background-light{
+    background-color: rgba(00,15,75, 0.1) !important; 
+}
+
+.txtLarge{
+    font-size: xx-large !important;
+}
+
+.hoverChange :hover{
+    background-color: #269abc !important; 
+    color: white !important;
 }

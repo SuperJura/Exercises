@@ -15,6 +15,8 @@ import java.util.List;
  */
 public interface ItemDatabase {
     public List<Kategorija> getAllKategorije();
+    public Kategorija getKategorija(int idKategorija);
     public List<Proizvod> getAllProizvod(int idKategorija);
     public List<Proizvod> getPopularProizvodi();
+    public Proizvod getProizvod(int idProizvod);
 }

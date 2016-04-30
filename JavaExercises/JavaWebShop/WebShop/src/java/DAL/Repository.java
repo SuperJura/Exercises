@@ -9,7 +9,7 @@ package DAL;
  *
  * @author Jurica
  */
-public class Repozitory {
+public class Repository {
     private static ItemDatabase database;
     
     public static ItemDatabase getItemsDatabaseInstance()
