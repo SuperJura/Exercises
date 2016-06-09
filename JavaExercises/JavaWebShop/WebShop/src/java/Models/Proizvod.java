@@ -5,8 +5,6 @@
  */
 package Models;
 
-import DAL.Repository;
-
 /**
  *
  * @author Jurica
@@ -20,14 +18,14 @@ public class Proizvod {
     private String slika;
     private String opis;
 
-    public Proizvod(int proizvodId, int idKategorija, String naziv, float cijena, String slika, String opis) {
+    public Proizvod(int proizvodId, int idKategorija, String naziv, float cijena, String slika, String opis, String kategorija) {
         this.proizvodId = proizvodId;
         this.idKategorija = idKategorija;
         this.naziv = naziv;
         this.cijena = cijena;
         this.slika = slika;
         this.opis = opis;
-        this.kategorija = Repository.getItemsDatabaseInstance().getKategorija(idKategorija).getNaziv();
+        this.kategorija = kategorija;
     }
 
     public Proizvod() {

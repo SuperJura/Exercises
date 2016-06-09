@@ -5,8 +5,12 @@
  */
 package Servlets;
 
+import DAL.ProizvodiDatabase;
+import DAL.Repozitorij;
+import Helpers.SessionHelper;
+import Models.Proizvod;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +22,25 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ProizvodiServlet extends HttpServlet {
 
+    ProizvodiDatabase database;
+
+    @Override
+    public void init() throws ServletException {
+        database = Repozitorij.getProizvodiDatabaseInstance();
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //TODO: DODAJ STVARI ZA PRIKAZIVANJE PROIZVODA
+        String path = request.getQueryString();
+        int kategorijaId = Integer.parseInt(path.split("=")[1]);
+        
+        SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, 0);
+        request.getSession().setAttribute("kategorijaId", kategorijaId);
+        request.getSession().setAttribute("kategorijaNaziv", database.getKategorija(kategorijaId).getNaziv());
+        response.sendRedirect("User/Proizvodi.jsp");
     }
 
     @Override

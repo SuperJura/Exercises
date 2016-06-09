@@ -7,7 +7,10 @@ package Servlets;
 
 import DAL.ProizvodiDatabase;
 import DAL.Repozitorij;
+import Helpers.SessionHelper;
+import Models.Proizvod;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class KategorijeServlet extends HttpServlet {
+public class PocetnaServlet extends HttpServlet {
 
     ProizvodiDatabase database;
 
@@ -27,10 +30,12 @@ public class KategorijeServlet extends HttpServlet {
         super.init();
     }
     
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().setAttribute("kategorije", database.getAllKategorije());
-        response.sendRedirect("User/Kategorije.jsp");
+
+        SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
+        response.sendRedirect("User/Pocetna.jsp");
     }
 
     @Override

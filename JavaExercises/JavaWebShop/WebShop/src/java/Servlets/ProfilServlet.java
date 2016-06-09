@@ -5,8 +5,6 @@
  */
 package Servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,20 +15,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class KategorijeServlet extends HttpServlet {
+public class ProfilServlet extends HttpServlet {
 
-    ProizvodiDatabase database;
-
-    @Override
-    public void init() throws ServletException {
-        database = Repozitorij.getProizvodiDatabaseInstance();
-        super.init();
-    }
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().setAttribute("kategorije", database.getAllKategorije());
-        response.sendRedirect("User/Kategorije.jsp");
+        response.sendRedirect("User/Profil.jsp");
     }
 
     @Override

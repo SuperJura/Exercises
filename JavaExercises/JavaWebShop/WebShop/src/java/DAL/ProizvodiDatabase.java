@@ -21,28 +21,25 @@ import java.util.Map;
  *
  * @author Jurica
  */
-public class SQLItemDatabase implements ItemDatabase {
+public class ProizvodiDatabase {
 
     List<Kategorija> allKategorije;
     Map<Integer, ArrayList<Proizvod>> allProizvodi; //idKaterorije, proizvod
 
-    public SQLItemDatabase() {
+    public ProizvodiDatabase() {
         allKategorije = new ArrayList<>();
         allProizvodi = new HashMap<>();
         FillKategorije();
     }
 
-    @Override
     public List<Kategorija> getAllKategorije() {
         return allKategorije;
     }
 
-    @Override
     public Kategorija getKategorija(int idKategorija) {
         return allKategorije.stream().filter(x -> x.getKategorijaId() == idKategorija).findFirst().get();
     }
 
-    @Override
     public synchronized List<Proizvod> getAllProizvod(int idKategorija) {
         if (!allProizvodi.containsKey(idKategorija)) {
             FillProizvode(idKategorija);
@@ -51,7 +48,6 @@ public class SQLItemDatabase implements ItemDatabase {
 
     }
 
-    @Override
     public List<Proizvod> getPopularProizvodi() {
         ArrayList<Proizvod> output = new ArrayList<>();
         output.add(getAllProizvod(1).get(0));
@@ -114,7 +110,6 @@ public class SQLItemDatabase implements ItemDatabase {
         }
     }
 
-    @Override
     public Proizvod getProizvod(int idProizvod) {
         for (int kat : allProizvodi.keySet()) {
             for (Proizvod proizvod : allProizvodi.get(kat)) {

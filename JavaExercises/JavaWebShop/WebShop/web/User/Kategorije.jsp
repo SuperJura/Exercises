@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://jurica.adamek.java3" prefix="jl" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,9 +15,7 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <div class="alert alert-info text-center">
-            Kategorije proizvoda koje Vam nudimo
-        </div>
+        <jl:headerMessage defaultMessage="Kategorije proizvoda koje Vam nudimo"/>
         <div class="container">
             <c:forEach var="i" begin="0" items="${sessionScope.kategorije}">
                 <button class="btn btn-default btn-block" onclick="kategorijaOnClick(${i.kategorijaId})">
@@ -32,7 +31,7 @@
     <script>
         function kategorijaOnClick(id)
         {
-            window.location.href = "/WebShop/Proizvodi/" + id;
+            window.location.href = "/WebShop/Proizvodi?kategorijaId=" + id;
         }
     </script>
 </html>

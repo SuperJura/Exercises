@@ -5,11 +5,8 @@
  */
 package Servlets;
 
-import DAL.ItemDatabase;
-import DAL.Repository;
-import Models.Proizvod;
+import Helpers.SessionHelper;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,31 +16,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class HomeServlet extends HttpServlet {
+public class PaginationServlet extends HttpServlet {
 
-    ItemDatabase database;
-
-    @Override
-    public void init() throws ServletException {
-        database = Repository.getItemsDatabaseInstance();
-        super.init();
-    }
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Proizvod> items = database.getPopularProizvodi();
-        request.getSession().setAttribute("popularProizvodi", items);
-        response.sendRedirect("User/Home.jsp");
+        String akcija = request.getParameter("action");
+        int trenutnaStranica = Integer.parseInt(request.getSession().getAttribute("proizvodiTrenutnaStranica").toString());
+        if (akcija.equals("next")) {
+            trenutnaStranica ++;
+        }
+        else if (akcija.equals("prev")) {
+            trenutnaStranica --;
+            if (trenutnaStranica < 0) {
+                trenutnaStranica = 0;
+            }
+        }
+        int kategorijaId = Integer.parseInt(request.getSession().getAttribute("kategorijaId").toString());
+        
+        SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, trenutnaStranica);
+        response.sendRedirect("/WebShop/User/Proizvodi.jsp");
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

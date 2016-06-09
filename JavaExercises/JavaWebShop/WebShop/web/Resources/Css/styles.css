@@ -22,3 +22,19 @@ body {
     background-color: #269abc !important; 
     color: white !important;
 }
+
+.bold{
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+}
+
+.boldBlack{
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+}
+
+.leftMargin{
+    margin-left: 15px;
+}

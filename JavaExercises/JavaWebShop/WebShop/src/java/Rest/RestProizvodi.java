@@ -5,7 +5,7 @@
  */
 package Rest;
 
-import DAL.Repository;
+import DAL.Repozitorij;
 import Models.Proizvod;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
@@ -40,8 +40,7 @@ public class RestProizvodi {
     @Produces("application/json")
     @Path("{id}")
     public String getXml(@PathParam("id") int id){
-        //TODO return proper representation object
         Gson json = new Gson();
-        return json.toJson(Repository.getItemsDatabaseInstance().getProizvod(id));
+        return json.toJson(Repozitorij.getProizvodiDatabaseInstance().getProizvod(id));
     }
 }

@@ -5,8 +5,7 @@
  */
 package Servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
+import Models.Korisnik;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,20 +16,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class KategorijeServlet extends HttpServlet {
+public class KosaricaServlet extends HttpServlet {
 
-    ProizvodiDatabase database;
-
-    @Override
-    public void init() throws ServletException {
-        database = Repozitorij.getProizvodiDatabaseInstance();
-        super.init();
-    }
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().setAttribute("kategorije", database.getAllKategorije());
-        response.sendRedirect("User/Kategorije.jsp");
+
+        int proizvodId = Integer.parseInt(request.getParameter("id"));
+        int kolicina = Integer.parseInt(request.getParameter("kolicina"));
+        int akcija = Integer.parseInt(request.getParameter("akcija"));
+
+        Korisnik korisnik = null;
+        if (request.getSession().getAttribute("Korisnik") == null) {
+            korisnik = new Korisnik();
+            request.getSession().setAttribute("Korisnik", korisnik);
+        } else {
+            korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+        }
+
+        korisnik.getKosarica().addProizvod(proizvodId, kolicina);
+
+        request.getSession().setAttribute("headerMsg", "Kolicina novih proizvoda u kosarici: " + kolicina);
+        response.sendRedirect("User/Pocetna.jsp");
+
     }
 
     @Override

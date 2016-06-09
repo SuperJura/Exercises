@@ -41,7 +41,8 @@ values
 (2, 'G.SKILL RIPJAWS MX780', 474.05, 'USB, 8200dpi', 'https://www.links.hr/content/images/thumbs/001/0010503_mis-gskill-ripjaws-mx780-rgb-8200dpi-usb-crni.jpeg'),
 (2, 'GAMDIAS Ourea Optical', 189.05, 'USB, 2500dpi', 'https://www.links.hr/content/images/thumbs/001/0011126_mis-gamdias-ourea-optical-2500dpi-crni-usb.jpeg'),
 (2, 'GENIUS NX-6510', 95.05, 'USB, bežični', 'https://www.links.hr/content/images/thumbs/000/0007059_mis-genius-nx-6510-usb-bezicni-bijela-tattoo-101506384.jpg'),
-(2, 'GENIUS X-G300', 132.05, 'USB, optički, 2000dpi', 'https://www.links.hr/content/images/thumbs/000/0007023_mis-genius-x-g300-gaming-2000dpi-crni-usb-101503416.jpg')
+(2, 'GENIUS X-G300', 132.05, 'USB, optički, 2000dpi', 'https://www.links.hr/content/images/thumbs/000/0007023_mis-genius-x-g300-gaming-2000dpi-crni-usb-101503416.jpg'),
+(2, 'SHARKOON Fireglider', 269, 'USB, laserski 3600dpi', 'http://n0.static-elipso.com/images/xbig/103015.jpg')
 
 --TIPKOVNICE
 insert into Proizvod(IDKategorija, Naziv, Cijena, Opis, Slika)
@@ -86,4 +87,58 @@ as
 begin
 	select * from Proizvod
 	where IDKategorija = @idKategorija
+end
+
+
+--KORISNICI
+
+create table Korisnici
+(
+	KorisnikId int constraint pk_Korisnik primary key identity,
+	KorisnickoIme nvarchar(50) unique not null,
+	Lozinka nvarchar(50) not null,
+	Administrator bit not null
+)
+
+insert into Korisnici(KorisnickoIme, Lozinka, Administrator)
+values 
+('Pero', '123', 0),
+('Ana', '123', 0),
+('Jura', '123', 1)
+
+go
+
+create proc getUser
+	@username nvarchar(50),
+	@password nvarchar(50)
+as
+begin
+	select * 
+	from Korisnici
+	where KorisnickoIme = @username and Lozinka = @password
+end
+
+go
+
+create proc isAdmin
+	@username nvarchar(50),
+	@isAdmin bit output
+as
+begin
+	select @isAdmin = Administrator
+	from Korisnici
+	where KorisnickoIme = @username	
+end
+
+go
+
+create proc createUser
+	@username nvarchar(50),
+	@password nvarchar(50),
+	@isAdmin bit output
+as
+begin
+	insert into Korisnici(KorisnickoIme, Lozinka, Administrator)
+	values 
+	(@username, @password, @isAdmin)
 end
