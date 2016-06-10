@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import Models.Korisnik;
+import Models.Kosarica;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,10 @@ public class ProfilServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getSession().getAttribute("Korisnik") != null) {
+            Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("Korisnik")).getKosarica();
+            request.getSession().setAttribute("cijena", kosarica.getSveukupnaCijena());
+        }
         response.sendRedirect("User/Profil.jsp");
     }
 

@@ -17,7 +17,7 @@
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Detalji Vase kosarice"/>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10 col-md-offset-1">
                 <table class="table table-bordered">
                     <tr>
                         <td class="boldBlack">
@@ -26,14 +26,38 @@
                         <td class="boldBlack">
                             Kolicina tog proizvoda u kosarici
                         </td>
+                        <td>
+                            Sveukupna cijena: 
+                            <span class="boldBlack">
+                                ${cijena}
+                            </span>
+                        </td>
                     </tr>
-                    <c:forEach var="entry" items="${Korisnik.kosarica.proizvodi}">
+                    <c:forEach var="proizvod" items="${Korisnik.kosarica.proizvodi}">
                         <tr>
                             <td>
-                                ${entry.key}
+                                <jl:ProizvodNaziv proizvodId="${proizvod.key}"/>
                             </td>
                             <td>
-                                ${entry.value}
+                                ${proizvod.value}
+                            </td>
+                            <td>
+                                <jl:ProizvodCijena kolicina="${proizvod.value}" proizvodId="${proizvod.key}"/>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-lg-offset-1 col-lg-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Kolicina:</span>
+                                            <input type="number" class="form-control" id="numKolicina" min="0" max="50" value="1" >
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" id="btnMakni" onclick="makniProizvod(this)">Makni
+                                                    <div class="hidden" id="proizvodId">${proizvod.key}</div>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </c:forEach>
@@ -42,3 +66,10 @@
         </div>
     </body>
 </html>
+<script>
+    function makniProizvod(btn)
+    {
+        var proizvodId = btn.childNodes[1].firstChild.nodeValue;
+        alert(proizvodId);
+    }
+</script>

@@ -5,6 +5,7 @@
  */
 package Models;
 
+import DAL.Repozitorij;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import java.util.Map;
 public class Kosarica {
 
     private Map<Integer, Integer> proizvodi;    //proizvodId, kolicina
+    private float sveukupnaCijena;
 
     public Kosarica() {
         proizvodi = new HashMap<>();
@@ -42,5 +44,20 @@ public class Kosarica {
         } else {
             proizvodi.put(proizvodId, kolicina);
         }
+        setSveukupnaCijena((int) (getSveukupnaCijena() + kolicina * Repozitorij.getProizvodiDatabaseInstance().getProizvod(proizvodId).getCijena()));
+    }
+
+    /**
+     * @return the sveukupnaCijena
+     */
+    public float getSveukupnaCijena() {
+        return sveukupnaCijena;
+    }
+
+    /**
+     * @param sveukupnaCijena the sveukupnaCijena to set
+     */
+    public void setSveukupnaCijena(float sveukupnaCijena) {
+        this.sveukupnaCijena = sveukupnaCijena;
     }
 }

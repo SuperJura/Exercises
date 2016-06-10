@@ -17,7 +17,7 @@
             ${loginError}
         </div>
         <div class="row">
-            <div class="col-md-5 leftMargin">
+            <div class="col-md-5 col-md-offset-1">
                 <div class="panel panel-default">
                     <form class="form-signin" action="/WebShop/Login" method="POST">
                         <h2 class="form-signin-heading">Prijavite se</h2>
