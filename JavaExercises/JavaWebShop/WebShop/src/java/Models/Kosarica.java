@@ -44,7 +44,27 @@ public class Kosarica {
         } else {
             proizvodi.put(proizvodId, kolicina);
         }
-        setSveukupnaCijena((int) (getSveukupnaCijena() + kolicina * Repozitorij.getProizvodiDatabaseInstance().getProizvod(proizvodId).getCijena()));
+        setSveukupnaCijena((float) (getSveukupnaCijena() + kolicina * Repozitorij.getProizvodiDatabaseInstance().getProizvod(proizvodId).getCijena()));
+    }
+
+    public int removeProizvod(int proizvodId, int kolicina) {
+        if (!proizvodi.containsKey(proizvodId)) {
+            return 0;
+        }
+        int trenutnaKolicina = proizvodi.get(proizvodId);
+        trenutnaKolicina -= kolicina;
+        float cijena = 0;
+        if (trenutnaKolicina <= 0) {
+            cijena = proizvodi.get(proizvodId) * Repozitorij.getProizvodiDatabaseInstance().getProizvod(proizvodId).getCijena();
+            proizvodi.remove(proizvodId);
+            setSveukupnaCijena(getSveukupnaCijena() - cijena);
+            return kolicina + trenutnaKolicina;
+        } else {
+            cijena = kolicina * Repozitorij.getProizvodiDatabaseInstance().getProizvod(proizvodId).getCijena();
+            setSveukupnaCijena(getSveukupnaCijena() - cijena);
+            proizvodi.put(proizvodId, trenutnaKolicina);
+            return kolicina;
+        }
     }
 
     /**

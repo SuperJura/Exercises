@@ -95,8 +95,8 @@ public class ProizvodiDatabase {
             ResultSet data = stmt.executeQuery();
             while (data.next()) {
                 Proizvod p = new Proizvod();
-                p.setProizvodId(data.getInt("ProizvodID"));
-                p.setIdKategorija(data.getInt("IDKategorija"));
+                p.setProizvodId(data.getInt("ProizvodId"));
+                p.setIdKategorija(data.getInt("IdKategorija"));
                 p.setNaziv(data.getString("Naziv"));
                 p.setCijena(data.getFloat("Cijena"));
                 p.setSlika(data.getString("Slika"));

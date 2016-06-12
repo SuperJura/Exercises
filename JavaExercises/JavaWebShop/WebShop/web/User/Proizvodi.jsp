@@ -20,7 +20,7 @@
             </span>
         </div>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5 col-md-offset-1">
                 <jsp:include page="../PartialJSP/PopisProizvoda.jsp"/>
                 <nav>
                     <ul class="pager">

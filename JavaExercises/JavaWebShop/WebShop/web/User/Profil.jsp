@@ -26,11 +26,14 @@
                         <td class="boldBlack">
                             Kolicina tog proizvoda u kosarici
                         </td>
-                        <td>
+                        <td colspan="2">
                             Sveukupna cijena: 
                             <span class="boldBlack">
                                 ${cijena}
                             </span>
+                        </td>    
+                        <td>
+                            <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsi(this)">Dovrsi narudzbu</button>
                         </td>
                     </tr>
                     <c:forEach var="proizvod" items="${Korisnik.kosarica.proizvodi}">
@@ -49,10 +52,11 @@
                                     <div class="col-lg-offset-1 col-lg-9">
                                         <div class="input-group">
                                             <span class="input-group-addon">Kolicina:</span>
-                                            <input type="number" class="form-control" id="numKolicina" min="0" max="50" value="1" >
+                                            <input type="number" class="form-control" id="numKolicina${proizvod.key}" min="0" max="50" value="1" >
                                             <span class="input-group-btn">
-                                                <button class="btn btn-primary" id="btnMakni" onclick="makniProizvod(this)">Makni
-                                                    <div class="hidden" id="proizvodId">${proizvod.key}</div>
+                                                <button class="btn btn-danger" id="btnMakni${proizvod.key}" onclick="makniProizvod(this)">Makni
+                                                </button>
+                                                <button class="btn btn-success" id="btnDodaj${proizvod.key}" onclick="dodajProizvod(this)">Dodaj
                                                 </button>
                                             </span>
                                         </div>
@@ -69,7 +73,20 @@
 <script>
     function makniProizvod(btn)
     {
-        var proizvodId = btn.childNodes[1].firstChild.nodeValue;
-        alert(proizvodId);
+        var id = btn.id.substr(8);
+        var kolicina = document.getElementById("numKolicina" + id).value;
+        window.location.href = "/WebShop/Kosarica?id=" + id + "&akcija=" + 2 + "&kolicina=" + kolicina;
+    }
+
+    function dodajProizvod(btn)
+    {
+        var id = btn.id.substr(8);
+        var kolicina = document.getElementById("numKolicina" + id).value;
+        window.location.href = "/WebShop/Kosarica?id=" + id + "&akcija=" + 1 + "&kolicina=" + kolicina;
+    }
+    
+    function dovrsi(btn)
+    {
+        window.location.href = "/WebShop/LogInUser/OdabirPlacanja.jsp";
     }
 </script>

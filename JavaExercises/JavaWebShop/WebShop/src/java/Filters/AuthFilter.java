@@ -25,13 +25,12 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         Korisnik korisnik = (Korisnik) req.getSession().getAttribute("Korisnik");
         if (korisnik == null || korisnik.getKorisnickoIme() == null) {
-            req.getSession().setAttribute("loginError", "Nemožete kupovati proizvode u košaricu ako niste prijavljeni!");
-            res.sendRedirect("User/Login.jsp");
+            req.getSession().setAttribute("loginError", "Nemožete kupovati proizvode u košarici ako niste prijavljeni!");
+            res.sendRedirect("/WebShop/User/Login.jsp");
         }
 
         try {

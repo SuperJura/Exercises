@@ -10,8 +10,8 @@ create table Kategorija
 
 create table Proizvod
 (
-	ProizvodID int constraint pk_Proizvod primary key identity,
-	IDKategorija int constraint fk_Kategorija foreign key references Kategorija(KategorijaID),
+	ProizvodId int constraint pk_Proizvod primary key identity,
+	IdKategorija int constraint fk_Kategorija foreign key references Kategorija(KategorijaID),
 	Naziv nvarchar(50) not null,
 	Cijena money not null,
 	Slika nvarchar(200) not null,
@@ -92,7 +92,7 @@ end
 
 --KORISNICI
 
-create table Korisnici
+create table Korisnik
 (
 	KorisnikId int constraint pk_Korisnik primary key identity,
 	KorisnickoIme nvarchar(50) unique not null,
@@ -100,7 +100,28 @@ create table Korisnici
 	Administrator bit not null
 )
 
-insert into Korisnici(KorisnickoIme, Lozinka, Administrator)
+create table NacinKupnje
+(
+	NacinKupnjeId int constraint pk_NacinKupnje primary key identity,
+	Naziv nvarchar(50) not null
+)
+
+create table Transakcija
+(
+	TransakcijaId int constraint pk_Transakcija primary key identity,
+	IdKorisnik int constraint fk_Transakcija_Korisnik foreign key references Korisnik(KorisnikId),
+	IdProizvod int constraint fk_Transakcija_Proizvod foreign key references Proizvod(ProizvodId),
+	IdNacinKupnje int constraint fk_Transakcija_NacinKupnje foreign key references NacinKupnje(NacinKupnjeId),
+	Kolicina int not null,
+	DatumKupnje date not null
+)
+
+insert into NacinKupnje(Naziv)
+values
+('gotovina'),
+('PayPal')
+
+insert into Korisnik(KorisnickoIme, Lozinka, Administrator)
 values 
 ('Pero', '123', 0),
 ('Ana', '123', 0),
@@ -114,7 +135,7 @@ create proc getUser
 as
 begin
 	select * 
-	from Korisnici
+	from Korisnik
 	where KorisnickoIme = @username and Lozinka = @password
 end
 
@@ -126,7 +147,7 @@ create proc isAdmin
 as
 begin
 	select @isAdmin = Administrator
-	from Korisnici
+	from Korisnik
 	where KorisnickoIme = @username	
 end
 
@@ -138,7 +159,7 @@ create proc createUser
 	@isAdmin bit output
 as
 begin
-	insert into Korisnici(KorisnickoIme, Lozinka, Administrator)
+	insert into Korisnik(KorisnickoIme, Lozinka, Administrator)
 	values 
 	(@username, @password, @isAdmin)
 end

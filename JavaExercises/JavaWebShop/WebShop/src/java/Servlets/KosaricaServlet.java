@@ -32,12 +32,29 @@ public class KosaricaServlet extends HttpServlet {
         } else {
             korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
         }
+        switch (akcija) {
+            case 1:
+                dodajProizvod(korisnik, proizvodId, kolicina, request);
+                response.sendRedirect("./Profil");
+                break;
+            case 2:
+                makniProizvod(korisnik, proizvodId, kolicina, request);
+                response.sendRedirect("./Profil"); 
+                break;
+            default:
+                response.sendRedirect("User/Pocetna.jsp");
 
+        }
+    }
+
+    private void makniProizvod(Korisnik korisnik, int proizvodId, int kolicina, HttpServletRequest request) {
+        int maknuto = korisnik.getKosarica().removeProizvod(proizvodId, kolicina);
+        request.getSession().setAttribute("headerMsg", "Kolicina maknutih proizvoda iz kosarice: " + maknuto);
+    }
+
+    private void dodajProizvod(Korisnik korisnik, int proizvodId, int kolicina, HttpServletRequest request) {
         korisnik.getKosarica().addProizvod(proizvodId, kolicina);
-
         request.getSession().setAttribute("headerMsg", "Kolicina novih proizvoda u kosarici: " + kolicina);
-        response.sendRedirect("User/Pocetna.jsp");
-
     }
 
     @Override

@@ -29,8 +29,8 @@ public class ProizvodCijena extends BodyTagSupport {
         float ukupnaCijena = kolicina * cijena;
 
         try {
-            pageContext.getOut().println("Cijena jednoga: <span class='boldBlack'>" + cijena + "</span></br>");
-            pageContext.getOut().print("Cijena x " + kolicina + ": <span class='boldBlack'>" + ukupnaCijena + "</span>");
+            pageContext.getOut().print("Cijena jednoga: <br/>" + "Cijena x " + kolicina + "</td>");
+            pageContext.getOut().print("<td> <span class='boldBlack'>" + cijena + "</br>" + ukupnaCijena + "</span>");
         } catch (IOException ex) {
             Logger.getLogger(ProizvodCijena.class.getName()).log(Level.SEVERE, null, ex);
         }
