@@ -36,6 +36,14 @@
         <servlet-name>ProfilServlet</servlet-name>
         <servlet-class>Servlets.ProfilServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>KupnjaServlet</servlet-name>
+        <servlet-class>Servlets.KupnjaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <servlet-class>Servlets.PregledKupnjiServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/Pocetna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KupnjaServlet</servlet-name>
+        <url-pattern>/Kupnja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <url-pattern>/PregledKupnji</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

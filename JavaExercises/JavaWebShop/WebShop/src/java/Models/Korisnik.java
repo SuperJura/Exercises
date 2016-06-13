@@ -10,6 +10,7 @@ package Models;
  * @author Jurica
  */
 public class Korisnik {
+    private int korisnikId;
     private String korisnickoIme;
     private boolean administrator;
     private Kosarica kosarica;
@@ -62,5 +63,19 @@ public class Korisnik {
      */
     public void setKosarica(Kosarica kosarica) {
         this.kosarica = kosarica;
+    }
+
+    /**
+     * @return the korisnikId
+     */
+    public int getKorisnikId() {
+        return korisnikId;
+    }
+
+    /**
+     * @param korisnikId the korisnikId to set
+     */
+    public void setKorisnikId(int korisnikId) {
+        this.korisnikId = korisnikId;
     }
 }

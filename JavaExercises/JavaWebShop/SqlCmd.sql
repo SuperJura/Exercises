@@ -118,7 +118,7 @@ create table Transakcija
 
 insert into NacinKupnje(Naziv)
 values
-('gotovina'),
+('Gotovina'),
 ('PayPal')
 
 insert into Korisnik(KorisnickoIme, Lozinka, Administrator)
@@ -162,4 +162,39 @@ begin
 	insert into Korisnik(KorisnickoIme, Lozinka, Administrator)
 	values 
 	(@username, @password, @isAdmin)
+end
+
+go
+create proc getTransakcije
+	@idKorisnik int
+as
+begin
+	select 
+	t.Kolicina as Kolicina,
+	t.DatumKupnje as DatumKupnje,
+	p.Naziv as Proizvod,
+	p.Cijena as CijenaPojedinacna,
+	n.Naziv as TipPlacanja
+	from Transakcija as t
+	inner join Proizvod as p
+	on t.IdProizvod = p.ProizvodId
+	inner join NacinKupnje as n
+	on t.IdNacinKupnje = n.NacinKupnjeId
+	where t.IdKorisnik = @idKorisnik
+end
+
+go
+
+create proc insertTransakcije
+	@idKorisnik int,
+	@idProizvod int,
+	@idNacinKupnje int,
+	@kolicina int, 
+	@datumKupnje date
+
+as
+begin
+	insert into Transakcija (IdKorisnik, IdProizvod, IdNacinKupnje, Kolicina, DatumKupnje)
+	values
+	(@idKorisnik, @idProizvod, @idNacinKupnje, @kolicina, @datumKupnje)
 end

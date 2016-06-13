@@ -13,6 +13,7 @@ public class Repozitorij {
 
     private static ProizvodiDatabase proizvodi;
     private static KorisniciDatabase korisnici;
+    private static TransakcijaDatabase transakcije;
 
     public static ProizvodiDatabase getProizvodiDatabaseInstance() {
         if (proizvodi == null) {
@@ -28,5 +29,13 @@ public class Repozitorij {
         }
 
         return korisnici;
+    }
+    
+    public static TransakcijaDatabase getTransakcijeDatabaseInstance() {
+        if (transakcije == null) {
+            transakcije = new TransakcijaDatabase();
+        }
+
+        return transakcije;
     }
 }

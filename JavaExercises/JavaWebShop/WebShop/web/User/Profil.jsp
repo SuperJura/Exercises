@@ -16,7 +16,14 @@
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Detalji Vase kosarice"/>
-        <div class="row">
+        <c:if test="${Korisnik != null}">
+            <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKupnji">Pregled svih kupnji</a>
+            <a class="btn btn-success col-md-offset-1" href="TODO dodaj izlogiravanje">Izlogirajte se iz ovog racuna</a>
+        </c:if>
+        <c:if test="${Korisnik == null}">
+            <a class="btn btn-danger col-md-offset-1" href="/WebShop/User/Login.jsp">Ulogirajte se</a>
+        </c:if>
+        <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">
                 <table class="table table-bordered">
                     <tr>
@@ -84,7 +91,7 @@
         var kolicina = document.getElementById("numKolicina" + id).value;
         window.location.href = "/WebShop/Kosarica?id=" + id + "&akcija=" + 1 + "&kolicina=" + kolicina;
     }
-    
+
     function dovrsi(btn)
     {
         window.location.href = "/WebShop/LogInUser/OdabirPlacanja.jsp";

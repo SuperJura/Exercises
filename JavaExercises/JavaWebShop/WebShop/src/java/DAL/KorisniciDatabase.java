@@ -32,6 +32,7 @@ public class KorisniciDatabase {
                 korisnik = new Korisnik();
                 korisnik.setKorisnickoIme(data.getString("KorisnickoIme"));
                 korisnik.setAdministrator(data.getBoolean("Administrator"));
+                korisnik.setKorisnikId(data.getInt("KorisnikId"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
