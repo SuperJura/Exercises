@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            //TODO zamjeni "action" s "akcija", zamjeni "prijava/reg/odjava" s 1,2,3
             String akcija = request.getParameter("action");
 
             switch (akcija) {
@@ -43,6 +44,9 @@ public class LoginServlet extends HttpServlet {
                     break;
                 case "registracija":
                     doRegistracija(request, response);
+                    break;
+                case "odjava":
+                    doOdjava(request, response);
                     break;
             }
 
@@ -111,8 +115,6 @@ public class LoginServlet extends HttpServlet {
         return "Short description";
         }// </editor-fold>
 
-    
-
     private void doRegistracija(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String korisnickoIme = request.getParameter("txtImeReg");
         String lozinka = request.getParameter("txtLozinkaReg");
@@ -127,4 +129,12 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+    private void doOdjava(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getSession().getAttribute("Korisnik") != null) {
+            Korisnik korisnik = (Korisnik)request.getSession().getAttribute("Korisnik");
+            korisnik.setAdministrator(false);
+            korisnik.setKorisnickoIme(null);
+        }
+        response.sendRedirect("Profil");
+    }
 }

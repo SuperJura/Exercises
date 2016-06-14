@@ -19,6 +19,7 @@ public class Korisnik {
         kosarica = new Kosarica();
         korisnickoIme = null;
         administrator = false;
+        korisnikId = 0;
     }
     
     

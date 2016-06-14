@@ -5,9 +5,7 @@
  */
 package DAL;
 
-import Models.Proizvod;
 import Models.Transakcija;
-import com.google.gson.internal.bind.SqlDateTypeAdapter;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -34,6 +32,7 @@ public class TransakcijaDatabase {
                 t.setKolicina(data.getInt("Kolicina"));
                 t.setDatumKupnje(data.getDate("DatumKupnje"));
                 t.setProizvod(data.getString("Proizvod"));
+                t.setProizvodId(data.getInt("ProizvodId"));
                 t.setCijenaPojedinacna(data.getFloat("CijenaPojedinacna"));
                 t.setTipPlacanja(data.getString("TipPlacanja"));
                 output.add(t);

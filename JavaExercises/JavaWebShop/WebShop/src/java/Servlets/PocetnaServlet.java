@@ -35,7 +35,7 @@ public class PocetnaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
-        response.sendRedirect("User/Pocetna.jsp");
+        response.sendRedirect("./User/Pocetna.jsp");
     }
 
     @Override

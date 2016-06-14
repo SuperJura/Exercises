@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Resources/Css/styles.css</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/LogInUser/OdabirPlacanja.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/Servlets/KupnjaServlet.java</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/Servlets/PregledKupnjiServlet.java</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/User/Profil.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/LogInUser/Kupljeno.jsp</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/PartialJSP/Header.jsp</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/Filters/LogFilter.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/DAL/PregledPristupaDatabase.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/Servlets/PristupStranicamaServlet.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Admin/PregledPristupaStranicama.jsp</file>
         </group>
     </open-files>
 </project-private>

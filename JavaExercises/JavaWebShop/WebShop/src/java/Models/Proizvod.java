@@ -14,6 +14,7 @@ public class Proizvod {
     private int idKategorija;
     private String kategorija; //nije u bazi, vec se postavlja kasnije
     private String naziv;
+    //TODO bolji prikaz cjena na jsp-ovima
     private float cijena;
     private String slika;
     private String opis;

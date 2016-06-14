@@ -109,9 +109,9 @@ create table NacinKupnje
 create table Transakcija
 (
 	TransakcijaId int constraint pk_Transakcija primary key identity,
-	IdKorisnik int constraint fk_Transakcija_Korisnik foreign key references Korisnik(KorisnikId),
-	IdProizvod int constraint fk_Transakcija_Proizvod foreign key references Proizvod(ProizvodId),
-	IdNacinKupnje int constraint fk_Transakcija_NacinKupnje foreign key references NacinKupnje(NacinKupnjeId),
+	IdKorisnik int constraint fk_Transakcija_Korisnik foreign key references Korisnik(KorisnikId) not null,
+	IdProizvod int constraint fk_Transakcija_Proizvod foreign key references Proizvod(ProizvodId) not null,
+	IdNacinKupnje int constraint fk_Transakcija_NacinKupnje foreign key references NacinKupnje(NacinKupnjeId) not null,
 	Kolicina int not null,
 	DatumKupnje date not null
 )
@@ -173,6 +173,7 @@ begin
 	t.Kolicina as Kolicina,
 	t.DatumKupnje as DatumKupnje,
 	p.Naziv as Proizvod,
+	p.ProizvodId as ProizvodId,
 	p.Cijena as CijenaPojedinacna,
 	n.Naziv as TipPlacanja
 	from Transakcija as t
@@ -197,4 +198,42 @@ begin
 	insert into Transakcija (IdKorisnik, IdProizvod, IdNacinKupnje, Kolicina, DatumKupnje)
 	values
 	(@idKorisnik, @idProizvod, @idNacinKupnje, @kolicina, @datumKupnje)
+end
+
+go
+
+--ADMIN STVARI
+
+create table PristupStranicama
+(
+	PristupId int constraint pk_PristupStranicama primary key identity,
+	IdKorisnik int constraint fk_PristupStranicama_Korisnik foreign key references Korisnik(KorisnikId), --moze biti null jer anon korisnici nemaju pk
+	IpAdresa varchar(50) not null,
+	Stranica nvarchar(50) not null,
+	Datum datetime not null
+)
+
+go
+
+create proc getPristupStranicama
+as
+begin
+	select * from PristupStranicama as ps
+	left join Korisnik as k
+	on ps.IdKorisnik = k.KorisnikId
+	order by Datum desc
+end
+
+go
+
+create proc insertPristup
+	@idKorisnik int,
+	@ipAdresa varchar(15),
+	@stranica nvarchar(50),
+	@datum nvarchar(50)
+as
+begin
+	insert into PristupStranicama (IdKorisnik, IpAdresa, Stranica, Datum)
+	values
+	(@idKorisnik, @ipAdresa, @stranica, @datum)
 end

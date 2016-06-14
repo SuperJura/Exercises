@@ -1,58 +1,53 @@
 <%-- 
-    Document   : PregledKupnji
-    Created on : Jun 13, 2016, 8:48:17 PM
+    Document   : PregledPristupaStranicama
+    Created on : Jun 14, 2016, 11:31:52 AM
     Author     : Jurica
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="jl" uri="http://jurica.adamek.java3"%>
+<%@taglib prefix="jl" uri="http://jurica.adamek.java3" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Povijest kupnje</title>
+        <title>Pregled pristupa stranicama</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Ovdje su ispisane sve Vase prosle kupnje"/>
+        <jl:headerMessage defaultMessage="Svi pristupi stranicama web shopa"/>
 
         <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">
                 <table class="table table-bordered">
                     <tr>
                         <td class="boldBlack">
-                            Ime proizvoda
+                            Korisnik
                         </td>
                         <td class="boldBlack">
-                            Kolicina tog proizvoda
+                            IP adresa
                         </td>
                         <td class="boldBlack">
-                            Datum kupnje
+                            Stranica spajanja
                         </td>
                         <td class="boldBlack">
-                            Tip placanja
-                        </td>
-                        <td class="boldBlack">
-                            Sveukupna cijena
+                            Datum spajanja
                         </td>
                     </tr>
-                    <c:forEach var="transakcija" items="${transakcije}">
+                    <c:forEach var="pristup" items="${pristupi}">
                         <tr>
                             <td>
-                                <jl:ProizvodNaziv proizvodId="${transakcija.proizvodId}"/>
+                                ${pristup.korisnik}
                             </td>
                             <td>
-                                ${transakcija.kolicina}
+                                ${pristup.ipAdresa}
                             </td>
                             <td>
-                                ${transakcija.datumKupnje}
+                                ${pristup.stranica}
                             </td>
                             <td>
-                                ${transakcija.tipPlacanja}
-                            </td>
-                            <td>
-                                ${transakcija.cijenaPojedinacna * transakcija.kolicina}
+                                <fmt:formatDate value="${pristup.datum}" pattern="dd.MM.yyyy hh:mm:ss" type="both"/>
                             </td>
                         </tr>
                     </c:forEach>
