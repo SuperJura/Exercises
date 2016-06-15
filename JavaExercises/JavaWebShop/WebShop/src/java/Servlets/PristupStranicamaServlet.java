@@ -6,10 +6,8 @@
 package Servlets;
 
 import DAL.Repozitorij;
-import Models.PristupStranici;
+import Models.loging.PristupStranici;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +23,7 @@ public class PristupStranicamaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<PristupStranici> pristupi = Repozitorij.getPristupiDatabaseInstance().getPristupe();   
+        List<PristupStranici> pristupi = Repozitorij.getLogiranjeDatabaseInstance().getPristupe();   
         request.getSession().setAttribute("pristupi", pristupi);
         response.sendRedirect("./Admin/PregledPristupaStranicama.jsp");
     }

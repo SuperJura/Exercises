@@ -14,7 +14,7 @@ public class Repozitorij {
     private static ProizvodiDatabase proizvodi;
     private static KorisniciDatabase korisnici;
     private static TransakcijaDatabase transakcije;
-    private static PregledPristupaDatabase pristupi;
+    private static LogiranjeDatabase logiranje;
 
     public static ProizvodiDatabase getProizvodiDatabaseInstance() {
         if (proizvodi == null) {
@@ -40,11 +40,11 @@ public class Repozitorij {
         return transakcije;
     }
     
-    public static PregledPristupaDatabase getPristupiDatabaseInstance() {
-        if (pristupi == null) {
-            pristupi = new PregledPristupaDatabase();
+    public static LogiranjeDatabase getLogiranjeDatabaseInstance() {
+        if (logiranje == null) {
+            logiranje = new LogiranjeDatabase();
         }
 
-        return pristupi;
+        return logiranje;
     }
 }

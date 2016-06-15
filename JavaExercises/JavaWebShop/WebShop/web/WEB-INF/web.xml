@@ -64,6 +64,10 @@
         <servlet-name>PristupStranicamaServlet</servlet-name>
         <servlet-class>Servlets.PristupStranicamaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>KorisnikServlet</servlet-name>
+        <servlet-class>Servlets.KorisnikServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>PristupStranicamaServlet</servlet-name>
         <url-pattern>/PristupStranicama</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KorisnikServlet</servlet-name>
+        <url-pattern>/Korisnik</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

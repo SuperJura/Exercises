@@ -129,6 +129,25 @@ values
 
 go
 
+create proc getAllUser
+as
+begin
+	select * from Korisnik
+end
+
+go
+
+create proc getUserForId
+	@id int
+as
+begin
+	select * 
+	from Korisnik
+	where KorisnikId = @id
+end
+
+go
+
 create proc getUser
 	@username nvarchar(50),
 	@password nvarchar(50)
@@ -213,6 +232,14 @@ create table PristupStranicama
 	Datum datetime not null
 )
 
+create table Prijave
+(
+	UlogiravanjeId int constraint pk_Ulogiravanje primary key identity,
+	IdKorisnik int constraint fk_Ulogiravanje_Korisnik foreign key references Korisnik(KorisnikId) not null,
+	IpAdresa varchar(50) not null,
+	Datum datetime not null
+)
+
 go
 
 create proc getPristupStranicama
@@ -221,6 +248,19 @@ begin
 	select * from PristupStranicama as ps
 	left join Korisnik as k
 	on ps.IdKorisnik = k.KorisnikId
+	order by Datum desc
+end
+
+go
+
+create proc getPristupStranicamaForKorisnik
+	@korisnikId int
+as
+begin
+	select * from PristupStranicama as ps
+	left join Korisnik as k
+	on ps.IdKorisnik = k.KorisnikId
+	where k.KorisnikId = @korisnikId
 	order by Datum desc
 end
 
@@ -236,4 +276,29 @@ begin
 	insert into PristupStranicama (IdKorisnik, IpAdresa, Stranica, Datum)
 	values
 	(@idKorisnik, @ipAdresa, @stranica, @datum)
+end
+
+go
+
+create proc getPrijave
+	@korisnikId int
+as
+begin
+	select * from Prijave as p
+	inner join Korisnik as k
+	on p.IdKorisnik = k.KorisnikId
+	where IdKorisnik = @korisnikId
+end
+
+go
+
+create proc insertPrijave
+	@idKorisnik int,
+	@ipAdresa varchar(15),
+	@datum nvarchar(50)
+as
+begin
+	insert into Prijave(IdKorisnik, IpAdresa, Datum)
+	values
+	(@idKorisnik, @ipAdresa, @datum)
 end

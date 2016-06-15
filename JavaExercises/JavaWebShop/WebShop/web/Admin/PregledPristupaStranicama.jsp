@@ -47,7 +47,7 @@
                                 ${pristup.stranica}
                             </td>
                             <td>
-                                <fmt:formatDate value="${pristup.datum}" pattern="dd.MM.yyyy hh:mm:ss" type="both"/>
+                                <fmt:formatDate value="${pristup.datum}" pattern="dd.MM.yyyy hh:mm" type="both"/>
                             </td>
                         </tr>
                     </c:forEach>

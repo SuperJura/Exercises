@@ -7,7 +7,7 @@ package Filters;
 
 import DAL.Repozitorij;
 import Models.Korisnik;
-import Models.PristupStranici;
+import Models.loging.PristupStranici;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -44,7 +44,7 @@ public class LogFilter implements Filter {
         pristup.setIpAdresa(req.getRemoteAddr());
         pristup.setKorisnikId(korisnikId);
         pristup.setStranica(req.getRequestURI());
-        Repozitorij.getPristupiDatabaseInstance().insertPristup(pristup);
+        Repozitorij.getLogiranjeDatabaseInstance().insertPristup(pristup);
 
         try {
             chain.doFilter(request, response);

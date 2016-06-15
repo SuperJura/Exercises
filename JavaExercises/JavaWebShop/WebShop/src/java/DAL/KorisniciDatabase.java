@@ -11,6 +11,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.sql.DataSource;
 
 /**
@@ -39,6 +41,49 @@ public class KorisniciDatabase {
         }
 
         return korisnik;
+    }
+
+    public Korisnik getKorisnika(int id) {
+        Korisnik korisnik = null;
+        DataSource ds = getDataSource();
+
+        try (Connection con = ds.getConnection();
+                CallableStatement stmt = con.prepareCall("{CALL getUserForId(?)}")) {
+            stmt.setInt(1, id);
+            ResultSet data = stmt.executeQuery();
+            if (data.next()) {
+                korisnik = new Korisnik();
+                korisnik.setKorisnickoIme(data.getString("KorisnickoIme"));
+                korisnik.setAdministrator(data.getBoolean("Administrator"));
+                korisnik.setKorisnikId(data.getInt("KorisnikId"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return korisnik;
+    }
+    
+    public List<Korisnik> getSveKorisnike() {
+        List<Korisnik> output = new ArrayList<>();
+        DataSource ds = getDataSource();
+
+        try (Connection con = ds.getConnection();
+                CallableStatement stmt = con.prepareCall("{CALL getAllUser}")) {
+            ResultSet data = stmt.executeQuery();
+            while(data.next()) {
+                Korisnik korisnik = new Korisnik();
+                korisnik.setKorisnickoIme(data.getString("KorisnickoIme"));
+                korisnik.setAdministrator(data.getBoolean("Administrator"));
+                korisnik.setKorisnikId(data.getInt("KorisnikId"));
+                
+                output.add(korisnik);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return output;
     }
 
     public boolean isAdministrator(String korisnickoIme) {

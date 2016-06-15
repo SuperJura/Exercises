@@ -32,8 +32,7 @@
         <c:if test="${Korisnik.administrator == true}">
             <div id="navbar" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="/WebShop/Kategorije">Pregled kupnja</a></li>
-                    <li><a href="/WebShop/Kategorije">Pregled ulogiravanja</a></li>
+                    <li><a href="/WebShop/Korisnik">Pregled korisnika</a></li>
                     <li><a href="/WebShop/PristupStranicama">Pregled pristupa stranicama</a></li>
                     <li><a href="/WebShop/Profil">
                             Odjava 

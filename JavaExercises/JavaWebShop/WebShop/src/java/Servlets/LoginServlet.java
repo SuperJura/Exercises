@@ -9,8 +9,13 @@ import DAL.KorisniciDatabase;
 import DAL.Repozitorij;
 import Helpers.SessionHelper;
 import Models.Korisnik;
+import Models.loging.Prijava;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +72,7 @@ public class LoginServlet extends HttpServlet {
             }
             request.getSession().setAttribute("Korisnik", korisnik);
             SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
+            logirajPrijavu(korisnik, request.getLocalAddr());
             response.sendRedirect("User/Pocetna.jsp");
 
         }
@@ -134,7 +140,18 @@ public class LoginServlet extends HttpServlet {
             Korisnik korisnik = (Korisnik)request.getSession().getAttribute("Korisnik");
             korisnik.setAdministrator(false);
             korisnik.setKorisnickoIme(null);
+            korisnik.setKorisnikId(0);
         }
         response.sendRedirect("Profil");
+    }
+
+    private void logirajPrijavu(Korisnik korisnik, String localAddr) {
+        Prijava prijava = new Prijava();
+        prijava.setDatum(Calendar.getInstance(TimeZone.getDefault()).getTime());
+        prijava.setIpAdresa(localAddr);
+        prijava.setKorisnikId(korisnik.getKorisnikId());
+        
+        Repozitorij.getLogiranjeDatabaseInstance().insertPrijavu(prijava);
+        
     }
 }
