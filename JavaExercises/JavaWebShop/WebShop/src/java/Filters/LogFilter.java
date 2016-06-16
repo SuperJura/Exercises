@@ -18,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -32,15 +31,12 @@ public class LogFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         
-        
-        
         int korisnikId = 0;
         if (req.getSession().getAttribute("Korisnik") != null) {
             korisnikId = ((Korisnik) req.getSession().getAttribute("Korisnik")).getKorisnikId();
         }
         PristupStranici pristup = new PristupStranici();
-        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-        pristup.setDatum(cal.getTime());
+        pristup.setDatum(Calendar.getInstance(TimeZone.getDefault()).getTime());
         pristup.setIpAdresa(req.getRemoteAddr());
         pristup.setKorisnikId(korisnikId);
         pristup.setStranica(req.getRequestURI());

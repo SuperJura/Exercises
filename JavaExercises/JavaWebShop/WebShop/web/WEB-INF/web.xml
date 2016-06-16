@@ -57,16 +57,20 @@
         <servlet-class>Servlets.KupnjaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PregledKupnjiServlet</servlet-name>
-        <servlet-class>Servlets.PregledKupnjiServlet</servlet-class>
+        <servlet-name>PregledKorisnikovihKupnjiServlet</servlet-name>
+        <servlet-class>Servlets.PregledKorisnikovihKupnjiServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PristupStranicamaServlet</servlet-name>
         <servlet-class>Servlets.PristupStranicamaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>KorisnikServlet</servlet-name>
-        <servlet-class>Servlets.KorisnikServlet</servlet-class>
+        <servlet-name>PregledSpajanjaServlet</servlet-name>
+        <servlet-class>Servlets.PregledSpajanjaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <servlet-class>Servlets.PregledKupnjiServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
@@ -101,20 +105,24 @@
         <url-pattern>/Kupnja</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PregledKupnjiServlet</servlet-name>
-        <url-pattern>/PregledKupnji</url-pattern>
+        <servlet-name>PregledKorisnikovihKupnjiServlet</servlet-name>
+        <url-pattern>/PregledKorisnikovihKupnji</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PristupStranicamaServlet</servlet-name>
         <url-pattern>/PristupStranicama</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>KorisnikServlet</servlet-name>
-        <url-pattern>/Korisnik</url-pattern>
+        <servlet-name>PregledSpajanjaServlet</servlet-name>
+        <url-pattern>/PregledSpajanja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <url-pattern>/PregledKupnji</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            120
         </session-timeout>
     </session-config>
     <welcome-file-list>

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +39,13 @@ public class KupnjaServlet extends HttpServlet {
             Proizvod proizvod = database.getProizvod(proizvodId);
             Transakcija transakcija = new Transakcija();
             transakcija.setKolicina(korisnik.getKosarica().getProizvodi().get(proizvodId));
-            transakcija.setDatumKupnje(Calendar.getInstance().getTime());
+            transakcija.setDatumKupnje(Calendar.getInstance(TimeZone.getDefault()).getTime());
             transakcija.setProizvodId(proizvod.getProizvodId());
             transakcija.setTipPlacanjaId(akcija);
             transakcije.add(transakcija);
         }
         Repozitorij.getTransakcijeDatabaseInstance().insertTranaskcija(korisnik.getKorisnikId(), transakcije);
-        
+        korisnik.getKosarica().getProizvodi().clear();
         response.sendRedirect("./LogInUser/Kupljeno.jsp");
     }
 

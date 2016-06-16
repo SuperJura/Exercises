@@ -113,7 +113,7 @@ create table Transakcija
 	IdProizvod int constraint fk_Transakcija_Proizvod foreign key references Proizvod(ProizvodId) not null,
 	IdNacinKupnje int constraint fk_Transakcija_NacinKupnje foreign key references NacinKupnje(NacinKupnjeId) not null,
 	Kolicina int not null,
-	DatumKupnje date not null
+	DatumKupnje datetime not null
 )
 
 insert into NacinKupnje(Naziv)
@@ -205,12 +205,35 @@ end
 
 go
 
+create proc getTransakcijeOdDo
+	@idKorisnik int,
+	@datumOd datetime,
+	@datumDo datetime
+as
+begin
+	select 
+	t.Kolicina as Kolicina,
+	t.DatumKupnje as DatumKupnje,
+	p.Naziv as Proizvod,
+	p.ProizvodId as ProizvodId,
+	p.Cijena as CijenaPojedinacna,
+	n.Naziv as TipPlacanja
+	from Transakcija as t
+	inner join Proizvod as p
+	on t.IdProizvod = p.ProizvodId
+	inner join NacinKupnje as n
+	on t.IdNacinKupnje = n.NacinKupnjeId
+	where (t.IdKorisnik = @idKorisnik) and (t.DatumKupnje between @datumOd and @datumDo)
+end
+
+go
+
 create proc insertTransakcije
 	@idKorisnik int,
 	@idProizvod int,
 	@idNacinKupnje int,
 	@kolicina int, 
-	@datumKupnje date
+	@datumKupnje nvarchar(50)
 
 as
 begin
@@ -242,10 +265,11 @@ create table Prijave
 
 go
 
-create proc getPristupStranicama
+create proc getAllPristupStranicama
+	@amount int
 as
 begin
-	select * from PristupStranicama as ps
+	select top (@amount) * from PristupStranicama as ps
 	left join Korisnik as k
 	on ps.IdKorisnik = k.KorisnikId
 	order by Datum desc
@@ -261,6 +285,21 @@ begin
 	left join Korisnik as k
 	on ps.IdKorisnik = k.KorisnikId
 	where k.KorisnikId = @korisnikId
+	order by Datum desc
+end
+
+go
+
+create proc getPristupStranicamaForKorisnikOdDo
+	@korisnikId int,
+	@datumOd datetime,
+	@datumDo datetime
+as
+begin
+	select * from PristupStranicama as ps
+	left join Korisnik as k
+	on ps.IdKorisnik = k.KorisnikId
+	where (IdKorisnik = @korisnikId) and (ps.Datum between @datumOd and @datumDo)
 	order by Datum desc
 end
 
@@ -288,6 +327,22 @@ begin
 	inner join Korisnik as k
 	on p.IdKorisnik = k.KorisnikId
 	where IdKorisnik = @korisnikId
+	order by p.Datum desc
+end
+
+go
+
+create proc getPrijaveOdDo
+	@korisnikId int,
+	@datumOd datetime,
+	@datumDo datetime
+as
+begin
+	select * from Prijave as p
+	inner join Korisnik as k
+	on p.IdKorisnik = k.KorisnikId
+	where (IdKorisnik = @korisnikId) and (p.Datum between @datumOd and @datumDo)
+	order by p.Datum desc
 end
 
 go

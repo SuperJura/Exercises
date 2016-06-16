@@ -19,45 +19,31 @@
 
         <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">
-                <table class="table table-bordered">
-                    <tr>
-                        <td class="boldBlack">
-                            Ime proizvoda
-                        </td>
-                        <td class="boldBlack">
-                            Kolicina tog proizvoda
-                        </td>
-                        <td class="boldBlack">
-                            Datum kupnje
-                        </td>
-                        <td class="boldBlack">
-                            Tip placanja
-                        </td>
-                        <td class="boldBlack">
-                            Sveukupna cijena
-                        </td>
-                    </tr>
-                    <c:forEach var="transakcija" items="${transakcije}">
-                        <tr>
-                            <td>
-                                <jl:ProizvodNaziv proizvodId="${transakcija.proizvodId}"/>
-                            </td>
-                            <td>
-                                ${transakcija.kolicina}
-                            </td>
-                            <td>
-                                ${transakcija.datumKupnje}
-                            </td>
-                            <td>
-                                ${transakcija.tipPlacanja}
-                            </td>
-                            <td>
-                                ${transakcija.cijenaPojedinacna * transakcija.kolicina}
-                            </td>
-                        </tr>
-                    </c:forEach>
+                    <jsp:include page="../PartialJSP/PrikazTransakcija.jsp"/>
                 </table>
             </div>
         </div>
     </body>
 </html>
+<script>
+    function prikaziKorisnika(id) {
+        window.location.href = "/WebShop/PregledKorisnikovihKupnjiServlet?pregledKorisnikId=" + id;
+    }
+    function prikaziKorisnikaSDatumom()
+    {
+        var datumOd = $("#dpOd").val();
+        var datumDo = $("#dpDo").val();
+        if (datumOd && datumDo) {
+            window.location.href = "/WebShop/PregledKorisnikovihKupnjiServlet?pregledKorisnikId=" + ${trenutniKorisnikId} +
+                    "&datumOd=" + datumOd + "&datumDo=" + datumDo;
+        }
+    }
+    $(function () {
+        $("#dpOd").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+        $("#dpDo").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+    });
+</script>

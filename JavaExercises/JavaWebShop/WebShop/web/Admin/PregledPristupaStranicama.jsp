@@ -16,7 +16,7 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Svi pristupi stranicama web shopa"/>
+        <jl:headerMessage defaultMessage="Zadnjih 50 pristupa stranicama web shopa"/>
 
         <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">

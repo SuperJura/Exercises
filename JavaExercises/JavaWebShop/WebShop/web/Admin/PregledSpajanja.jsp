@@ -1,5 +1,5 @@
 <%-- 
-    Document   : PregledKorisnika
+    Document   : PregledSpajanja
     Created on : Jun 15, 2016, 5:57:29 PM
     Author     : Jurica
 --%>
@@ -12,25 +12,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pregled spajanja</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Pregledajte sve dogadaje vezane uz korisnike"/>
 
+        <jsp:include page="../PartialJSP/OdabirKorisnika.jsp"/>
         <div class="row">
-            <div class="btn-group col-md-1">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Korisnici<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <c:forEach var="k" begin="0" items="${Korisnici}" step="1">
-                        <li><a onclick="prikaziKorisnika(${k.korisnikId})">${k.korisnickoIme}</a></li>
-                        </c:forEach>
-                </ul>
-            </div>
             <c:if test="${trenutniKorisnik != null}">
-                <div class="col-md-5">
+                <div class="col-md-5 col-md-offset-1 topMargin">
                     <div class="panel panel-info text-center">
                         <div class="panel-heading">
                             <h3>Sva spajanja</h3>
@@ -63,7 +54,7 @@
                         </table>
                     </div>          
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 topMargin">
                     <div class="panel panel-info text-center">
                         <div class="panel-heading">
                             <h3>Sve prijave</h3>
@@ -95,7 +86,24 @@
     </body>
 </html>
 <script>
-    function prikaziKorisnika(id){
-        window.location.href = "/WebShop/Korisnik?pregledKorisnikId=" + id;
+    function prikaziKorisnika(id) {
+        window.location.href = "/WebShop/PregledSpajanja?pregledKorisnikId=" + id;
     }
+    function prikaziKorisnikaSDatumom()
+    {
+        var datumOd = $("#dpOd").val();
+        var datumDo = $("#dpDo").val();
+        if (datumOd && datumDo) {
+            window.location.href = "/WebShop/PregledSpajanja?pregledKorisnikId=" + ${trenutniKorisnikId} +
+                    "&datumOd=" + datumOd + "&datumDo=" + datumDo;
+        }
+    }
+    $(function () {
+        $("#dpOd").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+        $("#dpDo").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+    });
 </script>

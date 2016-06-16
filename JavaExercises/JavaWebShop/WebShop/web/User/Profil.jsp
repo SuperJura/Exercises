@@ -17,7 +17,7 @@
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Detalji Vase kosarice"/>
         <c:if test="${Korisnik.korisnickoIme != null}">
-            <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKupnji">Pregled svih kupnji</a>
+            <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKorisnikovihKupnji">Pregled svih kupnji</a>
             <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?action=odjava">Izlogirajte se iz ovog racuna</a>
         </c:if>
         <c:if test="${Korisnik.korisnickoIme == null}">

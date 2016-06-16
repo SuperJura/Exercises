@@ -6,7 +6,8 @@
 package Servlets;
 
 import DAL.Repozitorij;
-import Models.loging.PristupStranici;
+import Models.Korisnik;
+import Models.Transakcija;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -18,17 +19,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class PristupStranicamaServlet extends HttpServlet {
+public class PregledKorisnikovihKupnjiServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //TODO set amount to dynamic
-        List<PristupStranici> pristupi = Repozitorij.getLogiranjeDatabaseInstance().getAllPristupe(50);   
-        request.getSession().setAttribute("pristupi", pristupi);
-        response.sendRedirect("./Admin/PregledPristupaStranicama.jsp");
-    }
 
+        Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+        List<Transakcija> transakcije = Repozitorij.getTransakcijeDatabaseInstance().getTransakcije(korisnik.getKorisnikId());
+
+        request.getSession().setAttribute("transakcije", transakcije);
+        response.sendRedirect("./LogInUser/PregledKupnji.jsp");
+        }
+
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

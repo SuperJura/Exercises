@@ -6,10 +6,9 @@
 package Servlets;
 
 import DAL.KorisniciDatabase;
+import DAL.LogiranjeDatabase;
 import DAL.Repozitorij;
-import DAL.TransakcijaDatabase;
 import Models.Korisnik;
-import Models.Transakcija;
 import Models.loging.Prijava;
 import Models.loging.PristupStranici;
 import java.io.IOException;
@@ -23,20 +22,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class PregledKupnjiServlet extends HttpServlet {
+public class PregledSpajanjaServlet extends HttpServlet {
 
-    TransakcijaDatabase transakcijeDatabase;
+    LogiranjeDatabase logDatabase;
     KorisniciDatabase korisniciDatabase;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        transakcijeDatabase = Repozitorij.getTransakcijeDatabaseInstance();
+        logDatabase = Repozitorij.getLogiranjeDatabaseInstance();
         korisniciDatabase = Repozitorij.getKorisniciDatabaseInstance();
     }
 
+    //TODO probati napisati ljepse (s parametrima, ovo i PregledKupnjiServlet ima slicni kod - probati to u jedno staviti)
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         List<Korisnik> sviKorisnici = Repozitorij.getKorisniciDatabaseInstance().getSveKorisnike();
         request.getSession().setAttribute("Korisnici", sviKorisnici);
 
@@ -45,16 +46,16 @@ public class PregledKupnjiServlet extends HttpServlet {
             request.getSession().setAttribute("trenutniKorisnikId", id);
         }
         if (request.getSession().getAttribute("trenutniKorisnikId") != null) {
+
             if (request.getParameter("datumOd") == null) {
-                dohvatiSveTransakcije(request);
+                dohvatiSvaLogiranja(request);
             } else {
                 String dateOd = request.getParameter("datumOd");
                 String dateDo = request.getParameter("datumDo");
-                dohvatiSveTransakcije(request, dateOd, dateDo);
+                dohvatiSvaLogiranja(request, dateOd, dateDo);
             }
         }
-        response.sendRedirect("./Admin/PregledKupnji.jsp");
-
+        response.sendRedirect("./Admin/PregledSpajanja.jsp");
     }
 
     @Override
@@ -69,19 +70,24 @@ public class PregledKupnjiServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    private void dohvatiSveTransakcije(HttpServletRequest request) {
+    private void dohvatiSvaLogiranja(HttpServletRequest request) {
         int id = Integer.parseInt(request.getSession().getAttribute("trenutniKorisnikId").toString());
-        List<Transakcija> transakcije = transakcijeDatabase.getTransakcije(id);
-        request.getSession().setAttribute("transakcije", transakcije);
-        request.getSession().setAttribute("trenutniKorisnik", korisniciDatabase.getKorisnika(id).getKorisnickoIme());
+        List<PristupStranici> pristupi = logDatabase.getPristupe(id);
+        request.getSession().setAttribute("pristupi", pristupi);
 
+        List<Prijava> prijave = logDatabase.getPrijave(id);
+        request.getSession().setAttribute("prijave", prijave);
+        request.getSession().setAttribute("trenutniKorisnik", korisniciDatabase.getKorisnika(id).getKorisnickoIme());
     }
 
-    private void dohvatiSveTransakcije(HttpServletRequest request, String dateOd, String dateDo) {
+    private void dohvatiSvaLogiranja(HttpServletRequest request, String dateOd, String dateDo) {
         int id = Integer.parseInt(request.getSession().getAttribute("trenutniKorisnikId").toString());
         dateOd += " 00:00:00";
         dateDo += " 00:00:00";
-        List<Transakcija> transakcije = transakcijeDatabase.getTransakcije(id, dateOd, dateDo);
-        request.getSession().setAttribute("transakcije", transakcije);
+        List<PristupStranici> pristupi = logDatabase.getPristupe(id, dateOd, dateDo);
+        request.getSession().setAttribute("pristupi", pristupi);
+
+        List<Prijava> prijave = logDatabase.getPrijave(id, dateOd, dateDo);
+        request.getSession().setAttribute("prijave", prijave);
     }
 }
