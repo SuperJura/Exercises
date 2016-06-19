@@ -72,6 +72,14 @@
         <servlet-name>PregledKupnjiServlet</servlet-name>
         <servlet-class>Servlets.PregledKupnjiServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExpressCheckoutServlet</servlet-name>
+        <servlet-class>Servlets.ExpressCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KupnjaGotovinaServlet</servlet-name>
+        <servlet-class>Servlets.KupnjaGotovinaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>PregledKupnjiServlet</servlet-name>
         <url-pattern>/PregledKupnji</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExpressCheckoutServlet</servlet-name>
+        <url-pattern>/ExpressCheckout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KupnjaGotovinaServlet</servlet-name>
+        <url-pattern>/KupnjaGotovina</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
