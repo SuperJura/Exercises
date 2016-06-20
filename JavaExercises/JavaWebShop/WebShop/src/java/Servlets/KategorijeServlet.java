@@ -19,17 +19,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class KategorijeServlet extends HttpServlet {
 
-    ProizvodiDatabase database;
+    ProizvodiDatabase proizvodiDatabase;
 
     @Override
     public void init() throws ServletException {
-        database = Repozitorij.getProizvodiDatabaseInstance();
+        proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
         super.init();
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().setAttribute("kategorije", database.getAllKategorije());
+        request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
         response.sendRedirect("User/Kategorije.jsp");
     }
 

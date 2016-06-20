@@ -21,21 +21,12 @@ public class Kosarica {
     public Kosarica() {
         proizvodi = new HashMap<>();
     }
-
-    /**
-     * @return the proizvodi
-     */
-    public Map<Integer, Integer> getProizvodi() {
-        return proizvodi;
+    
+    public void ocistiKosaricu() {
+        proizvodi.clear();
+        sveukupnaCijena = 0;
     }
-
-    /**
-     * @param proizvodi the proizvodi to set
-     */
-    public void setProizvodi(Map<Integer, Integer> proizvodi) {
-        this.proizvodi = proizvodi;
-    }
-
+    
     public void addProizvod(int proizvodId, int kolicina) {
         if (proizvodi.containsKey(proizvodId)) {
             int trenutnaKolicina = proizvodi.get(proizvodId);
@@ -67,17 +58,24 @@ public class Kosarica {
         }
     }
 
-    /**
-     * @return the sveukupnaCijena
-     */
     public float getSveukupnaCijena() {
         return sveukupnaCijena;
     }
 
-    /**
-     * @param sveukupnaCijena the sveukupnaCijena to set
-     */
     public void setSveukupnaCijena(float sveukupnaCijena) {
         this.sveukupnaCijena = sveukupnaCijena;
     }
+    
+    public float getSveukupnaCijenaUEurima() {
+        return sveukupnaCijena / 7.5f;
+    }
+    
+    public Map<Integer, Integer> getProizvodi() {
+        return proizvodi;
+    }
+
+    public void setProizvodi(Map<Integer, Integer> proizvodi) {
+        this.proizvodi = proizvodi;
+    }
+
 }

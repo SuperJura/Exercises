@@ -115,7 +115,7 @@ public class PayPalFunctions {
          the varialbes were set in the web form, and the resulting string
          is stored in $nvpstr
          */
-        String nvpstr = "&PAYMENTREQUEST_0_AMT=" + paymentAmount + "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType + "&ReturnUrl=" + returnURL + "&CANCELURL=" + cancelURL + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType;
+        String nvpstr = "&PAYMENTREQUEST_0_AMT=" + paymentAmount  + "&PAYMENTREQUEST_0_ITEMAMT=" + paymentAmount + "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType + "&ReturnUrl=" + returnURL + "&CANCELURL=" + cancelURL + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType;
 
         /*
          Make the call to PayPal to get the Express Checkout token
@@ -234,7 +234,7 @@ public class PayPalFunctions {
      * Output: Returns a HashMap object containing the response from the server.
      * *******************************************************************************
      */
-    public HashMap ConfirmPayment(String token, String payerID, String finalPaymentAmount, String serverName) {
+    public HashMap ConfirmPayment(String token, String payerID, String finalPaymentAmount) {
 
         /*
          '------------------------------------
@@ -252,7 +252,7 @@ public class PayPalFunctions {
          */
         String nvpstr = "&TOKEN=" + token + "&PAYERID=" + payerID + "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType + "&PAYMENTREQUEST_0_AMT=" + finalPaymentAmount;
 
-        nvpstr = nvpstr + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType + "&IPADDRESS=" + serverName;
+        nvpstr = nvpstr + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType;
 
         /*
          Make the call to PayPal to finalize payment

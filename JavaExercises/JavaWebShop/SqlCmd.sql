@@ -184,6 +184,7 @@ begin
 end
 
 go
+
 create proc getTransakcije
 	@idKorisnik int
 as
@@ -201,6 +202,7 @@ begin
 	inner join NacinKupnje as n
 	on t.IdNacinKupnje = n.NacinKupnjeId
 	where t.IdKorisnik = @idKorisnik
+	order by t.DatumKupnje desc
 end
 
 go
@@ -224,6 +226,7 @@ begin
 	inner join NacinKupnje as n
 	on t.IdNacinKupnje = n.NacinKupnjeId
 	where (t.IdKorisnik = @idKorisnik) and (t.DatumKupnje between @datumOd and @datumDo)
+	order by t.DatumKupnje desc
 end
 
 go

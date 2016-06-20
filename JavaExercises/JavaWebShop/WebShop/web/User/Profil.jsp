@@ -40,7 +40,11 @@
                             </span>
                         </td>    
                         <td>
-                            <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsi(this)">Dovrsi narudzbu</button>
+                            <c:if test="${Korisnik != null}">
+                                <c:if test="${cijena != 0.0}">
+                                    <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsi(this)">Dovrsi narudzbu</button>
+                                 </c:if>
+                            </c:if>
                         </td>
                     </tr>
                     <c:forEach var="proizvod" items="${Korisnik.kosarica.proizvodi}">

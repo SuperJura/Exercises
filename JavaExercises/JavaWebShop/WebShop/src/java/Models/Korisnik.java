@@ -10,6 +10,7 @@ package Models;
  * @author Jurica
  */
 public class Korisnik {
+
     private int korisnikId;
     private String korisnickoIme;
     private boolean administrator;
@@ -21,61 +22,35 @@ public class Korisnik {
         administrator = false;
         korisnikId = 0;
     }
-    
-    
 
-    /**
-     * @return the korisnickoIme
-     */
-    public String getKorisnickoIme() {
-        return korisnickoIme;
-    }
-
-    /**
-     * @param korisnickoIme the korisnickoIme to set
-     */
-    public void setKorisnickoIme(String korisnickoIme) {
-        this.korisnickoIme = korisnickoIme;
-    }
-
-    /**
-     * @return the administrator
-     */
     public boolean isAdministrator() {
         return administrator;
     }
 
-    /**
-     * @param administrator the administrator to set
-     */
     public void setAdministrator(boolean administrator) {
         this.administrator = administrator;
     }
 
-    /**
-     * @return the kosarica
-     */
     public Kosarica getKosarica() {
         return kosarica;
     }
 
-    /**
-     * @param kosarica the kosarica to set
-     */
     public void setKosarica(Kosarica kosarica) {
         this.kosarica = kosarica;
     }
 
-    /**
-     * @return the korisnikId
-     */
+    public String getKorisnickoIme() {
+        return korisnickoIme;
+    }
+
+    public void setKorisnickoIme(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
+    }
+
     public int getKorisnikId() {
         return korisnikId;
     }
 
-    /**
-     * @param korisnikId the korisnikId to set
-     */
     public void setKorisnikId(int korisnikId) {
         this.korisnikId = korisnikId;
     }

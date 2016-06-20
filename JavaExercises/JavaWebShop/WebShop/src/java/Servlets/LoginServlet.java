@@ -7,13 +7,9 @@ package Servlets;
 
 import DAL.KorisniciDatabase;
 import DAL.Repozitorij;
-import Helpers.SessionHelper;
 import Models.Korisnik;
 import Models.loging.Prijava;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 import javax.servlet.ServletException;
@@ -27,105 +23,56 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginServlet extends HttpServlet {
 
-    private KorisniciDatabase database;
+    private KorisniciDatabase korisniciDatabase;
 
     @Override
     public void init() throws ServletException {
-        super.init(); //To change body of generated methods, choose Tools | Templates.
-        database = Repozitorij.getKorisniciDatabaseInstance();
+        super.init();
+        korisniciDatabase = Repozitorij.getKorisniciDatabaseInstance();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        //TODO zamjeni "action" s "akcija", zamjeni "prijava/reg/odjava" s 1,2,3
+        String akcija = request.getParameter("action");
 
-            //TODO zamjeni "action" s "akcija", zamjeni "prijava/reg/odjava" s 1,2,3
-            String akcija = request.getParameter("action");
-
-            switch (akcija) {
-                case "prijava":
-                    doPrijava(request, response);
-                    break;
-                case "registracija":
-                    doRegistracija(request, response);
-                    break;
-                case "odjava":
-                    doOdjava(request, response);
-                    break;
-            }
-
+        switch (akcija) {
+            case "prijava":
+                doPrijava(request, response);
+                break;
+            case "registracija":
+                doRegistracija(request, response);
+                break;
+            case "odjava":
+                doOdjava(request, response);
+                break;
         }
     }
 
     private void doPrijava(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String korisnickoIme = request.getParameter("txtIme");
         String lozinka = request.getParameter("txtLozinka");
-        Korisnik korisnik = database.getKorisnika(korisnickoIme, lozinka);
+        Korisnik korisnik = korisniciDatabase.getKorisnika(korisnickoIme, lozinka);
         if (korisnik == null) {
             request.getSession().setAttribute("loginError", "Korisničko ime ili lozinka su krivi!");
             response.sendRedirect("User/Login.jsp");
         } else {
             if (request.getSession().getAttribute("Korisnik") != null) {
-                Korisnik anonPodaci = (Korisnik)request.getSession().getAttribute("Korisnik");
+                Korisnik anonPodaci = (Korisnik) request.getSession().getAttribute("Korisnik");
                 korisnik.setKosarica(anonPodaci.getKosarica());
             }
             request.getSession().setAttribute("Korisnik", korisnik);
-            SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
             logirajPrijavu(korisnik, request.getLocalAddr());
-            response.sendRedirect("User/Pocetna.jsp");
+            response.sendRedirect("./Pocetna");
 
         }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-        /**
-         * Handles the HTTP <code>GET</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doGet
-        (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            processRequest(request, response);
-        }
-
-        /**
-         * Handles the HTTP <code>POST</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            processRequest(request, response);
-        }
-
-        /**
-         * Returns a short description of the servlet.
-         *
-         * @return a String containing servlet description
-         */
-        @Override
-        public String getServletInfo
-        
-            () {
-        return "Short description";
-        }// </editor-fold>
 
     private void doRegistracija(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String korisnickoIme = request.getParameter("txtImeReg");
         String lozinka = request.getParameter("txtLozinkaReg");
 
-        boolean rezultat = database.insertKorisnik(korisnickoIme, lozinka, false);
+        boolean rezultat = korisniciDatabase.insertKorisnik(korisnickoIme, lozinka, false);
         if (rezultat) {
             request.getSession().setAttribute("loginError", "Uspješno ste kreirali račun! probajte se ulogirati da provjerite podatke.");
             response.sendRedirect("User/Login.jsp");
@@ -137,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 
     private void doOdjava(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getSession().getAttribute("Korisnik") != null) {
-            Korisnik korisnik = (Korisnik)request.getSession().getAttribute("Korisnik");
+            Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
             korisnik.setAdministrator(false);
             korisnik.setKorisnickoIme(null);
             korisnik.setKorisnikId(0);
@@ -150,8 +97,19 @@ public class LoginServlet extends HttpServlet {
         prijava.setDatum(Calendar.getInstance(TimeZone.getDefault()).getTime());
         prijava.setIpAdresa(localAddr);
         prijava.setKorisnikId(korisnik.getKorisnikId());
-        
+
         Repozitorij.getLogiranjeDatabaseInstance().insertPrijavu(prijava);
-        
+
     }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
 }

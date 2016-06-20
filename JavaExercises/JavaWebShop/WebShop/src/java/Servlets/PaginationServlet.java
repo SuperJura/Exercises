@@ -21,6 +21,7 @@ public class PaginationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //TODO stavi "akcija" i umjesto "next" i "prev" 1, 2
         String akcija = request.getParameter("action");
         int trenutnaStranica = Integer.parseInt(request.getSession().getAttribute("proizvodiTrenutnaStranica").toString());
         if (akcija.equals("next")) {

@@ -7,6 +7,8 @@ package Servlets;
 
 import DAL.ProizvodiDatabase;
 import DAL.Repozitorij;
+import DAL.TransakcijaDatabase;
+import Helpers.PayPalFunctions;
 import Models.Korisnik;
 import Models.Proizvod;
 import Models.Transakcija;
@@ -26,17 +28,34 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class KupnjaServlet extends HttpServlet {
 
+    PayPalFunctions payPalFunctions;
+    TransakcijaDatabase transakcijaDatabase;
+    ProizvodiDatabase proizvodiDatabase;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        payPalFunctions = new PayPalFunctions();
+        transakcijaDatabase = Repozitorij.getTransakcijeDatabaseInstance();
+        proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         //1 - gotovina 2 - paypal
         int akcija = Integer.parseInt(request.getParameter("akcija"));
         Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
-        ProizvodiDatabase database = Repozitorij.getProizvodiDatabaseInstance();
 
+        if (akcija == 2) {
+            String token = request.getParameter("token");
+            String payerId = request.getParameter("PayerID");
+            Float amount = korisnik.getKosarica().getSveukupnaCijena();
+            payPalFunctions.ConfirmPayment(token, payerId, amount + "");
+        }
         List<Transakcija> transakcije = new ArrayList<>();
         for (int proizvodId : korisnik.getKosarica().getProizvodi().keySet()) {
-            Proizvod proizvod = database.getProizvod(proizvodId);
+            Proizvod proizvod = proizvodiDatabase.getProizvod(proizvodId);
             Transakcija transakcija = new Transakcija();
             transakcija.setKolicina(korisnik.getKosarica().getProizvodi().get(proizvodId));
             transakcija.setDatumKupnje(Calendar.getInstance(TimeZone.getDefault()).getTime());
@@ -44,8 +63,8 @@ public class KupnjaServlet extends HttpServlet {
             transakcija.setTipPlacanjaId(akcija);
             transakcije.add(transakcija);
         }
-        Repozitorij.getTransakcijeDatabaseInstance().insertTranaskcija(korisnik.getKorisnikId(), transakcije);
-        korisnik.getKosarica().getProizvodi().clear();
+        transakcijaDatabase.insertTranaskcija(korisnik.getKorisnikId(), transakcije);
+        korisnik.getKosarica().ocistiKosaricu();
         response.sendRedirect("./LogInUser/Kupljeno.jsp");
     }
 

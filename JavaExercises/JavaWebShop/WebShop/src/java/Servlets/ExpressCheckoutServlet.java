@@ -9,7 +9,6 @@ import Helpers.PayPalFunctions;
 import Models.Korisnik;
 import Models.Kosarica;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,7 @@ public class ExpressCheckoutServlet extends HttpServlet {
          '-------------------------------------------
          */
         Kosarica kosarica = ((Korisnik) session.getAttribute("Korisnik")).getKosarica();
-        String paymentAmount = kosarica.getSveukupnaCijena() + "";
+        String paymentAmount = kosarica.getSveukupnaCijena()+ "";
 
 
         /*
@@ -56,7 +55,7 @@ public class ExpressCheckoutServlet extends HttpServlet {
          ' This is set to the value entered on the Integration Assistant
          '------------------------------------
          */
-        String returnURL = "http://localhost:8080/WebShop/LogInUser/Kupljeno.jsp";
+        String returnURL = "http://localhost:8080/WebShop/Kupnja?akcija=2";
 
         /*
          '------------------------------------
