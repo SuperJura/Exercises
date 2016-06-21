@@ -21,13 +21,12 @@ public class PaginationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //TODO stavi "akcija" i umjesto "next" i "prev" 1, 2
-        String akcija = request.getParameter("action");
+        int akcija = Integer.parseInt(request.getParameter("akcija"));
         int trenutnaStranica = Integer.parseInt(request.getSession().getAttribute("proizvodiTrenutnaStranica").toString());
-        if (akcija.equals("next")) {
+        if (akcija == 1) {
             trenutnaStranica ++;
         }
-        else if (akcija.equals("prev")) {
+        else if (akcija == 2) {
             trenutnaStranica --;
             if (trenutnaStranica < 0) {
                 trenutnaStranica = 0;

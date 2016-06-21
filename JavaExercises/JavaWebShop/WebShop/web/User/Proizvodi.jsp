@@ -24,8 +24,8 @@
                 <jsp:include page="../PartialJSP/PopisProizvoda.jsp"/>
                 <nav>
                     <ul class="pager">
-                        <li><a href="/WebShop/Pagination?action=prev">Predhodni</a></li>
-                        <li><a href="/WebShop/Pagination?action=next">Sljedeci</a></li>
+                        <li><a href="/WebShop/Pagination?akcija=2">Predhodni</a></li>
+                        <li><a href="/WebShop/Pagination?akcija=1">Sljedeci</a></li>
                     </ul>
                 </nav>
             </div>

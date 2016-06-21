@@ -39,11 +39,10 @@ public class KosaricaServlet extends HttpServlet {
                 break;
             case 2:
                 makniProizvod(korisnik, proizvodId, kolicina, request);
-                response.sendRedirect("./Profil"); 
+                response.sendRedirect("./Profil");
                 break;
             default:
                 response.sendRedirect("User/Pocetna.jsp");
-
         }
     }
 
@@ -60,12 +59,14 @@ public class KosaricaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 }

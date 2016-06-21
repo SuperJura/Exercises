@@ -21,7 +21,7 @@
                 <div class="panel panel-default">
                     <form class="form-signin" action="/WebShop/Login" method="POST">
                         <h2 class="form-signin-heading">Prijavite se</h2>
-                        <input hidden="true" name="action" value="prijava"/>
+                        <input hidden="true" name="akcija" value="1"/>
                         <label class="sr-only">Korisničko ime:</label>
                         <input type="text" id="txtIme" name="txtIme" class="form-control" placeholder="Korisničko ime" required autofocus>
                         <label class="sr-only">Lozinka:</label>
@@ -35,7 +35,7 @@
                     <div class="panel-heading">Nemate račun?</div>
                     <form class="form-signin" action="/WebShop/Login" method="POST">
                         <h2 class="form-signin-heading">Registrirajte se</h2>
-                        <input hidden="true" name="action" value="registracija"/>
+                        <input hidden="true" name="akcija" value="2"/>
                         <label class="sr-only">Korisničko ime:</label>
                         <input type="text" id="txtImeReg" name="txtImeReg" class="form-control" placeholder="Korisničko ime" required >
                         <label class="sr-only">Lozinka:</label>

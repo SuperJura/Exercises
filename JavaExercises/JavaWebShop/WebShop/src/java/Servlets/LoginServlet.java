@@ -33,17 +33,16 @@ public class LoginServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //TODO zamjeni "action" s "akcija", zamjeni "prijava/reg/odjava" s 1,2,3
-        String akcija = request.getParameter("action");
-
+        
+        String akcija = request.getParameter("akcija");
         switch (akcija) {
-            case "prijava":
+            case "1":
                 doPrijava(request, response);
                 break;
-            case "registracija":
+            case "2":
                 doRegistracija(request, response);
                 break;
-            case "odjava":
+            case "3":
                 doOdjava(request, response);
                 break;
         }

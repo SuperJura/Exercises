@@ -23,12 +23,13 @@ public class KategorijeServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
         super.init();
+        proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
         response.sendRedirect("User/Kategorije.jsp");
     }
@@ -36,12 +37,14 @@ public class KategorijeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 }

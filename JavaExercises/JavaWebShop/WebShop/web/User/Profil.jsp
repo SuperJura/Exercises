@@ -18,7 +18,7 @@
         <jl:headerMessage defaultMessage="Detalji Vase kosarice"/>
         <c:if test="${Korisnik.korisnickoIme != null}">
             <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKorisnikovihKupnji">Pregled svih kupnji</a>
-            <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?action=odjava">Izlogirajte se iz ovog racuna</a>
+            <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?akcija=3">Izlogirajte se iz ovog racuna</a>
         </c:if>
         <c:if test="${Korisnik.korisnickoIme == null}">
             <a class="btn btn-danger col-md-offset-1" href="/WebShop/User/Login.jsp">Ulogirajte se</a>

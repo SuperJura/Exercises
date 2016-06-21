@@ -22,9 +22,14 @@ public class PristupStranicamaServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //TODO set amount to dynamic
-        List<PristupStranici> pristupi = Repozitorij.getLogiranjeDatabaseInstance().getAllPristupe(50);   
+        
+        int kolicinaZapisa = 50;
+        if (request.getParameter("kolicinaZapisa") != null) {
+            kolicinaZapisa = Integer.parseInt(request.getParameter("kolicinaZapisa"));
+        }
+        request.getSession().setAttribute("kolicinaZapisa", kolicinaZapisa);
+        
+        List<PristupStranici> pristupi = Repozitorij.getLogiranjeDatabaseInstance().getAllPristupe(kolicinaZapisa);   
         request.getSession().setAttribute("pristupi", pristupi);
         response.sendRedirect("./Admin/PregledPristupaStranicama.jsp");
     }

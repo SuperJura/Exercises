@@ -16,10 +16,25 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Zadnjih 50 pristupa stranicama web shopa"/>
+        <jl:headerMessage defaultMessage="Zadnjih ${kolicinaZapisa} pristupa stranicama web shopa"/>
 
+        <div class="btn-group col-md-1 col-md-offset-1">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <c:if test="${kolicinaZapisa == null}">
+                    50<span class="caret"></span>
+                </c:if>
+                <c:if test="${kolicinaZapisa != null}">
+                    ${kolicinaZapisa}<span class="caret"></span>
+                </c:if>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a onclick="prikaziPristupe(50)">50</a></li>
+                <li><a onclick="prikaziPristupe(100)">100</a></li>
+                <li><a onclick="prikaziPristupe(150)">150</a></li>
+            </ul>
+        </div>
         <div class="row topMargin">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1 topMargin">
                 <table class="table table-bordered">
                     <tr>
                         <td class="boldBlack">
@@ -56,3 +71,8 @@
         </div>
     </body>
 </html>
+<script>
+    function prikaziPristupe(kolicina) {
+        window.location.href = "/WebShop/PristupStranicama?kolicinaZapisa=" + kolicina;
+    }
+</script>
