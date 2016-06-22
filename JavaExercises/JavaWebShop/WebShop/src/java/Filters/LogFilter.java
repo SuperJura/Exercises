@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Filters;
+package filters;
 
-import DAL.Repozitorij;
-import Models.Korisnik;
-import Models.loging.PristupStranici;
+import dataAccessLayer.Repozitorij;
+import models.Korisnik;
+import models.loging.PristupStranici;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;

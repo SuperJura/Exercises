@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
-import Helpers.SessionHelper;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
+import helpers.SessionHelper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +38,7 @@ public class ProizvodiServlet extends HttpServlet {
         SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, 0);
         request.getSession().setAttribute("kategorijaId", kategorijaId);
         request.getSession().setAttribute("kategorijaNaziv", proizvodiDatabase.getKategorija(kategorijaId).getNaziv());
-        response.sendRedirect("User/Proizvodi.jsp");
+        response.sendRedirect("Korisnik/Proizvodi.jsp");
     }
 
     @Override

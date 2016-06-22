@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package dataAccessLayer;
 
-import Models.Transakcija;
+import models.Transakcija;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;

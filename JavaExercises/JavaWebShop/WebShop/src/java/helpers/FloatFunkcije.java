@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Helpers;
+package helpers;
 
 import java.math.BigDecimal;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @author Jurica
  */
-public class FloatFunctions {
+public class FloatFunkcije {
     
     public static float getCijena(float cijena, int mjesta) {
         BigDecimal bd = new BigDecimal(Float.toString(cijena));

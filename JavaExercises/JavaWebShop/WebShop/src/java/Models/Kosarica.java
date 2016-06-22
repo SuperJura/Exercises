@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package models;
 
-import DAL.Repozitorij;
-import Helpers.FloatFunctions;
+import dataAccessLayer.Repozitorij;
+import helpers.FloatFunkcije;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +65,7 @@ public class Kosarica {
     
     public float getSveukupnaCijenaEuri() {
         float cijenaEuri = sveukupnaCijena / 7.5f;
-        return FloatFunctions.getCijena(cijenaEuri, 2);
+        return FloatFunkcije.getCijena(cijenaEuri, 2);
     }
 
     public void setSveukupnaCijena(float sveukupnaCijena) {

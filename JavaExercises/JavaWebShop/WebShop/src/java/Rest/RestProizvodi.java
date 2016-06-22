@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Rest;
+package rest;
 
-import DAL.Repozitorij;
-import Models.Proizvod;
+import dataAccessLayer.Repozitorij;
+import models.Proizvod;
 import com.google.gson.Gson;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;

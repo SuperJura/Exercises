@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +31,7 @@ public class KategorijeServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
-        response.sendRedirect("User/Kategorije.jsp");
+        response.sendRedirect("Korisnik/Kategorije.jsp");
     }
 
     @Override

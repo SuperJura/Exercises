@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>Filters.AuthFilter</filter-class>
+        <filter-class>filters.AuthFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AdminFilter</filter-name>
-        <filter-class>Filters.AdminFilter</filter-class>
+        <filter-class>filters.AdminFilter</filter-class>
     </filter>
     <filter>
         <filter-name>LogFilter</filter-name>
-        <filter-class>Filters.LogFilter</filter-class>
+        <filter-class>filters.LogFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LogFilter</filter-name>
@@ -22,59 +22,59 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/LogInUser/*</url-pattern>
+        <url-pattern>/AuthKorisnik/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>Servlets.PocetnaServlet</servlet-class>
+        <servlet-class>servlets.PocetnaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KategorijeServlet</servlet-name>
-        <servlet-class>Servlets.KategorijeServlet</servlet-class>
+        <servlet-class>servlets.KategorijeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProizvodiServlet</servlet-name>
-        <servlet-class>Servlets.ProizvodiServlet</servlet-class>
+        <servlet-class>servlets.ProizvodiServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KosaricaServlet</servlet-name>
-        <servlet-class>Servlets.KosaricaServlet</servlet-class>
+        <servlet-class>servlets.KosaricaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>Servlets.LoginServlet</servlet-class>
+        <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PaginationServlet</servlet-name>
-        <servlet-class>Servlets.PaginationServlet</servlet-class>
+        <servlet-class>servlets.PaginationServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfilServlet</servlet-name>
-        <servlet-class>Servlets.ProfilServlet</servlet-class>
+        <servlet-class>servlets.ProfilServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KupnjaServlet</servlet-name>
-        <servlet-class>Servlets.KupnjaServlet</servlet-class>
+        <servlet-class>servlets.KupnjaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PregledKorisnikovihKupnjiServlet</servlet-name>
-        <servlet-class>Servlets.PregledKorisnikovihKupnjiServlet</servlet-class>
+        <servlet-class>servlets.PregledKorisnikovihKupnjiServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PristupStranicamaServlet</servlet-name>
-        <servlet-class>Servlets.PristupStranicamaServlet</servlet-class>
+        <servlet-class>servlets.PristupStranicamaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PregledSpajanjaServlet</servlet-name>
-        <servlet-class>Servlets.PregledSpajanjaServlet</servlet-class>
+        <servlet-class>servlets.PregledSpajanjaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PregledKupnjiServlet</servlet-name>
-        <servlet-class>Servlets.PregledKupnjiServlet</servlet-class>
+        <servlet-class>servlets.PregledKupnjiServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExpressCheckoutServlet</servlet-name>
-        <servlet-class>Servlets.ExpressCheckoutServlet</servlet-class>
+        <servlet-class>servlets.ExpressCheckoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KupnjaGotovinaServlet</servlet-name>

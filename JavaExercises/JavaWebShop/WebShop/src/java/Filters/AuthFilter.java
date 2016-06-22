@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Filters;
+package filters;
 
-import Models.Korisnik;
+import models.Korisnik;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -30,7 +30,7 @@ public class AuthFilter implements Filter {
         Korisnik korisnik = (Korisnik) req.getSession().getAttribute("korisnik");
         if (korisnik == null || korisnik.getKorisnickoIme() == null) {
             req.getSession().setAttribute("loginError", "Nemožete kupovati proizvode u košarici ako niste prijavljeni!");
-            res.sendRedirect("/WebShop/User/Login.jsp");
+            res.sendRedirect("/WebShop/Korisnik/Login.jsp");
         }
 
         try {

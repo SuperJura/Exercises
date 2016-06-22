@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Helpers;
+package helpers;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
-import Models.Proizvod;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
+import models.Proizvod;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 

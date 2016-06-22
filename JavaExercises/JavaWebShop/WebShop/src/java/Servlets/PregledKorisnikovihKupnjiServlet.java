@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.Repozitorij;
-import Models.Korisnik;
-import Models.Transakcija;
+import dataAccessLayer.Repozitorij;
+import models.Korisnik;
+import models.Transakcija;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class PregledKorisnikovihKupnjiServlet extends HttpServlet {
         List<Transakcija> transakcije = Repozitorij.getTransakcijeDatabaseInstance().getTransakcije(korisnik.getKorisnikId());
 
         request.getSession().setAttribute("transakcije", transakcije);
-        response.sendRedirect("./LogInUser/PregledKupnji.jsp");
+        response.sendRedirect("./AuthKorisnik/PregledKupnji.jsp");
         }
 
     

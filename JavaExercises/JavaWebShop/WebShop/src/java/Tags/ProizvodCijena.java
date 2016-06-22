@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tags;
+package tags;
 
-import DAL.Repozitorij;
-import Helpers.FloatFunctions;
+import dataAccessLayer.Repozitorij;
+import helpers.FloatFunkcije;
 import java.io.IOException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
@@ -29,7 +29,7 @@ public class ProizvodCijena extends BodyTagSupport {
 
         try {
             pageContext.getOut().print("Cijena jednoga: <br/>" + "Cijena x " + kolicina + "</td>");
-            pageContext.getOut().print("<td> <span class='boldBlack'>" + FloatFunctions.getCijena(cijena, 2) + " KN</br>" + FloatFunctions.getCijena(ukupnaCijena, 2) + " KN</span>");
+            pageContext.getOut().print("<td> <span class='boldBlack'>" + FloatFunkcije.getCijena(cijena, 2) + " KN</br>" + FloatFunkcije.getCijena(ukupnaCijena, 2) + " KN</span>");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

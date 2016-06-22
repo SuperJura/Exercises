@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package dataAccessLayer;
 
-import Models.loging.Prijava;
-import Models.loging.PristupStranici;
+import models.loging.Prijava;
+import models.loging.PristupStranici;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;

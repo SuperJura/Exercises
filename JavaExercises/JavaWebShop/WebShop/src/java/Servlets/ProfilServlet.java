@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import Models.Korisnik;
-import Models.Kosarica;
+import models.Korisnik;
+import models.Kosarica;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +25,7 @@ public class ProfilServlet extends HttpServlet {
             Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("korisnik")).getKosarica();
             request.getSession().setAttribute("cijena", kosarica.getSveukupnaCijena());
         }
-        response.sendRedirect("User/Profil.jsp");
+        response.sendRedirect("Korisnik/Profil.jsp");
     }
 
     @Override

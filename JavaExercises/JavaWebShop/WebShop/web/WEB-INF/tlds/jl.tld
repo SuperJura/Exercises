@@ -22,7 +22,7 @@
     -->
   <tag>
     <name>ProizvodNaziv</name>
-    <tag-class>Tags.ProizvodNaziv</tag-class>
+    <tag-class>tags.ProizvodNaziv</tag-class>
     <body-content>JSP</body-content>
     <attribute>
       <name>proizvodId</name>
@@ -32,7 +32,7 @@
   </tag>
   <tag>
     <name>ProizvodCijena</name>
-    <tag-class>Tags.ProizvodCijena</tag-class>
+    <tag-class>tags.ProizvodCijena</tag-class>
     <body-content>JSP</body-content>
     <attribute>
       <name>proizvodId</name>

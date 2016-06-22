@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import Models.Korisnik;
+import models.Korisnik;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +42,7 @@ public class KosaricaServlet extends HttpServlet {
                 response.sendRedirect("./Profil");
                 break;
             default:
-                response.sendRedirect("User/Pocetna.jsp");
+                response.sendRedirect("Korisnik/Pocetna.jsp");
         }
     }
 

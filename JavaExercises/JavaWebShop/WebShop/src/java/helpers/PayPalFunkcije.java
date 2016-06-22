@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Helpers;
+package helpers;
 
 import java.net.URLDecoder.*;
 import java.util.*;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jurica
  */
-public class PayPalFunctions {
+public class PayPalFunkcije {
 
     /**
      * Created by IntelliJ IDEA. User: lhuynh Date: Dec 6, 2007 Time: 5:06:52 PM
@@ -38,7 +38,7 @@ public class PayPalFunctions {
     public static boolean gv_UseProxy;
     public static String PAYPAL_URL;
 
-    public PayPalFunctions() {//lhuynh - Actions to be Done on init of this class
+    public PayPalFunkcije() {//lhuynh - Actions to be Done on init of this class
 
         //BN Code is only applicable for partners
         gv_BNCode = "PP-ECWizard";

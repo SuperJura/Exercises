@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
-import DAL.TransakcijaDatabase;
-import Helpers.PayPalFunctions;
-import Models.Korisnik;
-import Models.Proizvod;
-import Models.Transakcija;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
+import dataAccessLayer.TransakcijaDatabase;
+import helpers.PayPalFunkcije;
+import models.Korisnik;
+import models.Proizvod;
+import models.Transakcija;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,14 +28,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class KupnjaServlet extends HttpServlet {
 
-    PayPalFunctions payPalFunctions;
+    PayPalFunkcije payPalFunctions;
     TransakcijaDatabase transakcijaDatabase;
     ProizvodiDatabase proizvodiDatabase;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        payPalFunctions = new PayPalFunctions();
+        payPalFunctions = new PayPalFunkcije();
         transakcijaDatabase = Repozitorij.getTransakcijeDatabaseInstance();
         proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
     }
@@ -65,7 +65,7 @@ public class KupnjaServlet extends HttpServlet {
         }
         transakcijaDatabase.insertTranaskcija(korisnik.getKorisnikId(), transakcije);
         korisnik.getKosarica().ocistiKosaricu();
-        response.sendRedirect("./LogInUser/Kupljeno.jsp");
+        response.sendRedirect("./AuthKorisnik/Kupljeno.jsp");
     }
 
     @Override

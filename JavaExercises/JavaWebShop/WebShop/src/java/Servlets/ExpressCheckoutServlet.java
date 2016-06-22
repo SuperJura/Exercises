@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import Helpers.PayPalFunctions;
-import Models.Korisnik;
-import Models.Kosarica;
+import helpers.PayPalFunkcije;
+import models.Korisnik;
+import models.Kosarica;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.servlet.ServletException;
@@ -71,17 +71,17 @@ public class ExpressCheckoutServlet extends HttpServlet {
          '------------------------------------
          ' Calls the SetExpressCheckout API call
          '
-         ' The CallShortcutExpressCheckout function is defined in the file PayPalFunctions.asp,
+         ' The CallShortcutExpressCheckout function is defined in the file PayPalFunkcije.asp,
          ' it is included at the top of this file.
          '-------------------------------------------------
          */
-        PayPalFunctions ppf = new PayPalFunctions();
+        PayPalFunkcije ppf = new PayPalFunkcije();
         HashMap nvp = ppf.CallShortcutExpressCheckout(paymentAmount, returnURL, cancelURL);
         String strAck = nvp.get("ACK").toString();
         if (strAck != null && strAck.equalsIgnoreCase("Success")) {
             session.setAttribute("token", nvp.get("TOKEN").toString());
             //' Redirect to paypal.com
-            String url = PayPalFunctions.PAYPAL_URL + response.encodeRedirectURL(nvp.get("TOKEN").toString());
+            String url = PayPalFunkcije.PAYPAL_URL + response.encodeRedirectURL(nvp.get("TOKEN").toString());
             response.sendRedirect(url);
         } else {
             // Display a user friendly Error on the page using any of the following error information returned by PayPal

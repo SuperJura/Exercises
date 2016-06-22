@@ -21,7 +21,7 @@
             <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?akcija=3">Izlogirajte se iz ovog racuna</a>
         </c:if>
         <c:if test="${korisnik.korisnickoIme == null}">
-            <a class="btn btn-danger col-md-offset-1" href="/WebShop/User/Login.jsp">Ulogirajte se</a>
+            <a class="btn btn-danger col-md-offset-1" href="/WebShop/Korisnik/Login.jsp">Ulogirajte se</a>
         </c:if>
         <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">
@@ -97,7 +97,7 @@
 
     function dovrsi(btn)
     {
-        window.location.href = "/WebShop/LogInUser/OdabirPlacanja.jsp";
+        window.location.href = "/WebShop/AuthKorisnik/OdabirPlacanja.jsp";
     }
     $(function () {
         var cijena = $("#spanCijena").attr("cijena");

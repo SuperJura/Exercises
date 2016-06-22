@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.KorisniciDatabase;
-import DAL.LogiranjeDatabase;
-import DAL.Repozitorij;
-import Models.Korisnik;
-import Models.loging.Prijava;
-import Models.loging.PristupStranici;
+import dataAccessLayer.KorisniciDatabase;
+import dataAccessLayer.LogiranjeDatabase;
+import dataAccessLayer.Repozitorij;
+import models.Korisnik;
+import models.loging.Prijava;
+import models.loging.PristupStranici;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;

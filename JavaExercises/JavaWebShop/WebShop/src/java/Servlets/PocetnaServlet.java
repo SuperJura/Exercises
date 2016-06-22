@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
-import Helpers.SessionHelper;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
+import helpers.SessionHelper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +33,7 @@ public class PocetnaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
-        response.sendRedirect("./User/Pocetna.jsp");
+        response.sendRedirect("./Korisnik/Pocetna.jsp");
     }
 
     @Override

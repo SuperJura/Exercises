@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tags;
+package tags;
 
-import DAL.ProizvodiDatabase;
-import DAL.Repozitorij;
-import Models.Proizvod;
+import dataAccessLayer.ProizvodiDatabase;
+import dataAccessLayer.Repozitorij;
+import models.Proizvod;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

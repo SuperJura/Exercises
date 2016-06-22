@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package servlets;
 
-import DAL.KorisniciDatabase;
-import DAL.Repozitorij;
-import Models.Korisnik;
-import Models.loging.Prijava;
+import dataAccessLayer.KorisniciDatabase;
+import dataAccessLayer.Repozitorij;
+import models.Korisnik;
+import models.loging.Prijava;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
         Korisnik korisnik = korisniciDatabase.getKorisnika(korisnickoIme, lozinka);
         if (korisnik == null) {
             request.getSession().setAttribute("loginError", "Korisničko ime ili lozinka su krivi!");
-            response.sendRedirect("User/Login.jsp");
+            response.sendRedirect("Korisnik/Login.jsp");
         } else {
             if (request.getSession().getAttribute("korisnik") != null) {
                 Korisnik anonPodaci = (Korisnik) request.getSession().getAttribute("korisnik");
@@ -74,10 +74,10 @@ public class LoginServlet extends HttpServlet {
         boolean rezultat = korisniciDatabase.insertKorisnik(korisnickoIme, lozinka, false);
         if (rezultat) {
             request.getSession().setAttribute("loginError", "Uspješno ste kreirali račun! probajte se ulogirati da provjerite podatke.");
-            response.sendRedirect("User/Login.jsp");
+            response.sendRedirect("Korisnik/Login.jsp");
         } else {
             request.getSession().setAttribute("loginError", "Neuspjesno kreiranje računa. Korisničko ime već postoji");
-            response.sendRedirect("User/Login.jsp");
+            response.sendRedirect("Korisnik/Login.jsp");
         }
     }
 
