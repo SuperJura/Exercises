@@ -11,16 +11,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Kosarica ${Korisnik.korisnickoIme}</title>
+        <title>Kosarica ${korisnik.korisnickoIme}</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Detalji Vase kosarice"/>
-        <c:if test="${Korisnik.korisnickoIme != null}">
+        <c:if test="${korisnik.korisnickoIme != null}">
             <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKorisnikovihKupnji">Pregled svih kupnji</a>
             <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?akcija=3">Izlogirajte se iz ovog racuna</a>
         </c:if>
-        <c:if test="${Korisnik.korisnickoIme == null}">
+        <c:if test="${korisnik.korisnickoIme == null}">
             <a class="btn btn-danger col-md-offset-1" href="/WebShop/User/Login.jsp">Ulogirajte se</a>
         </c:if>
         <div class="row topMargin">
@@ -35,19 +35,18 @@
                         </td>
                         <td colspan="2">
                             Sveukupna cijena: 
-                            <span class="boldBlack">
-                                ${cijena}
+                            <span class="boldBlack" id="spanCijena" cijena="${cijena}">
                             </span>
                         </td>    
                         <td>
-                            <c:if test="${Korisnik != null}">
+                            <c:if test="${korisnik != null}">
                                 <c:if test="${cijena != 0.0}">
                                     <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsi(this)">Dovrsi narudzbu</button>
-                                 </c:if>
+                                </c:if>
                             </c:if>
                         </td>
                     </tr>
-                    <c:forEach var="proizvod" items="${Korisnik.kosarica.proizvodi}">
+                    <c:forEach var="proizvod" items="${korisnik.kosarica.proizvodi}">
                         <tr>
                             <td>
                                 <jl:ProizvodNaziv proizvodId="${proizvod.key}"/>
@@ -100,4 +99,10 @@
     {
         window.location.href = "/WebShop/LogInUser/OdabirPlacanja.jsp";
     }
+    $(function () {
+        var cijena = $("#spanCijena").attr("cijena");
+        
+        floatCijena = parseFloat(cijena);
+        $("#spanCijena").text(floatCijena.toFixed(2) + " KN");
+    });
 </script>

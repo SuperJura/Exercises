@@ -45,12 +45,12 @@ public class KupnjaServlet extends HttpServlet {
 
         //1 - gotovina 2 - paypal
         int akcija = Integer.parseInt(request.getParameter("akcija"));
-        Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+        Korisnik korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
 
         if (akcija == 2) {
             String token = request.getParameter("token");
             String payerId = request.getParameter("PayerID");
-            Float amount = korisnik.getKosarica().getSveukupnaCijena();
+            float amount = korisnik.getKosarica().getSveukupnaCijenaEuri();
             payPalFunctions.ConfirmPayment(token, payerId, amount + "");
         }
         List<Transakcija> transakcije = new ArrayList<>();

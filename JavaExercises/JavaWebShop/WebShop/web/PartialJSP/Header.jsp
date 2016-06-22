@@ -1,7 +1,6 @@
 <script src="../Resources/js/jquery-2.2.3.js" type="text/javascript"></script>
 <script src="../Resources/js/bootstrap.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="../Resources/js/javascript.js" type="text/javascript"></script>
 <link href="../Resources/Css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../Resources/Css/styles.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -18,28 +17,28 @@
             </button>
             <a href="/WebShop/Pocetna" class="navbar-text navbar-left">Java web shop</a>
         </div>
-        <c:if test="${Korisnik == null || Korisnik.administrator == false}">
+        <c:if test="${korisnik == null || korisnik.administrator == false}">
             <div id="navbar" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a href="/WebShop/Kategorije">Kategorije</a></li>
-                    <li><a href="/WebShop/Profil">
-                            Kosarica
-                            <span class="bold"> ${Korisnik.korisnickoIme}
-                            </span>
-                        </a></li>
+                    <li>
+                        <a href="/WebShop/Profil">
+                            Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>
+                        </a>
+                    </li>
                     <li><a href="#contact">O nama</a></li>
                 </ul>
             </div>
         </c:if>
-        <c:if test="${Korisnik.administrator == true}">
+        <c:if test="${korisnik.administrator == true}">
             <div id="navbar" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="/WebShop/PristupStranicama">Pregled svih pristupa stranicama</a></li>
+                    <li><a href="/WebShop/PristupStranicama">Pregled pristupa stranicama</a></li>
                     <li><a href="/WebShop/PregledSpajanja">Pregled spajanja</a></li>
                     <li><a href="/WebShop/PregledKupnji">Pregled kupnja</a></li>
-                    <li><a href="/WebShop/Profil">
-                            Kosarica 
-                            <span class="bold"> ${Korisnik.korisnickoIme}</span>
+                    <li>
+                        <a href="/WebShop/Profil">
+                            Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>
                         </a>
                     </li>
                 </ul>

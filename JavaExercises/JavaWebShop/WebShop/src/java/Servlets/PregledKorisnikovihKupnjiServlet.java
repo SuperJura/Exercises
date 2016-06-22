@@ -33,7 +33,7 @@ public class PregledKorisnikovihKupnjiServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+        Korisnik korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
         List<Transakcija> transakcije = Repozitorij.getTransakcijeDatabaseInstance().getTransakcije(korisnik.getKorisnikId());
 
         request.getSession().setAttribute("transakcije", transakcije);

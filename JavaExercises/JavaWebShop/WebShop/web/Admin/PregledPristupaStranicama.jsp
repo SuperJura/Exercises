@@ -20,14 +20,10 @@
 
         <div class="btn-group col-md-1 col-md-offset-1">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <c:if test="${kolicinaZapisa == null}">
-                    50<span class="caret"></span>
-                </c:if>
-                <c:if test="${kolicinaZapisa != null}">
-                    ${kolicinaZapisa}<span class="caret"></span>
-                </c:if>
+                ${kolicinaZapisa}<span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+                <li><a onclick="prikaziPristupe(25)">25</a></li>
                 <li><a onclick="prikaziPristupe(50)">50</a></li>
                 <li><a onclick="prikaziPristupe(100)">100</a></li>
                 <li><a onclick="prikaziPristupe(150)">150</a></li>

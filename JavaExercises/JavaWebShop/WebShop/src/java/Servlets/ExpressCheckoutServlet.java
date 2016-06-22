@@ -43,8 +43,8 @@ public class ExpressCheckoutServlet extends HttpServlet {
          ' by the shopping cart page
          '-------------------------------------------
          */
-        Kosarica kosarica = ((Korisnik) session.getAttribute("Korisnik")).getKosarica();
-        String paymentAmount = kosarica.getSveukupnaCijena()+ "";
+        Kosarica kosarica = ((Korisnik) session.getAttribute("korisnik")).getKosarica();
+        String paymentAmount = kosarica.getSveukupnaCijenaEuri()+ "";
 
 
         /*

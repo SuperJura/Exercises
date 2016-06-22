@@ -32,8 +32,8 @@ public class LogFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         
         int korisnikId = 0;
-        if (req.getSession().getAttribute("Korisnik") != null) {
-            korisnikId = ((Korisnik) req.getSession().getAttribute("Korisnik")).getKorisnikId();
+        if (req.getSession().getAttribute("korisnik") != null) {
+            korisnikId = ((Korisnik) req.getSession().getAttribute("korisnik")).getKorisnikId();
         }
         PristupStranici pristup = new PristupStranici();
         pristup.setDatum(Calendar.getInstance(TimeZone.getDefault()).getTime());

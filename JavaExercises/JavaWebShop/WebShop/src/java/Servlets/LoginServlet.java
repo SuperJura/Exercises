@@ -56,11 +56,11 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("loginError", "Korisničko ime ili lozinka su krivi!");
             response.sendRedirect("User/Login.jsp");
         } else {
-            if (request.getSession().getAttribute("Korisnik") != null) {
-                Korisnik anonPodaci = (Korisnik) request.getSession().getAttribute("Korisnik");
+            if (request.getSession().getAttribute("korisnik") != null) {
+                Korisnik anonPodaci = (Korisnik) request.getSession().getAttribute("korisnik");
                 korisnik.setKosarica(anonPodaci.getKosarica());
             }
-            request.getSession().setAttribute("Korisnik", korisnik);
+            request.getSession().setAttribute("korisnik", korisnik);
             logirajPrijavu(korisnik, request.getLocalAddr());
             response.sendRedirect("./Pocetna");
 
@@ -82,8 +82,8 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void doOdjava(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (request.getSession().getAttribute("Korisnik") != null) {
-            Korisnik korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+        if (request.getSession().getAttribute("korisnik") != null) {
+            Korisnik korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
             korisnik.setAdministrator(false);
             korisnik.setKorisnickoIme(null);
             korisnik.setKorisnikId(0);

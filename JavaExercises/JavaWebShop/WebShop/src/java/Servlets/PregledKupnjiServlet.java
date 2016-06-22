@@ -38,7 +38,7 @@ public class PregledKupnjiServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Korisnik> sviKorisnici = Repozitorij.getKorisniciDatabaseInstance().getSveKorisnike();
-        request.getSession().setAttribute("Korisnici", sviKorisnici);
+        request.getSession().setAttribute("korisnici", sviKorisnici);
 
         if (request.getParameter("pregledKorisnikId") != null) {
             int id = Integer.parseInt(request.getParameter("pregledKorisnikId"));

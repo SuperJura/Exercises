@@ -20,3 +20,23 @@
         </div>   
     </div>
 </c:forEach>
+<script>
+    function displayProizvod(id) {
+        proizvodId = id.toString().split("_")[1];
+        $.ajax({url: "/WebShop/rest/proizvodi/" + proizvodId,
+            success: function (data) {
+                document.getElementById("proizvodNaziv").textContent = data.naziv;
+                document.getElementById("proizvodKategorija").textContent = data.kategorija;
+                document.getElementById("proizvodCijena").textContent = getCijenaKune(data.cijena) + " KN";
+                document.getElementById("proizvodSlika").src = data.slika;
+                document.getElementById("proizvodOpis").textContent = data.opis;
+                document.getElementById("proizvodId").textContent = data.proizvodId;
+                document.getElementById("divDetails").classList.remove("hidden");
+            }
+        });
+    }
+
+    function getCijenaKune(cijena) {
+        return cijena.toFixed(2) + " KN";
+    }
+</script>

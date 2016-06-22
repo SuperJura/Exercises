@@ -34,12 +34,11 @@ public class PregledSpajanjaServlet extends HttpServlet {
         korisniciDatabase = Repozitorij.getKorisniciDatabaseInstance();
     }
 
-    //TODO probati napisati ljepse (s parametrima, ovo i PregledKupnjiServlet ima slicni kod - probati to u jedno staviti)
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         List<Korisnik> sviKorisnici = Repozitorij.getKorisniciDatabaseInstance().getSveKorisnike();
-        request.getSession().setAttribute("Korisnici", sviKorisnici);
+        request.getSession().setAttribute("korisnici", sviKorisnici);
 
         if (request.getParameter("pregledKorisnikId") != null) {
             int id = Integer.parseInt(request.getParameter("pregledKorisnikId"));

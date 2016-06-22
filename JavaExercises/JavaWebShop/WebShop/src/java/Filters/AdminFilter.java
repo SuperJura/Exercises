@@ -29,8 +29,8 @@ public class AdminFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        if (req.getSession().getAttribute("Korisnik") != null) {
-            Korisnik korisnik = (Korisnik)req.getSession().getAttribute("Korisnik");
+        if (req.getSession().getAttribute("korisnik") != null) {
+            Korisnik korisnik = (Korisnik)req.getSession().getAttribute("korisnik");
             if (!korisnik.isAdministrator()) {
                 res.sendRedirect("/WebShop/Pocetna");
             }

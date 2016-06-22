@@ -6,6 +6,7 @@
 package Models;
 
 import DAL.Repozitorij;
+import Helpers.FloatFunctions;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,13 +62,14 @@ public class Kosarica {
     public float getSveukupnaCijena() {
         return sveukupnaCijena;
     }
+    
+    public float getSveukupnaCijenaEuri() {
+        float cijenaEuri = sveukupnaCijena / 7.5f;
+        return FloatFunctions.getCijena(cijenaEuri, 2);
+    }
 
     public void setSveukupnaCijena(float sveukupnaCijena) {
         this.sveukupnaCijena = sveukupnaCijena;
-    }
-    
-    public float getSveukupnaCijenaUEurima() {
-        return sveukupnaCijena / 7.5f;
     }
     
     public Map<Integer, Integer> getProizvodi() {

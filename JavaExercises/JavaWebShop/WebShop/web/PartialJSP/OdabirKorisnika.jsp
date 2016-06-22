@@ -11,7 +11,7 @@
             </c:if>
         </button>
         <ul class="dropdown-menu">
-            <c:forEach var="k" begin="0" items="${Korisnici}" step="1">
+            <c:forEach var="k" begin="0" items="${korisnici}" step="1">
                 <li><a onclick="prikaziKorisnika(${k.korisnikId})">${k.korisnickoIme}</a></li>
             </c:forEach>
         </ul>

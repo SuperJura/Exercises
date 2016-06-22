@@ -26,11 +26,11 @@ public class KosaricaServlet extends HttpServlet {
         int akcija = Integer.parseInt(request.getParameter("akcija"));
 
         Korisnik korisnik = null;
-        if (request.getSession().getAttribute("Korisnik") == null) {
+        if (request.getSession().getAttribute("korisnik") == null) {
             korisnik = new Korisnik();
-            request.getSession().setAttribute("Korisnik", korisnik);
+            request.getSession().setAttribute("korisnik", korisnik);
         } else {
-            korisnik = (Korisnik) request.getSession().getAttribute("Korisnik");
+            korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
         }
         switch (akcija) {
             case 1:

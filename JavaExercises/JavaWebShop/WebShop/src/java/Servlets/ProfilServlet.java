@@ -21,8 +21,8 @@ public class ProfilServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getSession().getAttribute("Korisnik") != null) {
-            Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("Korisnik")).getKosarica();
+        if (request.getSession().getAttribute("korisnik") != null) {
+            Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("korisnik")).getKosarica();
             request.getSession().setAttribute("cijena", kosarica.getSveukupnaCijena());
         }
         response.sendRedirect("User/Profil.jsp");

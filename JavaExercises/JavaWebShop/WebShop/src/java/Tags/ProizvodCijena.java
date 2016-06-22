@@ -6,9 +6,8 @@
 package Tags;
 
 import DAL.Repozitorij;
+import Helpers.FloatFunctions;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -30,9 +29,9 @@ public class ProizvodCijena extends BodyTagSupport {
 
         try {
             pageContext.getOut().print("Cijena jednoga: <br/>" + "Cijena x " + kolicina + "</td>");
-            pageContext.getOut().print("<td> <span class='boldBlack'>" + cijena + "</br>" + ukupnaCijena + "</span>");
+            pageContext.getOut().print("<td> <span class='boldBlack'>" + FloatFunctions.getCijena(cijena, 2) + " KN</br>" + FloatFunctions.getCijena(ukupnaCijena, 2) + " KN</span>");
         } catch (IOException ex) {
-            Logger.getLogger(ProizvodCijena.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return EVAL_BODY_BUFFERED;
     }
