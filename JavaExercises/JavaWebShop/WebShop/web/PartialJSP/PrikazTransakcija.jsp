@@ -41,7 +41,6 @@
 </table>
 <script>
     //TODO stavi javascript u posebnu fajlu
-    //TODO promjeni nazive paketa u mala pocetna slova
     var tds = $("td[cijena]");
     for (i = 0; i < tds.length; i++) {
         cijena = $(tds[i]).attr("cijena");

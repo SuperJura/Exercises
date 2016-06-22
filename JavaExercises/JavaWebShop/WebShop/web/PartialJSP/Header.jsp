@@ -26,7 +26,7 @@
                             Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>
                         </a>
                     </li>
-                    <li><a href="#contact">O nama</a></li>
+                    <li><a href="/WebShop/Korisnik/ONama.jsp">O nama</a></li>
                 </ul>
             </div>
         </c:if>

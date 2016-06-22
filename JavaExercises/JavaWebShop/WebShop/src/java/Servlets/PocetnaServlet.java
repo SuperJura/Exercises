@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.Korisnik;
 
 /**
  *
@@ -32,8 +34,18 @@ public class PocetnaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
-        response.sendRedirect("./Korisnik/Pocetna.jsp");
+        if (request.getSession().getAttribute("korisnik") == null) {
+            redirectNaKorisnikovuPocetnu(request, response);
+        }
+        else{
+            Korisnik korisnik = (Korisnik)request.getSession().getAttribute("korisnik");
+            if (korisnik.isAdministrator()) {
+                redirectNaAdminovuPocetnu(request, response);
+            }
+            else{
+                redirectNaKorisnikovuPocetnu(request, response);
+            }
+        }
     }
 
     @Override
@@ -46,5 +58,14 @@ public class PocetnaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    }
+
+    private void redirectNaKorisnikovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
+        response.sendRedirect("./Korisnik/Pocetna.jsp");
+    }
+
+    private void redirectNaAdminovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect("./Admin/Pocetna.jsp");
     }
 }

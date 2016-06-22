@@ -24,4 +24,3 @@
         </div>
     </body>
 </html>
-<!-- TODO dodaj pocetnu stranu za admina - websocket koji prati tko se spojio? -->
