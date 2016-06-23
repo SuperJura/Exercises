@@ -37,7 +37,7 @@ public class PregledSpajanjaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Korisnik> sviKorisnici = Repozitorij.getKorisniciDatabaseInstance().getSveKorisnike();
+        List<Korisnik> sviKorisnici = korisniciDatabase.getSveKorisnike();
         request.getSession().setAttribute("korisnici", sviKorisnici);
 
         if (request.getParameter("pregledKorisnikId") != null) {
@@ -54,7 +54,7 @@ public class PregledSpajanjaServlet extends HttpServlet {
                 dohvatiSvaLogiranja(request, dateOd, dateDo);
             }
         }
-        response.sendRedirect("./Admin/PregledSpajanja.jsp");
+        response.sendRedirect("/WebShop/Admin/PregledSpajanja.jsp");
     }
 
     @Override

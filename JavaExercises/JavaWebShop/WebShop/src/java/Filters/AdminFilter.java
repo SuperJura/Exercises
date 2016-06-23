@@ -32,10 +32,10 @@ public class AdminFilter implements Filter {
         if (req.getSession().getAttribute("korisnik") != null) {
             Korisnik korisnik = (Korisnik)req.getSession().getAttribute("korisnik");
             if (!korisnik.isAdministrator()) {
-                res.sendRedirect("/WebShop/Pocetna");
+                res.sendRedirect("Pocetna");
             }
         } else {
-            res.sendRedirect("/WebShop/Pocetna");
+            res.sendRedirect("Pocetna");
         }
 
         try {

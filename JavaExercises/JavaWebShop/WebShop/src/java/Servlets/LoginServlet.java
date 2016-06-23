@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
         Korisnik korisnik = korisniciDatabase.getKorisnika(korisnickoIme, lozinka);
         if (korisnik == null) {
             request.getSession().setAttribute("loginError", "Korisničko ime ili lozinka su krivi!");
-            response.sendRedirect("Korisnik/Login.jsp");
+            response.sendRedirect("/WebShop/Korisnik/Login.jsp");
         } else {
             if (request.getSession().getAttribute("korisnik") != null) {
                 Korisnik anonPodaci = (Korisnik) request.getSession().getAttribute("korisnik");
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             }
             request.getSession().setAttribute("korisnik", korisnik);
             logirajPrijavu(korisnik, request.getLocalAddr());
-            response.sendRedirect("./Pocetna");
+            response.sendRedirect("Pocetna");
 
         }
     }
@@ -74,10 +74,10 @@ public class LoginServlet extends HttpServlet {
         boolean rezultat = korisniciDatabase.insertKorisnik(korisnickoIme, lozinka, false);
         if (rezultat) {
             request.getSession().setAttribute("loginError", "Uspješno ste kreirali račun! probajte se ulogirati da provjerite podatke.");
-            response.sendRedirect("Korisnik/Login.jsp");
+            response.sendRedirect("/WebShop/Korisnik/Login.jsp");
         } else {
             request.getSession().setAttribute("loginError", "Neuspjesno kreiranje računa. Korisničko ime već postoji");
-            response.sendRedirect("Korisnik/Login.jsp");
+            response.sendRedirect("/WebShop/Korisnik/Login.jsp");
         }
     }
 

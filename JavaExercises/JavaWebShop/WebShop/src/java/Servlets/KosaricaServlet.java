@@ -35,14 +35,14 @@ public class KosaricaServlet extends HttpServlet {
         switch (akcija) {
             case 1:
                 dodajProizvod(korisnik, proizvodId, kolicina, request);
-                response.sendRedirect("./Profil");
+                response.sendRedirect("Profil");
                 break;
             case 2:
                 makniProizvod(korisnik, proizvodId, kolicina, request);
-                response.sendRedirect("./Profil");
+                response.sendRedirect("Profil");
                 break;
             default:
-                response.sendRedirect("Korisnik/Pocetna.jsp");
+                response.sendRedirect("/WebShop/Korisnik/Pocetna.jsp");
         }
     }
 

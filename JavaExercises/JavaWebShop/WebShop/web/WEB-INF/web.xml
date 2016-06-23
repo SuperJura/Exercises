@@ -144,4 +144,8 @@
     <welcome-file-list>
         <welcome-file>Pocetna</welcome-file>
     </welcome-file-list>
+    
+    <error-page>
+        <location>/Korisnik/Error.jsp</location>
+    </error-page>
 </web-app>

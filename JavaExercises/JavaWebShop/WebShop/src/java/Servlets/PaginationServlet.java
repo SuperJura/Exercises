@@ -33,9 +33,8 @@ public class PaginationServlet extends HttpServlet {
             }
         }
         int kategorijaId = Integer.parseInt(request.getSession().getAttribute("kategorijaId").toString());
-        
         SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, trenutnaStranica);
-        response.sendRedirect("./User/Proizvodi.jsp");
+        response.sendRedirect("/WebShop/Korisnik/Proizvodi.jsp");
     }
     
     @Override

@@ -10,8 +10,6 @@ import dataAccessLayer.Repozitorij;
 import dataAccessLayer.TransakcijaDatabase;
 import models.Korisnik;
 import models.Transakcija;
-import models.loging.Prijava;
-import models.loging.PristupStranici;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -37,7 +35,7 @@ public class PregledKupnjiServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Korisnik> sviKorisnici = Repozitorij.getKorisniciDatabaseInstance().getSveKorisnike();
+        List<Korisnik> sviKorisnici = korisniciDatabase.getSveKorisnike();
         request.getSession().setAttribute("korisnici", sviKorisnici);
 
         if (request.getParameter("pregledKorisnikId") != null) {
@@ -53,7 +51,7 @@ public class PregledKupnjiServlet extends HttpServlet {
                 dohvatiSveTransakcije(request, dateOd, dateDo);
             }
         }
-        response.sendRedirect("./Admin/PregledKupnji.jsp");
+        response.sendRedirect("/WebShop/Admin/PregledKupnji.jsp");
 
     }
 

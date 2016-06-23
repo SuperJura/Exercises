@@ -31,7 +31,7 @@ public class KategorijeServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
-        response.sendRedirect("Korisnik/Kategorije.jsp");
+        response.sendRedirect("/WebShop/Korisnik/Kategorije.jsp");
     }
 
     @Override

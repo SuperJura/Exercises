@@ -13,7 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import models.Korisnik;
 
 /**
@@ -62,10 +61,10 @@ public class PocetnaServlet extends HttpServlet {
 
     private void redirectNaKorisnikovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
-        response.sendRedirect("./Korisnik/Pocetna.jsp");
+        response.sendRedirect("/WebShop/Korisnik/Pocetna.jsp");
     }
 
     private void redirectNaAdminovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("./Admin/Pocetna.jsp");
+        response.sendRedirect("/WebShop/Admin/Pocetna.jsp");
     }
 }

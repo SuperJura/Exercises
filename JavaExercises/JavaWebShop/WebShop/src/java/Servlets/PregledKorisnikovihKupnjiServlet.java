@@ -6,6 +6,7 @@
 package servlets;
 
 import dataAccessLayer.Repozitorij;
+import dataAccessLayer.TransakcijaDatabase;
 import models.Korisnik;
 import models.Transakcija;
 import java.io.IOException;
@@ -21,23 +22,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PregledKorisnikovihKupnjiServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    TransakcijaDatabase transakcijaDatabase;
+    
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        transakcijaDatabase = Repozitorij.getTransakcijeDatabaseInstance();
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         Korisnik korisnik = (Korisnik) request.getSession().getAttribute("korisnik");
-        List<Transakcija> transakcije = Repozitorij.getTransakcijeDatabaseInstance().getTransakcije(korisnik.getKorisnikId());
+        List<Transakcija> transakcije = transakcijaDatabase.getTransakcije(korisnik.getKorisnikId());
 
         request.getSession().setAttribute("transakcije", transakcije);
-        response.sendRedirect("./AuthKorisnik/PregledKupnji.jsp");
+        response.sendRedirect("/WebShop/AuthKorisnik/PregledKupnji.jsp");
         }
 
     

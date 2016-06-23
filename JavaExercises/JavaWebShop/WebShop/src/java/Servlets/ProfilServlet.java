@@ -25,7 +25,7 @@ public class ProfilServlet extends HttpServlet {
             Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("korisnik")).getKosarica();
             request.getSession().setAttribute("cijena", kosarica.getSveukupnaCijena());
         }
-        response.sendRedirect("Korisnik/Profil.jsp");
+        response.sendRedirect("/WebShop/Korisnik/Profil.jsp");
     }
 
     @Override

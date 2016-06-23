@@ -38,7 +38,7 @@ public class ProizvodiServlet extends HttpServlet {
         SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, 0);
         request.getSession().setAttribute("kategorijaId", kategorijaId);
         request.getSession().setAttribute("kategorijaNaziv", proizvodiDatabase.getKategorija(kategorijaId).getNaziv());
-        response.sendRedirect("Korisnik/Proizvodi.jsp");
+        response.sendRedirect("/WebShop/Korisnik/Proizvodi.jsp");
     }
 
     @Override

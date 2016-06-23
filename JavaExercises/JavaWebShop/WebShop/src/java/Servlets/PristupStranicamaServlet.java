@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import dataAccessLayer.LogiranjeDatabase;
 import dataAccessLayer.Repozitorij;
 import models.loging.PristupStranici;
 import java.io.IOException;
@@ -20,6 +21,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PristupStranicamaServlet extends HttpServlet {
 
+    LogiranjeDatabase logiranjeDatabase;
+    
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        logiranjeDatabase = Repozitorij.getLogiranjeDatabaseInstance();
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -29,9 +38,9 @@ public class PristupStranicamaServlet extends HttpServlet {
         }
         request.getSession().setAttribute("kolicinaZapisa", kolicinaZapisa);
         
-        List<PristupStranici> pristupi = Repozitorij.getLogiranjeDatabaseInstance().getAllPristupe(kolicinaZapisa);   
+        List<PristupStranici> pristupi = logiranjeDatabase.getAllPristupe(kolicinaZapisa);   
         request.getSession().setAttribute("pristupi", pristupi);
-        response.sendRedirect("./Admin/PregledPristupaStranicama.jsp");
+        response.sendRedirect("/WebShop/Admin/PregledPristupaStranicama.jsp");
     }
 
     @Override

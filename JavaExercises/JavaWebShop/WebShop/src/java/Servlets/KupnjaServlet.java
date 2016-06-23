@@ -65,7 +65,7 @@ public class KupnjaServlet extends HttpServlet {
         }
         transakcijaDatabase.insertTranaskcija(korisnik.getKorisnikId(), transakcije);
         korisnik.getKosarica().ocistiKosaricu();
-        response.sendRedirect("./AuthKorisnik/Kupljeno.jsp");
+        response.sendRedirect("/WebShop/AuthKorisnik/Kupljeno.jsp");
     }
 
     @Override
