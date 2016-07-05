@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +58,28 @@ public class ProizvodiDatabase {
         return output;
     }
 
-    
+    public void updateProizvod(Proizvod proizvod) {
+        SQLServerDataSource ds = getDataSource();
+        try (Connection con = ds.getConnection();
+                CallableStatement stmt = con.prepareCall("{CALL updateProizvod(?, ?, ?, ?, ?)}")) {
+            stmt.setInt(1, proizvod.getProizvodId());
+            stmt.setString(2, proizvod.getNaziv());
+            stmt.setFloat(3, proizvod.getCijena());
+            stmt.setString(4, proizvod.getSlika());
+            stmt.setString(5, proizvod.getOpis());
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        Proizvod stariProizvod = getProizvod(proizvod.getProizvodId());
+        stariProizvod.setNaziv(proizvod.getNaziv());
+        stariProizvod.setCijena(proizvod.getCijena());
+        stariProizvod.setSlika(proizvod.getSlika());
+        stariProizvod.setOpis(proizvod.getOpis());
+    }
+
     private void FillKategorije() {
         SQLServerDataSource ds = getDataSource();
         try (Connection con = ds.getConnection();

@@ -12,13 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Proizvod;
 
 /**
  *
  * @author Jurica
  */
-public class KategorijeServlet extends HttpServlet {
-
+public class PromjenaProizvodaServlet extends HttpServlet {
+    
     ProizvodiDatabase proizvodiDatabase;
 
     @Override
@@ -26,34 +27,39 @@ public class KategorijeServlet extends HttpServlet {
         super.init();
         proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
     }
-
+    
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
-        if (request.getParameter("akcija") != null) {
-            int akcija = Integer.parseInt(request.getParameter("akcija").toString());
-            if (akcija == 1) {
-                response.sendRedirect("/WebShop/Admin/Kategorije.jsp");
-            } else {
-                response.sendRedirect("/WebShop/Korisnik/Kategorije.jsp");
-            }
-        } else {
-            response.sendRedirect("/WebShop/Korisnik/Kategorije.jsp");
-        }
+        int proizvodId = Integer.parseInt(request.getParameter("proizvodId"));
+        String proizvodNaziv = request.getParameter("proizvodNaziv");
+        float proizvodCijena = Float.parseFloat(request.getParameter("proizvodCijena"));
+        String proizvodSlika = request.getParameter("proizvodSlika");
+        String proizvodOpis = request.getParameter("proizvodOpis");
+        
+        Proizvod proizvod = new Proizvod();
+        proizvod.setProizvodId(proizvodId);
+        proizvod.setNaziv(proizvodNaziv);
+        proizvod.setCijena(proizvodCijena);
+        proizvod.setSlika(proizvodSlika);
+        proizvod.setOpis(proizvodOpis);
+        
+        proizvodiDatabase.updateProizvod(proizvod);
+        request.getSession().setAttribute("headerMsg", proizvodNaziv + " uspjesno promjenjen.");
+        response.sendRedirect("Kategorije?akcija=1");
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         processRequest(request, response);
     }
 }

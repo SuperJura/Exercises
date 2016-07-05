@@ -27,18 +27,33 @@ public class ProizvodiServlet extends HttpServlet {
         super.init();
         proizvodiDatabase = Repozitorij.getProizvodiDatabaseInstance();
     }
-    
-    
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String path = request.getQueryString();
-        int kategorijaId = Integer.parseInt(path.split("=")[1]);
-        
+        int kategorijaId = Integer.parseInt(request.getParameter("kategorijaId"));
+        if (request.getParameter("akcija") != null) {
+            int akcija = Integer.parseInt(request.getParameter("akcija"));
+            if (akcija == 1) {
+                posaljiAdminoveProizvode(request, kategorijaId, response);
+            } else {
+                posaljiKorisnikoveProizvode(request, kategorijaId, response);
+            }
+        } else {
+            posaljiKorisnikoveProizvode(request, kategorijaId, response);
+        }
+    }
+
+    private void posaljiKorisnikoveProizvode(HttpServletRequest request, int kategorijaId, HttpServletResponse response) throws IOException {
         SessionHelper.postaviProizvodeUSession(request.getSession(), kategorijaId, 0);
         request.getSession().setAttribute("kategorijaId", kategorijaId);
         request.getSession().setAttribute("kategorijaNaziv", proizvodiDatabase.getKategorija(kategorijaId).getNaziv());
         response.sendRedirect("/WebShop/Korisnik/Proizvodi.jsp");
+    }
+
+    private void posaljiAdminoveProizvode(HttpServletRequest request, int kategorijaId, HttpServletResponse response) throws IOException {
+        request.getSession().setAttribute("proizvodi", proizvodiDatabase.getAllProizvod(kategorijaId));
+        request.getSession().setAttribute("kategorijaNaziv", proizvodiDatabase.getKategorija(kategorijaId).getNaziv());
+        response.sendRedirect("/WebShop/Admin/Proizvodi.jsp");
     }
 
     @Override
@@ -52,4 +67,5 @@ public class ProizvodiServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
 }

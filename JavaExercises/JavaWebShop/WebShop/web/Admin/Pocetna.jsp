@@ -24,6 +24,7 @@
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><a class="btn btn-info"  href="/WebShop/PristupStranicama">Pregled pristupa stranicama</a></li>
+                        <li class="list-group-item"><a class="btn btn-info"  href="/WebShop/Kategorije?akcija=1">Mjenjanje proizvoda</a></li>
                         <li class="list-group-item"><a class="btn btn-info" href="/WebShop/PregledSpajanja">Pregled spajanja</a></li>
                         <li class="list-group-item"><a class="btn btn-info" href="/WebShop/PregledKupnji">Pregled kupnja</a></li>
                     </ul>

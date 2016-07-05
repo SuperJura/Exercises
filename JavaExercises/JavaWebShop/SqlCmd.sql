@@ -89,6 +89,26 @@ begin
 	where IDKategorija = @idKategorija
 end
 
+go
+
+create proc updateProizvod
+	@proizvodId int,
+	@Naziv nvarchar(50),
+	@Cijena money,
+	@Slika nvarchar(200),
+	@Opis nvarchar(50)
+as
+begin
+	update Proizvod
+	set
+	Naziv = @Naziv,
+	Cijena = @Cijena,
+	Slika = @Slika, 
+	Opis = @Opis
+	where ProizvodId = @proizvodId
+end
+
+go
 
 --KORISNICI
 

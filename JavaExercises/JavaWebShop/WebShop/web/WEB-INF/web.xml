@@ -84,6 +84,10 @@
         <servlet-name>DetaljiProizvodaServlet</servlet-name>
         <servlet-class>servlets.DetaljiProizvodaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PromjenaProizvodaServlet</servlet-name>
+        <servlet-class>servlets.PromjenaProizvodaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>DetaljiProizvodaServlet</servlet-name>
         <url-pattern>/DetaljiProizvoda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PromjenaProizvodaServlet</servlet-name>
+        <url-pattern>/PromjenaProizvoda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

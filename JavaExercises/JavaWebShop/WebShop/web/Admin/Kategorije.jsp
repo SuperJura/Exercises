@@ -1,6 +1,6 @@
 <%-- 
     Document   : Kategorije
-    Created on : Apr 30, 2016, 3:49:18 PM
+    Created on : Jul 5, 2016, 9:05:32 PM
     Author     : Jurica
 --%>
 
@@ -14,13 +14,13 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Kategorije proizvoda koje Vam nudimo"/>
+        <jl:headerMessage defaultMessage="Odaberite kategoriju proizvoda koje zelite mjenjati"/>
         <jsp:include page="../PartialJSP/PrikazKategorija.jsp"/>
     </body>
     <script>
         function kategorijaOnClick(id)
         {
-            window.location.href = "/WebShop/Proizvodi?kategorijaId=" + id;
+            window.location.href = "/WebShop/Proizvodi?kategorijaId=" + id + "&akcija=1";
         }
     </script>
 </html>
