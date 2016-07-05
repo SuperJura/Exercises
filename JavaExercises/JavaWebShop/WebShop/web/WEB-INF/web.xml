@@ -80,6 +80,10 @@
         <servlet-name>KupnjaGotovinaServlet</servlet-name>
         <servlet-class>Servlets.KupnjaGotovinaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetaljiProizvodaServlet</servlet-name>
+        <servlet-class>servlets.DetaljiProizvodaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -136,6 +140,10 @@
         <servlet-name>KupnjaGotovinaServlet</servlet-name>
         <url-pattern>/KupnjaGotovina</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetaljiProizvodaServlet</servlet-name>
+        <url-pattern>/DetaljiProizvoda</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             120
@@ -144,7 +152,6 @@
     <welcome-file-list>
         <welcome-file>Pocetna</welcome-file>
     </welcome-file-list>
-    
     <error-page>
         <location>/Korisnik/Error.jsp</location>
     </error-page>

@@ -30,7 +30,6 @@
                 <h4>Java Server Faces</h4>
             </div>
             <div class="col-lg-3">
-                <h4>REST</h4>
                 <h4>Filters, Tags, jsp:include</h4>
                 <h4>MS Sql Server</h4>
             </div>

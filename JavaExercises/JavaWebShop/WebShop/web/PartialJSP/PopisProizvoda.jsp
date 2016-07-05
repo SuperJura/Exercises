@@ -23,7 +23,7 @@
 <script>
     function displayProizvod(id) {
         proizvodId = id.toString().split("_")[1];
-        $.ajax({url: "/WebShop/rest/proizvodi/" + proizvodId,
+        $.ajax({url: "/WebShop/DetaljiProizvoda?id=" + proizvodId,
             success: function (data) {
                 document.getElementById("proizvodNaziv").textContent = data.naziv;
                 document.getElementById("proizvodKategorija").textContent = data.kategorija;
