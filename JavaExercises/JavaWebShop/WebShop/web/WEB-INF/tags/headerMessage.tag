@@ -9,6 +9,7 @@
 
 <%-- The list of normal or fragment attributes can be specified here: --%>
 <%@attribute name="defaultMessage" required="true"%>
+<%@attribute name="highlited" required="false"%>
 
 <%-- any content can be specified here e.g.: --%>
 <div class="alert alert-info text-center">
@@ -19,4 +20,8 @@
         ${headerMsg}
         <c:remove var="headerMsg" scope="session" />
     </c:if>
+    <span class="txtBlue">
+        ${highlited}
+    </span>
+
 </div>

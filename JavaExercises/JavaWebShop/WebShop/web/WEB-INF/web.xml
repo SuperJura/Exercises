@@ -45,8 +45,8 @@
         <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PaginationServlet</servlet-name>
-        <servlet-class>servlets.PaginationServlet</servlet-class>
+        <servlet-name>StranicenjeServlet</servlet-name>
+        <servlet-class>servlets.StranicenjeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfilServlet</servlet-name>
@@ -105,8 +105,8 @@
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PaginationServlet</servlet-name>
-        <url-pattern>/Pagination</url-pattern>
+        <servlet-name>StranicenjeServlet</servlet-name>
+        <url-pattern>/Stranicenje</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProfilServlet</servlet-name>

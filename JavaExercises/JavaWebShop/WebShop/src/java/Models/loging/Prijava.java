@@ -17,58 +17,34 @@ public class Prijava {
     private String ipAdresa;
     private Date datum;
 
-    /**
-     * @return the korisnikId
-     */
     public int getKorisnikId() {
         return korisnikId;
     }
 
-    /**
-     * @param korisnikId the korisnikId to set
-     */
     public void setKorisnikId(int korisnikId) {
         this.korisnikId = korisnikId;
     }
 
-    /**
-     * @return the ipAdresa
-     */
     public String getIpAdresa() {
         return ipAdresa;
     }
 
-    /**
-     * @param ipAdresa the ipAdresa to set
-     */
     public void setIpAdresa(String ipAdresa) {
         this.ipAdresa = ipAdresa;
     }
 
-    /**
-     * @return the datum
-     */
     public Date getDatum() {
         return datum;
     }
 
-    /**
-     * @param datum the datum to set
-     */
     public void setDatum(Date datum) {
         this.datum = datum;
     }
-
-    /**
-     * @return the korisnik
-     */
+    
     public String getKorisnik() {
         return korisnik;
     }
 
-    /**
-     * @param korisnik the korisnik to set
-     */
     public void setKorisnik(String korisnik) {
         this.korisnik = korisnik;
     }

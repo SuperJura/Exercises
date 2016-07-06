@@ -53,6 +53,7 @@ public class KupnjaServlet extends HttpServlet {
             float amount = korisnik.getKosarica().getSveukupnaCijenaEuri();
             payPalFunctions.ConfirmPayment(token, payerId, amount + "");
         }
+        
         List<Transakcija> transakcije = new ArrayList<>();
         for (int proizvodId : korisnik.getKosarica().getProizvodi().keySet()) {
             Proizvod proizvod = proizvodiDatabase.getProizvod(proizvodId);
@@ -71,12 +72,14 @@ public class KupnjaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 }

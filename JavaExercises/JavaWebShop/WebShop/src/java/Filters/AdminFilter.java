@@ -5,6 +5,7 @@
  */
 package filters;
 
+import helpers.SessionHelper;
 import models.Korisnik;
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -30,12 +31,12 @@ public class AdminFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         if (req.getSession().getAttribute("korisnik") != null) {
-            Korisnik korisnik = (Korisnik)req.getSession().getAttribute("korisnik");
+            Korisnik korisnik = (Korisnik) req.getSession().getAttribute("korisnik");
             if (!korisnik.isAdministrator()) {
-                res.sendRedirect("Pocetna");
+                posaljiNaKorisnikovuPocetnu(req, res);
             }
         } else {
-            res.sendRedirect("Pocetna");
+            posaljiNaKorisnikovuPocetnu(req, res);
         }
 
         try {
@@ -49,5 +50,10 @@ public class AdminFilter implements Filter {
     }
 
     public void init(FilterConfig filterConfig) {
+    }
+
+    private void posaljiNaKorisnikovuPocetnu(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        SessionHelper.postaviProizvodeUSession(req.getSession(), -1, 0);
+        res.sendRedirect("/WebShop/Korisnik/Pocetna.jsp");
     }
 }

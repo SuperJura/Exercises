@@ -40,7 +40,6 @@
     </c:forEach>
 </table>
 <script>
-    //TODO stavi javascript u posebnu fajlu
     var tds = $("td[cijena]");
     for (i = 0; i < tds.length; i++) {
         cijena = $(tds[i]).attr("cijena");

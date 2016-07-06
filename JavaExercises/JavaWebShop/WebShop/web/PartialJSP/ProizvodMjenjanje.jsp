@@ -1,4 +1,4 @@
-<div class="col-md-8 panel panel-default hidden background-light" id="divDetails">
+<div class="col-md-8 panel panel-default background-light" id="divDetails">
     <form action="../PromjenaProizvoda" method="post">
         <input type="text" class="hidden" id="proizvodId" name="proizvodId" readonly="true"/>
         <div class="panel background-dark">
@@ -17,7 +17,7 @@
             Kratak opis:
             <input type="text" maxlength="50" class="form-control" id="proizvodOpis" name="proizvodOpis"/>
         </div>
-        <button type="submit" class="btn btn-default" name="promjena">Promjeni</button>
-        <button type="submit" class="btn btn-success" name="dodavanje">Dodaj novi proizvod u kategoriju</button>
+        <button type="submit" class="btn btn-default hidden" name="btnPromjena" id="btnPromjena">Promjeni</button>
+        <button type="submit" class="btn btn-success" name="btnDodavanje" id="btnDodavanje">Dodaj novi proizvod u kategoriju</button>
     </form>
 </div>

@@ -11,6 +11,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +79,29 @@ public class ProizvodiDatabase {
         stariProizvod.setCijena(proizvod.getCijena());
         stariProizvod.setSlika(proizvod.getSlika());
         stariProizvod.setOpis(proizvod.getOpis());
+    }
+    
+    public void insertProizvod(Proizvod proizvod) {
+        SQLServerDataSource ds = getDataSource();
+        int proizvodId = 0;
+        try (Connection con = ds.getConnection();
+                CallableStatement stmt = con.prepareCall("{CALL insertProizvod(?, ?, ?, ?, ?, ?)}")) {
+            stmt.registerOutParameter(1, Types.INTEGER);
+            stmt.setInt(2, proizvod.getIdKategorija());
+            stmt.setString(3, proizvod.getNaziv());
+            stmt.setFloat(4, proizvod.getCijena());
+            stmt.setString(5, proizvod.getSlika());
+            stmt.setString(6, proizvod.getOpis());
+
+            stmt.execute();
+            proizvodId = stmt.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        proizvod.setKategorija(getKategorija(proizvod.getIdKategorija()).getNaziv());
+        proizvod.setProizvodId(proizvodId);
+        getAllProizvod(proizvod.getIdKategorija()).add(proizvod);
     }
 
     private void FillKategorije() {

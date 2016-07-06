@@ -47,6 +47,15 @@ public class PocetnaServlet extends HttpServlet {
         }
     }
 
+    private void redirectNaKorisnikovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
+        response.sendRedirect("/WebShop/Korisnik/Pocetna.jsp");
+    }
+
+    private void redirectNaAdminovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect("/WebShop/Admin/Pocetna.jsp");
+    }
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,14 +66,5 @@ public class PocetnaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
-
-    private void redirectNaKorisnikovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        SessionHelper.postaviProizvodeUSession(request.getSession(), -1, 0);
-        response.sendRedirect("/WebShop/Korisnik/Pocetna.jsp");
-    }
-
-    private void redirectNaAdminovuPocetnu(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("/WebShop/Admin/Pocetna.jsp");
     }
 }

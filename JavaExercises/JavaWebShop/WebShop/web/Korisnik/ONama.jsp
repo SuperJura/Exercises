@@ -13,32 +13,31 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-    <jl:headerMessage defaultMessage="Informacije o Java Web Shop"/>
-    <div class="container text-center">
-        <div class="jumbotron">
-            <h1 class="display-3">Java Web Shop </h1>
-            <p class="lead">Web aplikacija napravljena pomocu Java EE za kolegij "Java Web Programiranje"</p>
-        </div>
-
-        <div class="row text-center">
-            <h3>Koristene komponente</h3>
-        </div>
-        <div class="row marketing">
-            <div class="col-lg-3 col-lg-offset-3">
-                <h4>Servlets</h4>
-                <h4>Java Server Pages</h4>
-                <h4>Java Server Faces</h4>
+        <jl:headerMessage defaultMessage="Informacije o Java Web Shop"/>
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h1 class="display-3">Java Web Shop </h1>
+                <p class="lead">Web aplikacija napravljena pomocu Java EE za kolegij "Java Web Programiranje"</p>
             </div>
-            <div class="col-lg-3">
-                <h4>Filters, Tags, jsp:include</h4>
-                <h4>MS Sql Server</h4>
+
+            <div class="row text-center">
+                <h3>Koristene komponente</h3>
             </div>
+            <div class="row marketing">
+                <div class="col-lg-3 col-lg-offset-3">
+                    <h4>Servlets</h4>
+                    <h4>Java Server Pages</h4>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Filters, Tags, jsp:include</h4>
+                    <h4>MS Sql Server</h4>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>Jurica Adamek</p>
+            </footer>
+
         </div>
-
-        <footer class="footer">
-            <p>Jurica Adamek</p>
-        </footer>
-
-    </div>
-</body>
+    </body>
 </html>

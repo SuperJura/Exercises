@@ -86,10 +86,8 @@ public class ExpressCheckoutServlet extends HttpServlet {
         } else {
             // Display a user friendly Error on the page using any of the following error information returned by PayPal
 
-            String ErrorCode = nvp.get("L_ERRORCODE0").toString();
-            String ErrorShortMsg = nvp.get("L_SHORTMESSAGE0").toString();
             String ErrorLongMsg = nvp.get("L_LONGMESSAGE0").toString();
-            String ErrorSeverityCode = nvp.get("L_SEVERITYCODE0").toString();
+            System.out.println(ErrorLongMsg);
         }
     }
 

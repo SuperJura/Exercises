@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://jurica.adamek.java3" prefix="jl" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +14,12 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-    <jl:headerMessage defaultMessage="Informacije o Java Web Shop"/>
-    <div class="container text-center">
-        <div class="jumbotron">
-            <h3 class="display-3">Dogodila se pogreska</h3>
-            <p><a class="btn btn-lg btn-danger" href="/WebShop/Pocetna" role="button">Povratak na pocetnu stranicu</a></p>
+        <jl:headerMessage defaultMessage="Informacije o Java Web Shop"/>
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h3 class="display-3">Dogodila se pogreska</h3>
+                <p><a class="btn btn-lg btn-danger" href="/WebShop/Pocetna" role="button">Povratak na pocetnu stranicu</a></p>
+            </div>
         </div>
-    </div>
 </body>
 </html>

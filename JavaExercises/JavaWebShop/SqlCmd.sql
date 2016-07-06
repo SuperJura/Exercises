@@ -110,6 +110,23 @@ end
 
 go
 
+create proc insertProizvod
+	@proizvodId int out,
+	@IdKategorija int,
+	@Naziv nvarchar(50),
+	@Cijena money,
+	@Slika nvarchar(200),
+	@Opis nvarchar(50)
+as
+begin
+	insert into Proizvod(IdKategorija, Naziv, Cijena, Slika, Opis)
+	values
+	(@IdKategorija, @Naziv, @Cijena, @Slika, @Opis)
+	Set @proizvodId = scope_identity()
+end
+
+go
+
 --KORISNICI
 
 create table Korisnik

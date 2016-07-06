@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://jurica.adamek.java3" prefix="jl" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,12 +15,8 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <div class="alert alert-info text-center">
-            Mjenjate proizvode iz kategorije: 
-            <span class="txtBlue">
-                ${sessionScope.kategorijaNaziv}
-            </span>
-        </div>
+        <jl:headerMessage defaultMessage="Mjenjate proizvode iz kategorije:" highlited="${sessionScope.kategorijaNaziv}"/>
+        
         <div class="row">
             <div class="btn-group col-md-1 col-md-offset-1">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +41,7 @@
                 document.getElementById("proizvodSlika").value = data.slika;
                 document.getElementById("proizvodOpis").value = data.opis;
                 document.getElementById("proizvodId").value = data.proizvodId;
-                document.getElementById("divDetails").classList.remove("hidden");
+                document.getElementById("btnPromjena").classList.remove("hidden");
             }
         });
     }

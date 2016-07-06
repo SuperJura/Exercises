@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/filters/AuthFilter.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/WEB-INF/web.xml</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Korisnik/Proizvodi.jsp</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/dataAccessLayer/ProizvodiDatabase.java</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/models/Proizvod.java</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/WEB-INF/tags/headerMessage.tag</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/PartialJSP/ProizvodMjenjanje.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Admin/Kategorije.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/PartialJSP/PopisProizvoda.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Korisnik/Login.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/PartialJSP/ProizvodDetails.jsp</file>
-            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/PromjenaProizvodaServlet.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/LoginServlet.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/StranicenjeServlet.java</file>
         </group>
     </open-files>
 </project-private>

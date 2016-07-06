@@ -1,8 +1,8 @@
-<script src="../Resources/js/jquery-2.2.3.js" type="text/javascript"></script>
-<script src="../Resources/js/bootstrap.js" type="text/javascript"></script>
+<script src="/WebShop/Resources/js/jquery-2.2.3.js" type="text/javascript"></script>
+<script src="/WebShop/Resources/js/bootstrap.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link href="../Resources/Css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link href="../Resources/Css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="/WebShop/Resources/Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="/WebShop/Resources/Css/styles.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -36,6 +36,7 @@
                     <li><a href="/WebShop/PristupStranicama">Pregled pristupa stranicama</a></li>
                     <li><a href="/WebShop/PregledSpajanja">Pregled spajanja</a></li>
                     <li><a href="/WebShop/PregledKupnji">Pregled kupnja</a></li>
+                    <li><a href="/WebShop/Kategorije?akcija=1">Promjena proizvoda</a></li>
                     <li>
                         <a href="/WebShop/Profil">
                             Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>

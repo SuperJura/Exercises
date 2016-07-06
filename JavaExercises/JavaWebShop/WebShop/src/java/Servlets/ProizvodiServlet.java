@@ -52,6 +52,7 @@ public class ProizvodiServlet extends HttpServlet {
 
     private void posaljiAdminoveProizvode(HttpServletRequest request, int kategorijaId, HttpServletResponse response) throws IOException {
         request.getSession().setAttribute("proizvodi", proizvodiDatabase.getAllProizvod(kategorijaId));
+        request.getSession().setAttribute("kategorijaId", kategorijaId);
         request.getSession().setAttribute("kategorijaNaziv", proizvodiDatabase.getKategorija(kategorijaId).getNaziv());
         response.sendRedirect("/WebShop/Admin/Proizvodi.jsp");
     }

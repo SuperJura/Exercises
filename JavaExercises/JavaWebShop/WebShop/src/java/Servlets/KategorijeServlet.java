@@ -32,7 +32,7 @@ public class KategorijeServlet extends HttpServlet {
 
         request.getSession().setAttribute("kategorije", proizvodiDatabase.getAllKategorije());
         if (request.getParameter("akcija") != null) {
-            int akcija = Integer.parseInt(request.getParameter("akcija").toString());
+            int akcija = Integer.parseInt(request.getParameter("akcija"));
             if (akcija == 1) {
                 response.sendRedirect("/WebShop/Admin/Kategorije.jsp");
             } else {
