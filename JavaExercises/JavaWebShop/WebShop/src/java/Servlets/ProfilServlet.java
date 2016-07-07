@@ -21,6 +21,7 @@ public class ProfilServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         if (request.getSession().getAttribute("korisnik") != null) {
             Kosarica kosarica = ((Korisnik) request.getSession().getAttribute("korisnik")).getKosarica();
             request.getSession().setAttribute("cijena", kosarica.getSveukupnaCijena());
@@ -31,12 +32,14 @@ public class ProfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 }

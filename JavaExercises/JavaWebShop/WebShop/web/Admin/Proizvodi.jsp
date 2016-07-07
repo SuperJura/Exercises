@@ -24,7 +24,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <c:forEach var="p" begin="0" items="${proizvodi}" step="1">
-                        <li><a onclick="displayProizvod(${p.proizvodId})">${p.naziv}</a></li>
+                        <li><a onclick="displayProizvodAdmin(${p.proizvodId})">${p.naziv}</a></li>
                     </c:forEach>
                 </ul>
             </div>
@@ -32,17 +32,3 @@
             <jsp:include page="../PartialJSP/ProizvodMjenjanje.jsp"/>
     </body>
 </html>
-<script>
-    function displayProizvod(id) {
-        $.ajax({url: "/WebShop/DetaljiProizvoda?id=" + id,
-            success: function (data) {
-                document.getElementById("proizvodNaziv").value = data.naziv;
-                document.getElementById("proizvodCijena").value = data.cijena;
-                document.getElementById("proizvodSlika").value = data.slika;
-                document.getElementById("proizvodOpis").value = data.opis;
-                document.getElementById("proizvodId").value = data.proizvodId;
-                document.getElementById("btnPromjena").classList.remove("hidden");
-            }
-        });
-    }
-</script>

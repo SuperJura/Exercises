@@ -30,6 +30,7 @@ public class ProizvodiServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         int kategorijaId = Integer.parseInt(request.getParameter("kategorijaId"));
         if (request.getParameter("akcija") != null) {
             int akcija = Integer.parseInt(request.getParameter("akcija"));
@@ -60,12 +61,14 @@ public class ProizvodiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 

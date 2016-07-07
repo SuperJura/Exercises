@@ -57,18 +57,6 @@ public class PregledSpajanjaServlet extends HttpServlet {
         response.sendRedirect("/WebShop/Admin/PregledSpajanja.jsp");
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
     private void dohvatiSvaLogiranja(HttpServletRequest request) {
         int id = Integer.parseInt(request.getSession().getAttribute("trenutniKorisnikId").toString());
         List<PristupStranici> pristupi = logDatabase.getPristupe(id);
@@ -88,5 +76,19 @@ public class PregledSpajanjaServlet extends HttpServlet {
 
         List<Prijava> prijave = logDatabase.getPrijave(id, dateOd, dateDo);
         request.getSession().setAttribute("prijave", prijave);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        processRequest(request, response);
     }
 }

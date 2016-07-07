@@ -29,7 +29,7 @@ public class AuthFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         Korisnik korisnik = (Korisnik) req.getSession().getAttribute("korisnik");
         if (korisnik == null || korisnik.getKorisnickoIme() == null) {
-            req.getSession().setAttribute("loginError", "Nemožete kupovati proizvode u košarici ako niste prijavljeni!");
+            req.getSession().setAttribute("loginError", "Nemozete kupovati proizvode u kosarici ako niste prijavljeni!");
             res.sendRedirect("/WebShop/Korisnik/Login.jsp");
         }
 

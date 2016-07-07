@@ -397,3 +397,9 @@ begin
 	values
 	(@idKorisnik, @ipAdresa, @datum)
 end
+
+--select * from Korisnik
+--delete Transakcija where IdKorisnik = 8
+--delete PristupStranicama where IdKorisnik = 8
+--delete Prijave where IdKorisnik = 8
+--delete Korisnik where KorisnikId = 8

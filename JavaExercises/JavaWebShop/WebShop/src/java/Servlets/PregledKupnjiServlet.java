@@ -35,6 +35,7 @@ public class PregledKupnjiServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         List<Korisnik> sviKorisnici = korisniciDatabase.getSveKorisnike();
         request.getSession().setAttribute("korisnici", sviKorisnici);
 
@@ -55,18 +56,6 @@ public class PregledKupnjiServlet extends HttpServlet {
 
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
     private void dohvatiSveTransakcije(HttpServletRequest request) {
         int id = Integer.parseInt(request.getSession().getAttribute("trenutniKorisnikId").toString());
         List<Transakcija> transakcije = transakcijeDatabase.getTransakcije(id);
@@ -82,4 +71,19 @@ public class PregledKupnjiServlet extends HttpServlet {
         List<Transakcija> transakcije = transakcijeDatabase.getTransakcije(id, dateOd, dateDo);
         request.getSession().setAttribute("transakcije", transakcije);
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        processRequest(request, response);
+    }
+
 }

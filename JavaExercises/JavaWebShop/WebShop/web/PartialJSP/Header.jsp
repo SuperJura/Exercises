@@ -1,3 +1,4 @@
+<script src="../Resources/js/javascript.js" type="text/javascript"></script>
 <script src="/WebShop/Resources/js/jquery-2.2.3.js" type="text/javascript"></script>
 <script src="/WebShop/Resources/js/bootstrap.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

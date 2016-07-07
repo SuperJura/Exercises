@@ -25,25 +25,3 @@
         </div>
     </body>
 </html>
-<script>
-    function prikaziKorisnika(id) {
-        window.location.href = "/WebShop/PregledKorisnikovihKupnjiServlet?pregledKorisnikId=" + id;
-    }
-    function prikaziKorisnikaSDatumom()
-    {
-        var datumOd = $("#dpOd").val();
-        var datumDo = $("#dpDo").val();
-        if (datumOd && datumDo) {
-            window.location.href = "/WebShop/PregledKorisnikovihKupnjiServlet?pregledKorisnikId=" + ${trenutniKorisnikId} +
-                    "&datumOd=" + datumOd + "&datumDo=" + datumDo;
-        }
-    }
-    $(function () {
-        $("#dpOd").datepicker({
-            dateFormat: "dd.mm.yy"
-        });
-        $("#dpDo").datepicker({
-            dateFormat: "dd.mm.yy"
-        });
-    });
-</script>

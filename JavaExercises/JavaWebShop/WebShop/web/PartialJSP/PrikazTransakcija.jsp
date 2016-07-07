@@ -44,6 +44,6 @@
     for (i = 0; i < tds.length; i++) {
         cijena = $(tds[i]).attr("cijena");
         floatCijena = parseFloat(cijena);
-        tds[i].innerHTML = floatCijena.toFixed(2) + " KN";
+        tds[i].innerHTML = getCijenaKune(floatCijena);
     }
 </script>

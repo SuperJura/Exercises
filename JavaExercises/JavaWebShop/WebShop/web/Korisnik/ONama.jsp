@@ -37,7 +37,6 @@
             <footer class="footer">
                 <p>Jurica Adamek</p>
             </footer>
-
         </div>
     </body>
 </html>

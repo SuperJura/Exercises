@@ -15,7 +15,7 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Pregledajte naše popularne proizvode ovdje!"/>
+        <jl:headerMessage defaultMessage="Pregledajte nase popularne proizvode ovdje!"/>
         <div class="row">
             <div class="col-md-5 col-md-offset-1">
                 <jsp:include page="../PartialJSP/PopisProizvoda.jsp"/>

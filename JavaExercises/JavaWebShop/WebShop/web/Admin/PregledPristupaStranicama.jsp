@@ -23,10 +23,10 @@
                 ${kolicinaZapisa}<span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a onclick="prikaziPristupe(25)">25</a></li>
-                <li><a onclick="prikaziPristupe(50)">50</a></li>
-                <li><a onclick="prikaziPristupe(100)">100</a></li>
-                <li><a onclick="prikaziPristupe(150)">150</a></li>
+                <li><a onclick="prikaziPristupeKorisnika(25)">25</a></li>
+                <li><a onclick="prikaziPristupeKorisnika(50)">50</a></li>
+                <li><a onclick="prikaziPristupeKorisnika(100)">100</a></li>
+                <li><a onclick="prikaziPristupeKorisnika(150)">150</a></li>
             </ul>
         </div>
         <div class="row topMargin">
@@ -68,7 +68,4 @@
     </body>
 </html>
 <script>
-    function prikaziPristupe(kolicina) {
-        window.location.href = "/WebShop/PristupStranicama?kolicinaZapisa=" + kolicina;
-    }
 </script>

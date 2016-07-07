@@ -17,10 +17,10 @@
         <jl:headerMessage defaultMessage="Odaberite kategoriju proizvoda koje zelite mjenjati"/>
         <jsp:include page="../PartialJSP/PrikazKategorija.jsp"/>
     </body>
-    <script>
-        function kategorijaOnClick(id)
-        {
-            window.location.href = "/WebShop/Proizvodi?kategorijaId=" + id + "&akcija=1";
-        }
-    </script>
 </html>
+<script>
+    function prikaziKategoriju(id)
+    {
+        window.location.href = "/WebShop/Proizvodi?kategorijaId=" + id + "&akcija=1";
+    }
+</script>

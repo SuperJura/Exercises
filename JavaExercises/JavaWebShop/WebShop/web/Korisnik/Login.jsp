@@ -22,8 +22,8 @@
                     <form class="form-signin" action="/WebShop/Login" method="POST">
                         <h2 class="form-signin-heading">Prijavite se</h2>
                         <input hidden="true" name="akcija" value="1"/>
-                        <label class="sr-only">Korisničko ime:</label>
-                        <input type="text" id="txtIme" name="txtIme" class="form-control" placeholder="Korisničko ime" required autofocus>
+                        <label class="sr-only">Korisnicko ime:</label>
+                        <input type="text" id="txtIme" name="txtIme" class="form-control" placeholder="Korisnicko ime" required autofocus>
                         <label class="sr-only">Lozinka:</label>
                         <input type="password" id="txtLozinka" name="txtLozinka" class="form-control" placeholder="Lozinka" required>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Prijavi se!</button>
@@ -32,12 +32,12 @@
             </div>
             <div class="col-md-5">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Nemate račun?</div>
+                    <div class="panel-heading">Nemate racun?</div>
                     <form class="form-signin" action="/WebShop/Login" method="POST">
                         <h2 class="form-signin-heading">Registrirajte se</h2>
                         <input hidden="true" name="akcija" value="2"/>
-                        <label class="sr-only">Korisničko ime:</label>
-                        <input type="text" id="txtImeReg" name="txtImeReg" class="form-control" placeholder="Korisničko ime" required >
+                        <label class="sr-only">Korisnicko ime:</label>
+                        <input type="text" id="txtImeReg" name="txtImeReg" class="form-control" placeholder="Korisnicko ime" required >
                         <label class="sr-only">Lozinka:</label>
                         <input type="password" id="txtLozinkaReg" name="txtLozinkaReg" class="form-control" placeholder="Lozinka" required>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Registrirajte se!</button>
