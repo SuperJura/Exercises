@@ -8,6 +8,7 @@
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/LoginServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/ProfilServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/KategorijeServlet.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/web/Admin/Pocetna.jsp</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/PocetnaServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/KupnjaServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/StranicenjeServlet.java</file>
@@ -15,6 +16,7 @@
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/DetaljiProizvodaServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/models/loging/PristupStranici.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/KosaricaServlet.java</file>
+            <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/dataAccessLayer/ProizvodiDatabase.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/PristupStranicamaServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/servlets/PregledKorisnikovihKupnjiServlet.java</file>
             <file>file:/D:/temp/Exercises/JavaExercises/JavaWebShop/WebShop/src/java/models/loging/Prijava.java</file>

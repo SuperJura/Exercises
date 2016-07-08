@@ -8,6 +8,7 @@ package dataAccessLayer;
 import models.Kategorija;
 import models.Proizvod;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,6 +33,9 @@ public class ProizvodiDatabase {
         allKategorije = new ArrayList<>();
         allProizvodi = new HashMap<>();
         FillKategorije();
+        for (Kategorija kategorija : allKategorije) {
+            FillProizvode(kategorija.getKategorijaId());
+        }
     }
 
     public List<Kategorija> getAllKategorije() {
@@ -41,21 +47,15 @@ public class ProizvodiDatabase {
     }
 
     public synchronized List<Proizvod> getAllProizvod(int idKategorija) {
-        if (!allProizvodi.containsKey(idKategorija)) {
-            FillProizvode(idKategorija);
-        }
         return allProizvodi.get(idKategorija);
-
     }
 
     public List<Proizvod> getPopularProizvodi() {
-        ArrayList<Proizvod> output = new ArrayList<>();
-        output.add(getAllProizvod(1).get(0));
-        output.add(getAllProizvod(2).get(0));
-        output.add(getAllProizvod(3).get(0));
-        output.add(getAllProizvod(4).get(0));
-        output.add(getAllProizvod(5).get(0));
-
+        List<Proizvod> output = new ArrayList<>();
+        List<Integer> popularniId = getPopularniProizvodiId();
+        for (Integer id : popularniId) {
+            output.add(getProizvod(id));
+        }
         return output;
     }
 
@@ -73,14 +73,14 @@ public class ProizvodiDatabase {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         Proizvod stariProizvod = getProizvod(proizvod.getProizvodId());
         stariProizvod.setNaziv(proizvod.getNaziv());
         stariProizvod.setCijena(proizvod.getCijena());
         stariProizvod.setSlika(proizvod.getSlika());
         stariProizvod.setOpis(proizvod.getOpis());
     }
-    
+
     public void insertProizvod(Proizvod proizvod) {
         SQLServerDataSource ds = getDataSource();
         int proizvodId = 0;
@@ -98,10 +98,21 @@ public class ProizvodiDatabase {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         proizvod.setKategorija(getKategorija(proizvod.getIdKategorija()).getNaziv());
         proizvod.setProizvodId(proizvodId);
         getAllProizvod(proizvod.getIdKategorija()).add(proizvod);
+    }
+
+    public Proizvod getProizvod(int idProizvod) {
+        for (int kat : allProizvodi.keySet()) {
+            for (Proizvod proizvod : allProizvodi.get(kat)) {
+                if (proizvod.getProizvodId() == idProizvod) {
+                    return proizvod;
+                }
+            }
+        }
+        return null;
     }
 
     private void FillKategorije() {
@@ -154,14 +165,19 @@ public class ProizvodiDatabase {
         }
     }
 
-    public Proizvod getProizvod(int idProizvod) {
-        for (int kat : allProizvodi.keySet()) {
-            for (Proizvod proizvod : allProizvodi.get(kat)) {
-                if (proizvod.getProizvodId() == idProizvod) {
-                    return proizvod;
-                }
+    private List<Integer> getPopularniProizvodiId() {
+        List<Integer> output = new ArrayList<>();
+        SQLServerDataSource ds = getDataSource();
+        try (Connection con = ds.getConnection();
+                CallableStatement stmt = con.prepareCall("{CALL getPopularniProizvodiId}")) {
+            ResultSet data = stmt.executeQuery();
+            while (data.next()) {
+                int idProizvod = data.getInt("IdProizvod");
+                output.add(idProizvod);
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return null;
+        return output;
     }
 }

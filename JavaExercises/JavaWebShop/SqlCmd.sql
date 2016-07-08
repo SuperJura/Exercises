@@ -91,6 +91,19 @@ end
 
 go
 
+create proc getPopularniProizvodiId
+as
+begin
+	select top 5
+	IdProizvod, SUM(Kolicina) as prodano
+	from Transakcija
+	inner join Proizvod as p
+	on IdProizvod = p.ProizvodId
+	group by IdProizvod
+	order by prodano desc
+end
+go
+
 create proc updateProizvod
 	@proizvodId int,
 	@Naziv nvarchar(50),
@@ -398,8 +411,8 @@ begin
 	(@idKorisnik, @ipAdresa, @datum)
 end
 
---select * from Korisnik
---delete Transakcija where IdKorisnik = 8
---delete PristupStranicama where IdKorisnik = 8
---delete Prijave where IdKorisnik = 8
---delete Korisnik where KorisnikId = 8
+select * from Korisnik
+delete Transakcija where IdKorisnik = 9
+delete PristupStranicama where IdKorisnik = 9
+delete Prijave where IdKorisnik = 9
+delete Korisnik where KorisnikId = 9

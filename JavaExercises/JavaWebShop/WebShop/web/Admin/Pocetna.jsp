@@ -36,7 +36,6 @@
                         <h3>Korisnikove stranice</h3>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><a class="btn btn-success"  href="/WebShop/Pocetna">Java web shop - pocetna</a></li>
                         <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Kategorije">Kategorije</a></li>
                         <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Profil">Kosarica</a></li>
                         <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Korisnik/ONama.jsp">O nama</a></li>
