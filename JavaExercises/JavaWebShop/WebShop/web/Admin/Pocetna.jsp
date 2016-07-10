@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ADMIN Pocetna stranica</title>
+        <title>ADMIN Početna stranica</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
@@ -37,7 +37,7 @@
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Kategorije">Kategorije</a></li>
-                        <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Profil">Kosarica</a></li>
+                        <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Profil">Košarica</a></li>
                         <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Korisnik/ONama.jsp">O nama</a></li>
                     </ul>
                 </div>

@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="jl" uri="http://jurica.adamek.java3"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -5,16 +6,16 @@
 <table class="table table-bordered">
     <tr>
         <td class="boldBlack">
-            Ime proizvoda
+            Naziv proizvoda
         </td>
         <td class="boldBlack">
-            Kolicina tog proizvoda
+            Količina tog proizvoda
         </td>
         <td class="boldBlack">
             Datum kupnje
         </td>
         <td class="boldBlack">
-            Tip placanja
+            Tip plaćanja
         </td>
         <td class="boldBlack">
             Sveukupna cijena

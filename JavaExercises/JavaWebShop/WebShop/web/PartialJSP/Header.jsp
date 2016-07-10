@@ -5,6 +5,7 @@
 <link href="/WebShop/Resources/Css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="/WebShop/Resources/Css/styles.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +25,7 @@
                     <li><a href="/WebShop/Kategorije">Kategorije</a></li>
                     <li>
                         <a href="/WebShop/Profil">
-                            Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>
+                            Košarica <span class="bold"> ${korisnik.korisnickoIme}</span>
                         </a>
                     </li>
                     <li><a href="/WebShop/Korisnik/ONama.jsp">O nama</a></li>
@@ -40,7 +41,7 @@
                     <li><a href="/WebShop/Kategorije?akcija=1">Promjena proizvoda</a></li>
                     <li>
                         <a href="/WebShop/Profil">
-                            Kosarica <span class="bold"> ${korisnik.korisnickoIme}</span>
+                            Košarica <span class="bold"> ${korisnik.korisnickoIme}</span>
                         </a>
                     </li>
                 </ul>

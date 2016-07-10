@@ -16,7 +16,7 @@
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Odaberite nacin placanja"/>
         <div class="row">
-            <h3 class="text-center"/>Tipovi placanja</h3>
+            <h3 class="text-center"/>Tipovi plaćanja</h3>
         <hr>
         <div class="col-sm-3 col-md-offset-1">
             <div class="panel panel-info text-center">
@@ -24,7 +24,7 @@
                     <h3>Gotovina</h3>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Placanje gotovinom ne zahtjeva karticu ili PayPal racun</li>
+                    <li class="list-group-item">Plaćanje gotovinom ne zahtjeva karticu ili PayPal račun</li>
                     <li class="list-group-item"><a class="btn btn-info" href="/WebShop/Kupnja?akcija=1">Plati gotovinom</a></li>
                 </ul>
             </div>          
@@ -36,7 +36,6 @@
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">Potreban je PayPal racun</li>
-                    <!--<li class="list-group-item"><a class="btn btn-info">Plati PayPal-om</a></li>-->
                     <form action='/WebShop/ExpressCheckout' METHOD='POST'>
                         <input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif' border='0' align='top' alt='Check out with PayPal'/>
                     </form>
@@ -49,7 +48,7 @@
                     <h3>Povratak na kosaricu</h3>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Povratak na kosaricu za mjenjanje sastava</li>
+                    <li class="list-group-item">Povratak na košaricu za mjenjanje sastava</li>
                     <li class="list-group-item"><a class="btn btn-success" href="/WebShop/Profil">Povratak</a></li>
                 </ul>
             </div>          

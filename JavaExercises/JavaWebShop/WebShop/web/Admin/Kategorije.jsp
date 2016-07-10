@@ -14,7 +14,7 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Odaberite kategoriju proizvoda koje zelite mjenjati"/>
+        <jl:headerMessage defaultMessage="Odaberite kategoriju proizvoda koje želite mjenjati"/>
         <jsp:include page="../PartialJSP/PrikazKategorija.jsp"/>
     </body>
 </html>

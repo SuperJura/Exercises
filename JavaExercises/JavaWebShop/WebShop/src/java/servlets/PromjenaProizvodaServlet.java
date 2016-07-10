@@ -31,6 +31,7 @@ public class PromjenaProizvodaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
         if (request.getParameter("btnPromjena") != null) {
             odradiPromjenu(request);
         }

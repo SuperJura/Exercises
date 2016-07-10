@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row">
     <div class="btn-group col-md-1 col-md-offset-1">
@@ -21,7 +22,7 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon3">Datum od - 
                     <span class="boldBlack">
-                        Ukljucen
+                        Uključen
                     </span>
                 </span>
                 <input type="text" id="dpOd" class="form-control"/>
@@ -31,7 +32,7 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon3">Datum do - 
                     <span class="boldBlack">
-                        Iskljucen
+                        Isključen
                     </span> 
                 </span>
                 <input type="text" id="dpDo" class="form-control"/>

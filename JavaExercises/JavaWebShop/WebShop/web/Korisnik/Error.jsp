@@ -10,15 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pogreska</title>
+        <title>Pogreška</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
         <jl:headerMessage defaultMessage="Informacije o Java Web Shop"/>
         <div class="container text-center">
             <div class="jumbotron">
-                <h3 class="display-3">Dogodila se pogreska</h3>
-                <p><a class="btn btn-lg btn-danger" href="/WebShop/Pocetna" role="button">Povratak na pocetnu stranicu</a></p>
+                <h3 class="display-3">Dogodila se pogreška</h3>
+                <p><a class="btn btn-lg btn-danger" href="/WebShop/Pocetna" role="button">Povratak na početnu stranicu</a></p>
             </div>
         </div>
 </body>

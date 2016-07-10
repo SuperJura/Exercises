@@ -16,7 +16,7 @@
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Pregledajte sve dogadaje vezane uz korisnike"/>
+        <jl:headerMessage defaultMessage="Pregledajte sve događaje vezane uz korisnike"/>
 
         <jsp:include page="../PartialJSP/OdabirKorisnika.jsp"/>
         <div class="row">

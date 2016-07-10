@@ -21,7 +21,7 @@
                 <nav>
                     <ul class="pager">
                         <li><a href="/WebShop/Stranicenje?akcija=2">Predhodni</a></li>
-                        <li><a href="/WebShop/Stranicenje?akcija=1">Sljedeci</a></li>
+                        <li><a href="/WebShop/Stranicenje?akcija=1">Sljedeći</a></li>
                     </ul>
                 </nav>
             </div>

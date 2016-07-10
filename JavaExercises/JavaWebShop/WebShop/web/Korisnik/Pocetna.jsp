@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pocetna stranica</title>
+        <title>Početna stranica</title>
     </head>
     <body>
         <jsp:include page="../PartialJSP/Header.jsp"/>
-        <jl:headerMessage defaultMessage="Pregledajte nase popularne proizvode ovdje!"/>
+        <jl:headerMessage defaultMessage="Pregledajte naše popularne proizvode ovdje!"/>
         <div class="row">
             <div class="col-md-5 col-md-offset-1">
                 <jsp:include page="../PartialJSP/PopisProizvoda.jsp"/>

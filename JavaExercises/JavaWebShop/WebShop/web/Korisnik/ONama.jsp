@@ -17,11 +17,11 @@
         <div class="container text-center">
             <div class="jumbotron">
                 <h1 class="display-3">Java Web Shop </h1>
-                <p class="lead">Web aplikacija napravljena pomocu Java EE za kolegij "Java Web Programiranje"</p>
+                <p class="lead">Web aplikacija napravljena pomoću Java EE za kolegij "Java Web Programiranje"</p>
             </div>
 
             <div class="row text-center">
-                <h3>Koristene komponente</h3>
+                <h3>Korištene komponente</h3>
             </div>
             <div class="row marketing">
                 <div class="col-lg-3 col-lg-offset-3">
