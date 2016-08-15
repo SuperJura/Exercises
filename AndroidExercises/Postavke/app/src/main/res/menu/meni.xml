@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnOsvjezi"
+        android:icon="@drawable/abc_btn_switch_to_on_mtrl_00001"
+        android:showAsAction="never"
+        android:title="Osvjezi">
+    </item>
+    <item
+        android:id="@+id/btnUredi"
+        android:showAsAction="never"
+        android:title="Uredi postavke">
+    </item>
+    <item
+        android:id="@+id/btnObrisi"
+        android:showAsAction="never"
+        android:title="Obrisi postavke">
+    </item>
+</menu>
