@@ -1,21 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>filters.AuthFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>filters.AdminFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>filters.LogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/Admin/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/AuthKorisnik/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>Servlets.HomeServlet</servlet-class>
+        <servlet-class>servlets.PocetnaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>KategorijeServlet</servlet-name>
-        <servlet-class>Servlets.KategorijeServlet</servlet-class>
+        <servlet-class>servlets.KategorijeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProizvodiServlet</servlet-name>
-        <servlet-class>Servlets.ProizvodiServlet</servlet-class>
+        <servlet-class>servlets.ProizvodiServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/Home</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>KosaricaServlet</servlet-name>
+        <servlet-class>servlets.KosaricaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StranicenjeServlet</servlet-name>
+        <servlet-class>servlets.StranicenjeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfilServlet</servlet-name>
+        <servlet-class>servlets.ProfilServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KupnjaServlet</servlet-name>
+        <servlet-class>servlets.KupnjaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PregledKorisnikovihKupnjiServlet</servlet-name>
+        <servlet-class>servlets.PregledKorisnikovihKupnjiServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PristupStranicamaServlet</servlet-name>
+        <servlet-class>servlets.PristupStranicamaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PregledSpajanjaServlet</servlet-name>
+        <servlet-class>servlets.PregledSpajanjaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <servlet-class>servlets.PregledKupnjiServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExpressCheckoutServlet</servlet-name>
+        <servlet-class>servlets.ExpressCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KupnjaGotovinaServlet</servlet-name>
+        <servlet-class>Servlets.KupnjaGotovinaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetaljiProizvodaServlet</servlet-name>
+        <servlet-class>servlets.DetaljiProizvodaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PromjenaProizvodaServlet</servlet-name>
+        <servlet-class>servlets.PromjenaProizvodaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>KategorijeServlet</servlet-name>
         <url-pattern>/Kategorije</url-pattern>
@@ -24,12 +96,71 @@
         <servlet-name>ProizvodiServlet</servlet-name>
         <url-pattern>/Proizvodi</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KosaricaServlet</servlet-name>
+        <url-pattern>/Kosarica</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StranicenjeServlet</servlet-name>
+        <url-pattern>/Stranicenje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfilServlet</servlet-name>
+        <url-pattern>/Profil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Pocetna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KupnjaServlet</servlet-name>
+        <url-pattern>/Kupnja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PregledKorisnikovihKupnjiServlet</servlet-name>
+        <url-pattern>/PregledKorisnikovihKupnji</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PristupStranicamaServlet</servlet-name>
+        <url-pattern>/PristupStranicama</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PregledSpajanjaServlet</servlet-name>
+        <url-pattern>/PregledSpajanja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PregledKupnjiServlet</servlet-name>
+        <url-pattern>/PregledKupnji</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExpressCheckoutServlet</servlet-name>
+        <url-pattern>/ExpressCheckout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KupnjaGotovinaServlet</servlet-name>
+        <url-pattern>/KupnjaGotovina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetaljiProizvodaServlet</servlet-name>
+        <url-pattern>/DetaljiProizvoda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PromjenaProizvodaServlet</servlet-name>
+        <url-pattern>/PromjenaProizvoda</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            120
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>Kategorije</welcome-file>
+        <welcome-file>Pocetna</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <location>/Korisnik/Error.jsp</location>
+    </error-page>
 </web-app>

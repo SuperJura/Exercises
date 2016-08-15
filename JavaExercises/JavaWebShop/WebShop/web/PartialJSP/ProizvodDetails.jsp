@@ -19,5 +19,9 @@
         Kratak opis:
         <div id="proizvodOpis" class="txtBlue"></div>
     </div>
-    <button class="btn btn-primary center-block">Dodaj u kosaricu</button>
+    <div class="input-group input-group-md">
+        <span class="input-group-addon" id="sizing-addon1">Kolicina: </span>
+        <input type="number" class="form-control" id="numKolicina" min="0" max="50" value="1">
+        <button class="btn btn-primary center-block" id="btnDodaj" onclick="dodajProizvodUKosaricu()">Dodaj u kosaricu</button>
+    </div>
 </div>
