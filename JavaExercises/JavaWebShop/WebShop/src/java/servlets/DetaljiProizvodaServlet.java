@@ -23,6 +23,7 @@ public class DetaljiProizvodaServlet extends HttpServlet {
     //Servlet se ponasa kao REST servis, samo vraca json za zadani ID proizvoda
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("application/json;charset=UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         

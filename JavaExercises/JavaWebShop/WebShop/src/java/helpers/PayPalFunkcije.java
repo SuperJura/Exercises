@@ -112,7 +112,7 @@ public class PayPalFunkcije {
          the varialbes were set in the web form, and the resulting string
          is stored in $nvpstr
          */
-        String nvpstr = "&PAYMENTREQUEST_0_AMT=" + paymentAmount  + "&PAYMENTREQUEST_0_ITEMAMT=" + paymentAmount + "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType + "&ReturnUrl=" + returnURL + "&CANCELURL=" + cancelURL + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType;
+        String nvpstr = "&PAYMENTREQUEST_0_DESC=Proizvodi iz java web shopa." + "&PAYMENTREQUEST_0_AMT=" + paymentAmount  + "&PAYMENTREQUEST_0_ITEMAMT=" + paymentAmount + "&PAYMENTREQUEST_0_PAYMENTACTION=" + paymentType + "&ReturnUrl=" + returnURL + "&CANCELURL=" + cancelURL + "&PAYMENTREQUEST_0_CURRENCYCODE=" + currencyCodeType;
 
         /*
          Make the call to PayPal to get the Express Checkout token
