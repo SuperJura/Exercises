@@ -1,0 +1,11 @@
+<div class="container">
+    <% for(var i = 0; i < kategorije.length; i++){%>
+        <button class="btn btn-default btn-block" onclick="prikaziKategoriju(<%=kategorije[i].idKategorija%>)">
+            <div class="text-center">
+                <div class="text-primary txtLarge">
+                    <%= kategorije[i].naziv %>
+                </div>
+            </div>
+        </button>
+	<%}%>
+</div>
