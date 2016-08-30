@@ -54,7 +54,7 @@ $RECYCLE.BIN/
 x64/
 x86/
 bld/
-[Bb]in/
+#[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -158,7 +158,7 @@ AutoTest.Net/
 .sass-cache/
 
 # Installshield output folder
-[Ee]xpress/
+#[Ee]xpress/
 
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
