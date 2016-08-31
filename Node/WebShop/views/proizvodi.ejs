@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include partials/head.ejs %>
+    </head>
+    <body>
+        <% include partials/header.ejs %>
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+                <% include partials/popisProizvoda.ejs %>
+                <!-- <nav>
+                    <ul class="pager">
+                        <li><a href="/WebShop/Stranicenje?akcija=2">Predhodni</a></li>
+                        <li><a href="/WebShop/Stranicenje?akcija=1">Sljedeći</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+            <% include partials/detaljiProizvoda.ejs %>
+        </div>
+    </body>
+</html>

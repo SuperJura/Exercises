@@ -14,11 +14,24 @@ router.get('/', function(req, res){
 	});
 });
 
+router.get('/Proizvodi/:id', function(req, res){
+	var id = req.params['id'];
+	res.render('index', {
+		title: 'WebShop',
+		proizvodi: new repository.getProizvodeForIdKategorija(id)
+	});
+});
+
 router.get('/Kategorije', function(req, res){
 	res.render('kategorije',{
 		title: 'Kategorije',
 		kategorije: new repository.getKategorije()
 	});
 });
+
+router.get('/api/getProizvod/:id', function(req, res){
+	var id = req.params['id'];
+	res.send(new repository.getProizvod(id));
+})
 
 module.exports = router;
