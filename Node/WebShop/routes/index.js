@@ -29,6 +29,13 @@ router.get('/Kategorije', function(req, res){
 	});
 });
 
+router.get('/Profil', function(req, res){
+	req.session.save();
+	res.render('profil',{
+		title: 'Kosarica'
+	});
+});
+
 router.get('/api/getProizvod/:id', function(req, res){
 	var id = req.params['id'];
 	res.send(new repository.getProizvod(id));

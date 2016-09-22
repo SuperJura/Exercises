@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
 
 var routes = require('./routes/index');
 //var users = require('./routes/users');
@@ -26,10 +28,17 @@ app.use(session({
   secret: 'SuperSecretString',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: {
+  maxAge: 60000,
+  httpOnly: false
+  }
 }));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next){
+  res.locals.session = req.session;
+  next();
+});
 
 app.use('/', routes);
 //app.use('/users', users);
