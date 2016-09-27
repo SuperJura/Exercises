@@ -43,7 +43,7 @@
 	                                <%= proizvod.kolicina %>
 	                            </td>
 	                            <td>
-                            		TODO UKUPNA CIJENA
+                            		<%= proizvod.proizvod.cijena * proizvod.kolicina %>
 	                            </td>
 	                            <td>
 	                                <div class="row">
@@ -52,9 +52,9 @@
 	                                            <span class="input-group-addon">Količina:</span>
 	                                            <input type="number" class="form-control" id="numKolicina<%= proizvod.proizvodId %>" min="0" max="50" value="1" >
 	                                            <span class="input-group-btn">
-	                                                <button class="btn btn-danger" id="btnMakni${proizvod.key}" onclick="makniProizvodIzKosarice(this)">Makni
+	                                                <button class="btn btn-danger" id="btnMakni<%= proizvod.proizvodId %>" onclick="smanjiBrojProizvodaIzKosarice(this)">Makni
 	                                                </button>
-	                                                <button class="btn btn-success" id="btnDodaj${proizvod.key}" onclick="povecajBrojProizvodaUKosarici(this)">Dodaj
+	                                                <button class="btn btn-success" id="btnDodaj<%= proizvod.proizvodId %>" onclick="povecajBrojProizvodaUKosarici(this)">Dodaj
 	                                                </button>
 	                                            </span>
 	                                        </div>

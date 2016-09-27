@@ -26,10 +26,16 @@ function dodajProizvodUKosaricu() {
     window.location.href = "/Kosarica?id=" + id + "&akcija=" + 1 + "&kolicina=" + kolicina;
 }
 
-function printProizvodNaziv(id){
-    $.ajax({url: "/api/getProizvod/" + id,
-        success: function (data) {
-            document.write(data.naziv);
-        }
-    });
+function smanjiBrojProizvodaIzKosarice(btn)
+{
+    var id = btn.id.substr(8);
+    var kolicina = document.getElementById("numKolicina" + id).value;
+    window.location.href = "/Kosarica?id=" + id + "&akcija=" + 2 + "&kolicina=" + kolicina;
+}
+
+function povecajBrojProizvodaUKosarici(btn)
+{
+    var id = btn.id.substr(8);
+    var kolicina = document.getElementById("numKolicina" + id).value;
+    window.location.href = "/Kosarica?id=" + id + "&akcija=" + 1 + "&kolicina=" + kolicina;
 }
