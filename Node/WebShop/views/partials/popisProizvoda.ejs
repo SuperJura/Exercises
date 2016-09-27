@@ -1,21 +1,21 @@
-<% for(var i = 0; i < proizvodi.length; i++){%>
+<% for(var i = 0; i < proizvodi.length; i++){ %>
     <div class="panel panel-default background-dark">
         <div class="panel-body">
             <div class="text-left col-md-7">
                 <%= proizvodi[i].naziv%>
             </div>
-            <button id="<%= proizvodi[i].IdProizvod%>" class="btn btn-primary text-right" onClick="displayProizvodKorisnik(this.id)">
+            <button id="<%= proizvodi[i].IdProizvod %>" class="btn btn-primary text-right" onClick="displayProizvodKorisnik(this.id)">
                 Pregledaj proizvod
             </button>
             <div class="text-left col-md-7">
                 Tip proizvoda: 
-                <a class="txtBlue" href="/WebShop/Proizvodi?kategorijaId=<%= proizvodi[i].kategorijaId%>">
+                <a class="txtBlue" onClick="prikaziKategoriju(<%= proizvodi[i].kategorijaId %>)">
                     <%= proizvodi[i].kategorija%>
                 </a> 
             </div>
             <div class="text-left col-md-7">
-                <%= proizvodi[i].cijena%>
+                <%= proizvodi[i].cijena %>
             </div>
         </div>   
     </div>
-<%}%>
+<% } %>

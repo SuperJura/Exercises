@@ -49,6 +49,12 @@ function proizvod(IdProizvod, naziv, kategorijaId, cijena, slika, opis){
 	this.kategorija = getKategorija(this.kategorijaId);
 }
 
+function proizvodZaKosaricu(proizvodId, kolicina){
+	this.proizvodId = proizvodId;
+	this.kolicina = kolicina;
+	this.proizvod = getProizvod(proizvodId); 
+}
+
 function getProizvode(){
 	if (!getProizvode.proizvodi) {	
 		var listaProizvoda = 
@@ -103,10 +109,36 @@ function getProizvodeForIdKategorija(idKategorija){
 	return outputProizvodi;
 }
 
+//--KORISNICI--
+function korisnik(korisnickoIme, lozinka, admin){
+	var id = Korisnik.id;
+	if(!id) {id = 1}
+
+	this.korisnikId = id;
+	this.korisnickoIme = korisnickoIme;
+	this.lozinka = lozinka;
+	this.admin = admin;
+
+	Korisnik.id = id+1;
+}
+
+function getKorisnike(){
+	if(!getKorisnike.listaKorisnika){
+		lista = [
+			new korisnik("Pero", "123", false),
+			new korisnik("Jura", "1234", true)
+		]
+		getKorisnike.listaKorisnika = lista;
+	}
+	return getKorisnike.listaKorisnika;
+}
+
 module.exports.kategorija = kategorija;
 module.exports.getKategorije = getKategorije;
 module.exports.proizvod = proizvod;
+module.exports.proizvodZaKosaricu = proizvodZaKosaricu;
 module.exports.getProizvode = getProizvode;
 module.exports.getPopularneProizvode = getPopularneProizvode;
 module.exports.getProizvod = getProizvod;
 module.exports.getProizvodeForIdKategorija = getProizvodeForIdKategorija;
+module.exports.getKorisnike = getKorisnike;

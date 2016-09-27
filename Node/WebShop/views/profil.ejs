@@ -3,10 +3,70 @@
 	<head>
 		<% include partials/head.ejs %>
 	</head>
-	<body>
-		<% include partials/header.ejs %>
-		<% if(session.nest == null){ %>
-		asd
-		<%}%>
-	</body>
+    <body>
+        <% include partials/header.ejs %>
+        <% if(session.korisnik){ %>
+            <a class="btn btn-success col-md-offset-1" href="/WebShop/PregledKorisnikovihKupnji">Pregled svih kupnji</a>
+            <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?akcija=3">Izlogirajte se iz ovog računa</a>
+        <% } %>
+        <% if(!session.korisnik){ %>
+            <a class="btn btn-danger col-md-offset-1" href="/WebShop/Korisnik/Login.jsp">Ulogirajte se</a>
+        <% } %>
+        <div class="row topMargin">
+            <div class="col-md-10 col-md-offset-1">
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="boldBlack">
+                            Naziv proizvoda u košarici
+                        </td>
+                        <td class="boldBlack">
+                            Kolicina tog proizvoda u košarici
+                        </td>
+                        <td colspan="2">
+                            Sveukupna cijena: 
+                            <span class="boldBlack" id="spanCijena" cijena="${cijena}">
+                            </span>
+                        </td>    
+                        <td>
+                            <% if(session.korisnik && session.cijena) { %>
+                                    <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsiPlacanje(this)">Dovrši narudžbu</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% if(session.proizvodi) { %>
+	                    <% session.proizvodi.forEach(function(proizvod){ %>
+	                        <tr>
+	                            <td>
+	                                <%= proizvod.proizvod.naziv %>
+	                            </td>
+	                            <td>
+	                                <%= proizvod.kolicina %>
+	                            </td>
+	                            <td>
+                            		TODO UKUPNA CIJENA
+	                            </td>
+	                            <td>
+	                                <div class="row">
+	                                    <div class="col-lg-offset-1 col-lg-9">
+	                                        <div class="input-group">
+	                                            <span class="input-group-addon">Količina:</span>
+	                                            <input type="number" class="form-control" id="numKolicina<%= proizvod.proizvodId %>" min="0" max="50" value="1" >
+	                                            <span class="input-group-btn">
+	                                                <button class="btn btn-danger" id="btnMakni${proizvod.key}" onclick="makniProizvodIzKosarice(this)">Makni
+	                                                </button>
+	                                                <button class="btn btn-success" id="btnDodaj${proizvod.key}" onclick="povecajBrojProizvodaUKosarici(this)">Dodaj
+	                                                </button>
+	                                            </span>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </td>
+	                        </tr>
+        				<% }); %>
+        			<% } %>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
 </html>
