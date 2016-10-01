@@ -52,7 +52,7 @@ function proizvod(IdProizvod, naziv, kategorijaId, cijena, slika, opis){
 function proizvodZaKosaricu(proizvodId, kolicina){
 	this.proizvodId = proizvodId;
 	this.kolicina = kolicina;
-	this.proizvod = getProizvod(proizvodId); 
+	this.refProizvod = getProizvod(proizvodId); 
 }
 
 function getProizvode(){
@@ -74,7 +74,7 @@ function getProizvode(){
 			new proizvod(9, 'Mjolnir', 5, 99.0, 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Mjollnir.png', 'The cekic'),
 			new proizvod(10, 'Harrys wooden stick', 5, 0.99, 'http://pad3.whstatic.com/images/thumb/9/9c/Make-a-Harry-Potter-Wand-Step-7.jpg/aid191044-728px-Make-a-Harry-Potter-Wand-Step-7.jpg', 'random drvo')
 		]
-		
+
 		getProizvode.proizvodi = listaProizvoda;
 	}
 	return getProizvode.proizvodi;	
@@ -111,7 +111,7 @@ function getProizvodeForIdKategorija(idKategorija){
 
 //--KORISNICI--
 function korisnik(korisnickoIme, lozinka, admin){
-	var id = Korisnik.id;
+	var id = korisnik.id;
 	if(!id) {id = 1}
 
 	this.korisnikId = id;
@@ -119,7 +119,7 @@ function korisnik(korisnickoIme, lozinka, admin){
 	this.lozinka = lozinka;
 	this.admin = admin;
 
-	Korisnik.id = id+1;
+	korisnik.id = id+1;
 }
 
 function getKorisnike(){
@@ -133,6 +133,15 @@ function getKorisnike(){
 	return getKorisnike.listaKorisnika;
 }
 
+function getKorisnik(korisnickoIme, lozinka) {
+	var korisnici = getKorisnike();
+	for (var i = 0; i < korisnici.length; i++) {
+		if(korisnici[i].lozinka == lozinka && korisnici[i].korisnickoIme == korisnickoIme)
+			return korisnici[i];
+	}
+	return null;
+}
+
 module.exports.kategorija = kategorija;
 module.exports.getKategorije = getKategorije;
 module.exports.proizvod = proizvod;
@@ -142,3 +151,4 @@ module.exports.getPopularneProizvode = getPopularneProizvode;
 module.exports.getProizvod = getProizvod;
 module.exports.getProizvodeForIdKategorija = getProizvodeForIdKategorija;
 module.exports.getKorisnike = getKorisnike;
+module.exports.getKorisnik = getKorisnik;

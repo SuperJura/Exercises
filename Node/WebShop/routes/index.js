@@ -51,7 +51,6 @@ router.post('/Kosarica', function(req, res){
 //Kada je get onda moze biti ili insert ili delete (TODO: napraviti bolje)
 router.get('/Kosarica', function(req, res){
 
-
 	var id = req.query['id'];
 	var kolicina = parseInt(req.query['kolicina']);
 	var akcija = req.query['akcija'];
@@ -69,9 +68,52 @@ router.get('/Kosarica', function(req, res){
 	});
 });
 
+router.get('/Login', function(req, res){
+
+	res.render('login',{
+		title: 'Login korisnika',
+		loginError: 'Da biste mogli kupovati, morate se ulogirati.'
+	});
+});
+
+router.post('/Login', function(req, res){
+
+	var pageToRender = 'login';
+	var title = "Login korisnika";
+	var loginError = "";
+
+	var akcija = parseInt(req.body.akcija);
+	var txtIme = req.body.txtIme;
+	var txtLozinka = req.body.txtLozinka;
+
+	console.log(akcija)
+	switch(akcija){
+		case 1:
+			var korisnik = repository.getKorisnik(txtIme, txtLozinka);
+			if(korisnik != null){
+				req.session.korisnik = korisnik,
+				pageToRender = "profil",
+				title = "Kosarica"
+			}
+			else loginError = "Krivo korisnicko ime ili lozinka.";
+		break;
+		case 2:
+			loginError = "Registracija nije podrzana u ovoj verziji aplikacije.";
+		break;
+	}
+
+	res.render(pageToRender,{
+		title: title,
+		loginError: loginError
+	});
+
+});
+
 function dodajProizvodeUSession(req, id, kolicina){
-	var proizvodi = req.session.proizvodi
-	if(!proizvodi) {proizvodi = []}
+	var proizvodi = req.session.proizvodi;
+	var ukupnaCijena = parseInt(req.session.ukupnaCijena);
+	if(!proizvodi) proizvodi = [];
+	if(!ukupnaCijena) ukupnaCijena = 0;
 
 	var vecPostojiUListi = false;
 	for (var i = 0; i <proizvodi.length; i++) {
@@ -85,11 +127,17 @@ function dodajProizvodeUSession(req, id, kolicina){
 		var indexSljedeceg = proizvodi.length;
 		proizvodi[indexSljedeceg] = new repository.proizvodZaKosaricu(id, kolicina);
 	}
+
+	ukupnaCijena += kolicina * repository.getProizvod(id).cijena;
+	req.session.ukupnaCijena = ukupnaCijena;
 	req.session.proizvodi = proizvodi;
+
+	console.log(ukupnaCijena);
 }
 
 function makniProizvodeIzSessiona(req, id, kolicina){
 	var proizvodi = req.session.proizvodi;
+	var ukupnaCijena = parseInt(req.session.ukupnaCijena);
 	if(proizvodi){
 		for (var i = 0; i < proizvodi.length; i++) {
 			if(proizvodi[i].proizvodId == id){
@@ -100,6 +148,10 @@ function makniProizvodeIzSessiona(req, id, kolicina){
 			}
 		}
 	}
+	if(ukupnaCijena){
+		ukupnaCijena -= kolicina * repository.getProizvod(id).cijena;
+	}
+	req.session.ukupnaCijena = ukupnaCijena;
 	req.session.proizvodi = proizvodi;
 }
 

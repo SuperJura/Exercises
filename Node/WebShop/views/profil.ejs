@@ -10,7 +10,7 @@
             <a class="btn btn-success col-md-offset-1" href="/WebShop/Login?akcija=3">Izlogirajte se iz ovog računa</a>
         <% } %>
         <% if(!session.korisnik){ %>
-            <a class="btn btn-danger col-md-offset-1" href="/WebShop/Korisnik/Login.jsp">Ulogirajte se</a>
+            <a class="btn btn-danger col-md-offset-1" href="/Login">Ulogirajte se</a>
         <% } %>
         <div class="row topMargin">
             <div class="col-md-10 col-md-offset-1">
@@ -24,11 +24,10 @@
                         </td>
                         <td colspan="2">
                             Sveukupna cijena: 
-                            <span class="boldBlack" id="spanCijena" cijena="${cijena}">
-                            </span>
+                            <%= session.ukupnaCijena %>
                         </td>    
                         <td>
-                            <% if(session.korisnik && session.cijena) { %>
+                            <% if(session.korisnik && session.ukupnaCijena) { %>
                                     <button class="btn btn-info btn-block" id="btnDovrsi" onclick="dovrsiPlacanje(this)">Dovrši narudžbu</button>
                             <% } %>
                         </td>
@@ -37,13 +36,13 @@
 	                    <% session.proizvodi.forEach(function(proizvod){ %>
 	                        <tr>
 	                            <td>
-	                                <%= proizvod.proizvod.naziv %>
+	                                <%= proizvod.refProizvod.naziv %>
 	                            </td>
 	                            <td>
 	                                <%= proizvod.kolicina %>
 	                            </td>
 	                            <td>
-                            		<%= proizvod.proizvod.cijena * proizvod.kolicina %>
+                            		<%= proizvod.kolicina + " * " + proizvod.refProizvod.cijena + " = " + (proizvod.refProizvod.cijena * proizvod.kolicina) %>
 	                            </td>
 	                            <td>
 	                                <div class="row">
