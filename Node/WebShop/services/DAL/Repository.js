@@ -100,7 +100,7 @@ function getProizvodeForIdKategorija(idKategorija){
 	var outputProizvodi = [];
 	var sviProizvodi = getProizvode();
 	for (var i = 0; i < sviProizvodi.length; i++) {
-			console.log(idKategorija + " " + sviProizvodi[i].kategorijaId);
+		
 		if (sviProizvodi[i].kategorijaId == idKategorija) {
 			outputProizvodi.push(sviProizvodi[i]);
 		}
